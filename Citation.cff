@@ -1,0 +1,64 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: TiMBA (Timber market Model for policy-Based Analysis)
+message: >-
+  TiMBA was developed and written by an authors' collective
+  in which the authors have contributed over years their
+  individual strengths and knowledge to make the model work.
+  The authors' collective is named Thünen Institute Forest Sector
+  Modelling (TI-FSM). The individual authors are listed as 
+  Co-authors in alphabetical order. 
+type: software
+authors:
+  - country: DE
+    city: Hamburg
+    name: TI-FSM
+    email: wf-timba@thuenen.de
+    address: Leuschnerstraße 91
+    post-code: '21031'
+  - given-names: Christian
+    family-names: Morland
+    email: christian.morland@thuenen.de
+    affiliation: Thünen Institue of Forestry
+    orcid: 'https://orcid.org/0000-0001-6600-570X'
+  - given-names: Franziska
+    family-names: Schier
+    email: Franziska.Schier@thuenen.de
+    affiliation: Thünen Institue of Forestry
+    orcid: 'https://orcid.org/0000-0002-3378-1371'
+  - given-names: Julia
+    family-names: Tandetzki
+    email: julia.tandetzki@thuenen.de
+    affiliation: Thünen Institue of Forestry
+    orcid: 'https://orcid.org/0000-0002-0630-9434'
+  - given-names: Tomke
+    family-names: Honkomp
+    email: tomke.honkomp@thuenen.de
+    affiliation: Thünen Institue of Forestry
+    orcid: 'https://orcid.org/0000-0002-6719-0190'
+identifiers:
+  - type: doi
+    value: ''
+    description: ''
+repository-code: ''
+abstract: |-
+  TiMBA is a partial economic equilibrium model for the
+   global forest products market. The model endogenously
+   simulates production, consumption and trade of wood and
+   wood-based products in 180 countries. TiMBA recursively
+   computes the market equilibrium for each country and
+   product in a given period by maximizing the social surplus
+   in the global forest sector. In the equilibrium processes,
+   product supply, demand and price are balanced for each
+   simulation period. 
+keywords:
+  - research
+  - Forest sector model
+  - partial equilibrium model
+  - optimization
+  - wood markets
+license: AGPL-3.0-or-later
+version: 1.0.0
+date-released: '2024-09-30'
