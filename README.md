@@ -1,10 +1,10 @@
-![TiMBA Logo](timba_logo_v2.png)  
+![TiMBA Logo](timba_logo_v3.png)  
 **TiMBA - Timber market Model for policy-Based Analysis**
 <!-- TOC -->
 
 - [Cite TiMBA](#cite-timba)
 - [Install TiMBA](#install-timba)
-  - [Double check installation and test suite](#doublecheck-installation-and-test-suite)
+  - [Double check installation and test suite](#double-check-installation-and-test-suite)
 - [Use TiMBA](#use-timba)
   - [Model settings](#model-settings)
     - [Settings as parameters](#settings-as-parameters)
@@ -14,7 +14,7 @@
 - [Contributing to the project](#contributing-to-the-project)
 - [Authors](#authors)
 - [Contribution statement](#contribution-statement)
-- [License and Copyright Note](#license-and-copyright-note)
+- [License and copyright note](#license-and-copyright-note)
 - [Acknowledgements](#acknowledgements)
 - [References](#references)
 
