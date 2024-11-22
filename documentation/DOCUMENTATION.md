@@ -99,9 +99,9 @@ The model concept bases on the formal description of GFPM [@Buongiorno:2015;@Buo
 |Temporal Dimension|Recursive long term analyses|
 |Products|Raw-, intermediate, end products|
 |Data sources|FAO, FRA, WDI, Comtrade|
-|Software Implementation|Python 3.8, Python 3.9|
+|Software Implementation|Python 3.12|
 |Current code version|TiMBA 1.0.1|
-|Permanent link to code repositiory|  |
+|Permanent link to code repositiory| https://zenodo.org/records/13842492 |
 |Code License| APGL3|
 |Code versioning system used|GITHUB, Zenodo|
 |Optimizer|OSQP|
@@ -118,6 +118,7 @@ is subject to market clearance and constraints balancing necessary raw materials
 the trade [@Samuelson:1952]. In the model framework, wood products are implicitly treated as perfect substitutes, regardless 
 of their origin, as long as they belong to the same commodity. As the optimization of the market equilibrium in a given year 
 does not include an elasticity of substitution, demand is merely shifted by changes in income and price (Murray et al. 2004).
+
 [comment]:<> (CM: Someone please add reference for Murray 2004)
 
 TiMBA distinguishes between raw, intermediate and end products. The model structure currently includes three types of 
@@ -130,6 +131,7 @@ industrial roundwood. Production of intermediate and end products is modelled us
 the level of inputs needed for producing one unit of output. The production level depends on raw material prices, costs of 
 manufacturing as well as commodity prices. While the prices of raw materials and intermediate and end-products are simulated 
 endogenously, cost of manufacturing and transport are given exogenously. 
+
 [comment]:<> (CM: Someone please add reference for UNECE 2021)
 
 Consumption of wood-based products is tied to country-specific income (GDP) and price levels via price and income elasticities 
@@ -375,7 +377,6 @@ For lack of data, some of the parameters had to be set intuitively, based mostly
 ![timba_countries](..\images\timba_country_coverage.png)
 **Figure 2:** Countries which are included in TiMBA
 
-[comment]: <> (CM: ich würde vorschlagen eher eine Grafik einzubauen als die große Tabelle, oder aber die Tablle mit ISO3 Codes versehen. FS: Ich finde die Ländername schon gut, weil man dann weiß welche. Aber vielleicht gleich nach Kontinenten sortieren, damit es a) anders aussieht wie bei Buongiorno und b) wir gleich "unsere" Kontintentaggregation haben?)
 
 **Table 4:** Demand and supply elasticities
 
@@ -412,7 +413,7 @@ Data GDP and population growth are taken from the “Middle of the road” scena
 After linear approximation of the demand, supply and cost functions (2), (3) and (7), the objective function (1) is quadratic in D, S, Y and T. The equilibrium in a given year is calculated by solving a quadratic optimization problem with linear constraints. The solution is computed with the ... solver (QUELLE). A current version of the TiMBA software together with calibrated input data set (scenario_input) are available here:  https://github.com/TI-Forest-Sector-Modelling/TiMBA
 
 [comment]: <> (CM: Satz zur Validierung)
-TiMBA was subject of an extensive validation process which was designed to assure the quality and functionality of the model. More information about the valiation steps and results will be published seperatly and following soon.
+TiMBA was subject of an extensive validation process which was designed to assure the quality and functionality of the model. More information about the valiation process and results will be published seperatly and following soon.
 
 ## Validation
 
@@ -567,7 +568,7 @@ TiMBA was subject of an extensive validation process which was designed to assur
 
 ### Parameter list
 
-**Table A4:** List of paramter for model input
+**Table A3:** List of paramter for model input
 
 |Forest        |Supply     	  |Transportation        |Demand |Manufacturing|
 |:-------------|:-------------|:-------------|:-------------|:-------------|
@@ -592,7 +593,7 @@ TiMBA was subject of an extensive validation process which was designed to assur
 
 <br><br>
 
-**Table A5:** List of parameter for dynamic changes over time
+**Table A4:** List of parameter for dynamic changes over time
 
 |Forest        |Supply     	  |Transportation        |Demand |Manufacturing|
 |:-------------|:-------------|:-------------|:-------------|:-------------|
