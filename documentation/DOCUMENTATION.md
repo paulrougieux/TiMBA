@@ -9,11 +9,13 @@
     - [Supply:](#supply)
     - [Manufacturing:](#manufacturing)
     - [Trade:](#trade)
+    - [Forest](#forest)
   - [Countries and Products](#countries-and-products)
   - [Input Data and Parameter](#input-data-and-parameter)
-    - [Structure / Organisation of Input Data](#structure--organisation-of-input-data)
-  - [Parameter Development](#parameter-development)
-    - [Exogenous changes](#exogenous-changes)
+    - [Overview on Input Data](#overview-on-input-data)
+    - [Overview on Parameters](#overview-on-parameters)
+    - [Exogenous Parameter Development](#exogenous-parameter-development)
+  - [Computer software](#computer-software)
   - [Validation](#validation)
     - [Projection / historic data replication](#projection--historic-data-replication)
     - [Inter-model comparison](#inter-model-comparison)
@@ -54,7 +56,7 @@ In particular, we would like to thank
 This working paper details the underlying structure of TiMBA as well as the data and parameters used for modelling. 
 TiMBA is a partial economic equilibrium model for the global forest sector. The market equilibrium is subject to 
 market clearance and constraints balancing raw material, product manufacturing, consumption while limiting international 
-trade (Samuelson 1952). The model structure distinguishes between raw, intermediate and end products. TiMBA differentiates 
+trade [@Samuelson:1952]. The model structure distinguishes between raw, intermediate and end products. TiMBA differentiates 
 three types of roundwood (wood fuel, coniferous and non-coniferous industrial roundwood), two additional raw products for 
 paper production (other fibre pulp and waste paper), two intermediate products (mechanical and chemical pulp) and eight finished 
 products (coniferous and non-coniferous sawnwoods, veneer sheets and plywood, particle board, fibreboard, newsprint, printing 
@@ -69,24 +71,27 @@ and is an important driver of change. Since the consumption of wood-based produc
 an increase in income basically leads to an increase in demand. The supply of roundwood depends on wood prices and forest 
 development which in turn is basically determined by the growth dynamics of forest stock, the change in forest area, and 
 harvest volumes. Forest area development and timber supply is coupled to GDP per capita developments based on the concept 
-of the environmental Kuznets curve (Panayotou 2004). 
+of the environmental Kuznets curve [@Panayotou:1993]. 
+[comment]:<> (CM: Someone please add reference for Murray 2004)
+
 In its basic version, TiMBA uses the assumptions made in the “Middle of the road” scenario described in 
 “The Shared Socioeconomic Pathways” (the so called SSP2 scenario) to model future GDP developments and population growth. 
 This scenario describes a world of modest population growth and where social, economic and technological trends continue 
-similarly to historical patterns (Riahi et al. 2017). Price and income elasticities of demand are taken from Morland et al. (2018).
+similarly to historical patterns [@Riahi:2017]. Price and income elasticities of demand are taken from @Morland.2018.
 Further exogenous specifications on technology developments (input-output coefficients and manufacturing cost) are estimated
 based on historical developments from 1993-2020 while information on trade inertia and cost are based on WTO data as provided
-in the Forest Products Model (GFPM) [@Buongiorno:2015]; GFPM version 1-29-2017-World500. 
+in the Forest Products Model (GFPM, [@Buongiorno:2015]; GFPM version 1-29-2017-World500). 
 The base year for the scenario simulations with the current version of TiMBA is 2020. The input data used for simulation 
 with TiMBA needs to be calibrated and provided in a source file prior to model runs. This file is provided together with 
-the model. The calibration procedure is described in  @Buongiorno:2015 and altered according to @Schier:2018. 
+the model. The calibration procedure is described in @Buongiorno:2015 and altered according to @Schier:2018. 
 The input data for calibrating the model are obtained from three global databases: The FAO forestry statistics (FAOSTAT), 
-the FAO Forest Global Resources Assessment (FAO 2020) and the World Bank Development Indicators (World Bank). 
+the FAO Forest Global Resources Assessment (FAO 2020) and the World Bank Development Indicators (World Bank).
+[comment]:<> (CM: Wollen wir die Quellen für FAO und Weltbank hier mit angeben oder machen wir das mit Citavi?)
 
 The model output comprises information about production, consumption and trade quantities, and prices as well as forest development. 
 The model concept bases on the formal description of GFPM [@Buongiorno:2015;@Buongiorno:2003].
 
-**Table X:** Modell characteristics
+**Table 1:** Modell characteristics
 
 |Model type|Dynamic and static equilibrium market model|
 |-----------------------------------| -----------------------------------|
@@ -101,9 +106,6 @@ The model concept bases on the formal description of GFPM [@Buongiorno:2015;@Buo
 |Code versioning system used|GITHUB, Zenodo|
 |Optimizer|OSQP|
 
-
-[comment]: <> (add table)
-
 ## Introduction
 This paper provides an overview over the data and parameters used in the Timber market Model for policy-Based Analsis 
 (TiMBA) and gives an introduction to the model structure and specifications. Further, the results from validating the model 
@@ -113,9 +115,10 @@ TiMBA is a multi-periodic partial economic equilibrium model for the global fore
 production, imports, exports, consumption quantities and prices as well as technological and forest development for 16 
 commodities and 180 countries. The prices of wood and wood-based products are endogenous to the model. The market equilibrium 
 is subject to market clearance and constraints balancing necessary raw materials and produced wood products and limiting 
-the trade (Samuelson 1952). In the model framework, wood products are implicitly treated as perfect substitutes, regardless 
+the trade [@Samuelson:1952]. In the model framework, wood products are implicitly treated as perfect substitutes, regardless 
 of their origin, as long as they belong to the same commodity. As the optimization of the market equilibrium in a given year 
 does not include an elasticity of substitution, demand is merely shifted by changes in income and price (Murray et al. 2004).
+[comment]:<> (CM: Someone please add reference for Murray 2004)
 
 TiMBA distinguishes between raw, intermediate and end products. The model structure currently includes three types of 
 roundwood (wood fuel, coniferous and non-coniferous industrial roundwood), two additional raw products for paper production 
@@ -127,6 +130,7 @@ industrial roundwood. Production of intermediate and end products is modelled us
 the level of inputs needed for producing one unit of output. The production level depends on raw material prices, costs of 
 manufacturing as well as commodity prices. While the prices of raw materials and intermediate and end-products are simulated 
 endogenously, cost of manufacturing and transport are given exogenously. 
+[comment]:<> (CM: Someone please add reference for UNECE 2021)
 
 Consumption of wood-based products is tied to country-specific income (GDP) and price levels via price and income elasticities 
 taken from @Morland:2018. In TiMBA, demand for wood-based products is positively correlated to income, thus, an 
@@ -151,7 +155,7 @@ shift the demand for wood-based products via elasticities at an annual interval.
 shift the wood supply at an annual interval. Forest area development and thus, stock volume and timber supply are coupled 
 to GDP per capita developments based on the concept of the environmental Kuznets curve [@Panayotou:1993]. Information on 
 trade inertia and cost are based on WTO data as provided in the GFPM ([@Buongiorno:2003]; GFPM-base2021 
-(https://onedrive.live.com/?authkey=%21AEF7RY7oAPlrDPk&id=93BC28B749A1DFB6%2117056&cid=93BC28B749A1DFB6). The base year 
+https://onedrive.live.com/?authkey=%21AEF7RY7oAPlrDPk&id=93BC28B749A1DFB6%2117056&cid=93BC28B749A1DFB6). The base year 
 for the scenario simulations with the current version of TiMBA is 2020. The input data used for simulation with TiMBA 
 needs to be calibrated and provided in a source file prior to model runs. This file is provided together with the model. 
 The calibration procedure is described in @Buongiorno and Zhu:2015 and altered according to @Schier:2018. The input 
@@ -259,10 +263,10 @@ income and $\gamma$ and $\alpha$ as exogenous parameters to shift the growth rat
 
 Forest stock evolves over time to a growth-drain equation following @Buongiorno:2015:
 
-$I_t=\left(I_{-1}+(g_a+g_u+g_u^*)I_{-1}\right)-pS_{-1}$
+$$I_t=\left(I_{-1}+(g_a+g_u+g_u^*)I_{-1}\right)-pS_{-1}$$
 
 where g_a is annual rate of change of forest area, g_u is periodic rate of forest growth, 
-g_u^* is the adjustment rate of forest growth and pS_{-1}$ is harvest of previous period .
+g_u^* is the adjustment rate of forest growth and $pS_{-1}$ is harvest of previous period .
 
 All necessary data is provided in the supplied input file. The CO2 price cannot be adjusted in the base version of TiMBA. 
 A separate extension will be provided for this purpose. 
@@ -306,10 +310,9 @@ Data on GDP and population are derived from the World Development database (Worl
 
 Tariffs are derived from WTO Integrated Database (IDB) notifications as average of ad valorem duties for the last current 
 year available of the respective reporter country and product on HS-code level 4 – 6. Freight cost are calculated as 
-freight factor times export unit value. Freight factors are taken from the Forest Sector Model GFPM [@Buongiorno:2003], 
+freight factor times export unit value. Freight factors are taken from the Forest Sector Model GFPM [@Buongiorno:2003] (see Table A1), 
 GFPM-base2021 (https://onedrive.live.com/?authkey=%21AEF7RY7oAPlrDPk&id=93BC28B749A1DFB6%2117056&cid=93BC28B749A1DFB6) 
 
-[comment]: <> (FS: add table for freight factors?)
 
 Data on national Forest Area and Growing Stock on Total Forest Area (in the following Forest Stock) are taken from the 
 FAO Forest Resources Assessment 2020. In case that data on Forest Stock had not been reported in 2020, data were complemented 
@@ -344,9 +347,7 @@ left after harvesting as logging residues while 80% is supplied as roundwood.
 
 For lack of data, some of the parameters had to be set intuitively, based mostly on the dynamic behavior of the model.
 
-[comment]: <> (add tables)
-
-**Table x:** Items simulated with TiMBA. Product definitions according to FAOSTAT and FAO Forest resources assessment (Quellen) 
+**Table 2:** Items simulated with TiMBA. Product definitions according to FAOSTAT and FAO Forest resources assessment (Quellen) 
 
 |Item|Unit|Supply|Production|Demand|Trade|Price|Growth|
 |:------------------|:-------:|:-:|:-:|:-:|:-:|:-:|:-:| 
@@ -372,12 +373,141 @@ For lack of data, some of the parameters had to be set intuitively, based mostly
 <br><br>
 
 ![timba_countries](..\images\timba_country_coverage.png)
-**Figure y:** Countries which are included in TiMBA
+**Figure 2:** Countries which are included in TiMBA
 
 [comment]: <> (CM: ich würde vorschlagen eher eine Grafik einzubauen als die große Tabelle, oder aber die Tablle mit ISO3 Codes versehen. FS: Ich finde die Ländername schon gut, weil man dann weiß welche. Aber vielleicht gleich nach Kontinenten sortieren, damit es a) anders aussieht wie bei Buongiorno und b) wir gleich "unsere" Kontintentaggregation haben?)
 
-**Table x:** List of 180 countries included into forest sector modelling
+**Table 4:** Demand and supply elasticities
 
+|                         |Demand elasticity   || Supply elsaticity            |||
+|-------------------------|:--------:|:--------:|:--------:|:--------:|:--------:|
+| Commodity               | price    | income   | price    | income   |forest stock|
+| Fiberboard              | -0.4629  | 1.0661   |          |          |         |
+| Fuelwood                | -0.1458  | 0.5680   |          |          |         |
+| Newsprint               | -0.1208  | 0.2371   |          |          |         |
+| Other Paper             | -0.1695  | 0.2283   |          |          |         |
+| P. & W. Paper           | -0.5188  | 0.3626   |          |          |         |
+| Particle Board          | -0.4923  | 0.7502   |          |          |         |
+| Plywood & Veneer        | -0.3534  | 0.596    |          |          |         |
+| Sawnwood C              | -0.3001  | 0.4409   |          |          |         |
+| Sawnwood NC             | -0.1221  | 0.2162   |          |          |         |
+| Fuelwood                |          |          | 1.0311   | \-       | 1.1000  |
+| Industrial Roundwood C  |          |          | 1.0738   | \-       | 1.1000  |
+| Industrial Roundwood NC |          |          | 1.0440   | \-       | 1.1000  |
+| Wastepaper              |          |          | 1.0000   | 0.6700   | \-      |
+| Other Fibre Pulp        |          |          | 1.0000   | 0.1400   | \-      |
+
+Note: This is a summarizing table; Elasticities are shown for the best model, which is chosen on the basis of Breusch-Pagan, Maddala-Wu and Hausman tests based on @Morland:2018 taken from GFPM [@Buongiorno:2003], GFPM-base2021 (https://onedrive.live.com/?authkey=%21AEF7RY7oAPlrDPk&id=93BC28B749A1DFB6%2117056&cid=93BC28B749A1DFB6) 
+
+### Exogenous Parameter Development
+
+Currently, TiMBA simulates forests and wood product market developments until 2050. Beyond the endogenous equilibrium process, exogenous parameters shift the development pathway form year to year including parameters on country-specific GDP and population growth as well as on as growth rates for country- and product specific input-output ratios and manufacturing costs. 
+
+Data GDP and population growth are taken from the “Middle of the road” scenario (SSP 2) described in “The Shared Socioeconomic Pathways” as provided by IIASA data base (QUELLE). Parameters driving forest growth others than GDP per capita are held constant. Future development of input-output coefficients and manufacturing cost were estimated by the authors in a subsequent study based on historical data. Trade activities are contraint by constant trade internia bounds as defined in the GFPM (Buongiorno et al. 2003), GFPM-base2021 (https://onedrive.live.com/?authkey=%21AEF7RY7oAPlrDPk&id=93BC28B749A1DFB6%2117056&cid=93BC28B749A1DFB6). 
+
+## Computer software
+
+[comment]: <> (Bitte die ersten Sätze richtig ergänzen)
+
+After local linear approximation of the demand, supply and cost functions (2), (3) and (7), the objective function (1) is quadratic in D, S, Y and T. The equilibrium in a given year is calculated by solving a quadratic optimization problem with linear constraints. The solution is computed with the ... solver (QUELLE). A current version of the TiMBA software together with calibrated input data set (scenario_input) are available here:  https://github.com/TI-Forest-Sector-Modelling/TiMBA
+
+## Validation
+
+
+### Projection / historic data replication
+
+
+### Inter-model comparison
+
+
+### Economic shocks / economic behaviour 
+
+
+## Annex
+
+**Table A1:** Freight cost of shipping one unit of commodity from origin to destination
+
+|Commodity|Freight Cost|
+|:--------|:----------:|
+|IndRoundNC|	32|
+|SawnwoodNC|	50|
+|Fuelwood|	14|
+|IndRound|	17|
+|OthIndRound||	
+|Sawnwood|	23|
+|Plywood|	22|
+|ParticleB|	10|
+|FiberB|	15|
+|MechPlp|	37|
+|ChemPlp|	44|
+|OthFbrPlp|	109|
+|WastePaper|	33|
+|Newsprint|	28|
+|PWPaper|	52|
+|OthPaper|	55|
+|  ||
+|IndRoundNC|	37|
+|IndRound	|20|
+|Newsprint|	22|
+
+**Table A2:** List of 180 countries included into forest sector modelling
+
+|Africa|	Asia|	Europe|	North America|	Oceania|	South America|
+|:---:|:---:|:---:|:---:|:---:|:---:|
+|AGO|	AFG|	ALB|	ANT|	AUS	|ARG|
+|BDI|	ARE|	AUT|	BHS|	COK|	BOL|
+|BEN|	BGD|	BEL|	BLZ|	FJI|	BRA|
+|BFA|	BHR|	BGR|	BRB|	NCL|	CHL|
+|BWA|	BRN|	BIH|	CAN|	NZL|	COL|
+|CAF|	BTN|	CHE|	CRI|	PNG|	ECU|
+|CIV|	CHN|	CZE|	CUB|	PYF|	GUF|
+|CMR|	CYP|	DEU|	DMA|	SLB|	GUY|
+|COD|	IDN|	DNK|	DOM|	TON|	PER|
+|COG|	IND|	ESP|	GTM|	VUT|	PRY|
+|CPV|	IRN|	FIN|	HND|	WSM|	SUR|
+|DJI|	IRQ|	FRA|	HTI|		URY|
+|DZA|	ISR|	GBR|	JAM|		VEN|
+|EGY|	JOR|	GRC|	LCA||		
+|ETH|	JPN|	HRV|	MEX||		
+|GAB|	KHM|	HUN|	MTQ||		
+|GHA|	KOR|	IRL|	NIC||		
+|GIN|	KWT|	ITA|	PAN||		
+|GMB|	LAO|	LUX|	SLV||		
+|GNB|	LBN|	MKD|	TTO	||	
+|GNQ|	LKA|	MNE|	USA||		
+|KEN|	MDV|	NLD|	VCT||		
+|LBR|	MMR|	NOR|||			
+|LBY|	MNG|	POL|||			
+|LSO|	MYS|	PRT|||			
+|MAR|	NPL|	ROU|||			
+|MDG|	OMN|	SRB|||			
+|MLI|	PAK|	SVK|||			
+|MOZ|	PHL|	SVN|||			
+|MRT|	PRK|	SWE|||			
+|MUS|	QAT||||				
+|MWI|	SAU||||				
+|NER|	SGP||||				
+|NGA|	SYR||||				
+|REU|	THA||||
+|RWA|	TLS||||				
+|SDN|	TUR||||				
+|SEN|	VNM||||				
+|SLE|	YEM||||			
+|SOM|||||					
+|STP|||||					
+|SWZ|||||					
+|TCD|||||					
+|TGO|||||					
+|TUN|||||				
+|TZA|||||					
+|UGA|||||				
+|ZAF|||||					
+|ZMB|||||			
+|ZWE|||||					
+
+<br><br>
+
+**Table A2:** List of 180 countries included into forest sector modelling
 |                       |                       |                       |                       |
 | --------------------- | --------------------- | --------------------- | --------------------- |
 |Algeria                |El Salvador            |  Maldives             |St.Vincent/Grenadines  |
@@ -432,54 +562,46 @@ For lack of data, some of the parameters had to be set intuitively, based mostly
   |Egypt              |Malaysia         |Sri Lanka         |                     |
 
 
-**Table x:** Demand and supply elasticities
-
-|                         |Demand elasticity   || Supply elsaticity            |||
-|-------------------------|:--------:|:--------:|:--------:|:--------:|:--------:|
-| Commodity               | price    | income   | price    | income   |forest stock|
-| Fiberboard              | -0.4629  | 1.0661   |          |          |         |
-| Fuelwood                | -0.1458  | 0.5680   |          |          |         |
-| Newsprint               | -0.1208  | 0.2371   |          |          |         |
-| Other Paper             | -0.1695  | 0.2283   |          |          |         |
-| P. & W. Paper           | -0.5188  | 0.3626   |          |          |         |
-| Particle Board          | -0.4923  | 0.7502   |          |          |         |
-| Plywood & Veneer        | -0.3534  | 0.596    |          |          |         |
-| Sawnwood C              | -0.3001  | 0.4409   |          |          |         |
-| Sawnwood NC             | -0.1221  | 0.2162   |          |          |         |
-| Fuelwood                |          |          | 1.0311   | \-       | 1.1000  |
-| Industrial Roundwood C  |          |          | 1.0738   | \-       | 1.1000  |
-| Industrial Roundwood NC |          |          | 1.0440   | \-       | 1.1000  |
-| Wastepaper              |          |          | 1.0000   | 0.6700   | \-      |
-| Other Fibre Pulp        |          |          | 1.0000   | 0.1400   | \-      |
-
-Note: This is a summarizing table; Elasticities are shown for the best model, which is chosen on the basis of Breusch-Pagan, Maddala-Wu and Hausman tests based on @Morland:2018 taken from GFPM [@Buongiorno:2003], GFPM-base2021 (https://onedrive.live.com/?authkey=%21AEF7RY7oAPlrDPk&id=93BC28B749A1DFB6%2117056&cid=93BC28B749A1DFB6) 
-
-### Exogenous Parameter Development
-
-Currently, TiMBA simulates forests and wood product market developments until 2050. Beyond the endogenous equilibrium process, exogenous parameters shift the development pathway form year to year including parameters on country-specific GDP and population growth as well as on as growth rates for country- and product specific input-output ratios and manufacturing costs. 
-
-Data GDP and population growth are taken from the “Middle of the road” scenario (SSP 2) described in “The Shared Socioeconomic Pathways” as provided by IIASA data base (QUELLE). Parameters driving forest growth others than GDP per capita are held constant. Future development of input-output coefficients and manufacturing cost were estimated by the authors in a subsequent study based on historical data. Trade activities are contraint by constant trade internia bounds as defined in the GFPM (Buongiorno et al. 2003), GFPM-base2021 (https://onedrive.live.com/?authkey=%21AEF7RY7oAPlrDPk&id=93BC28B749A1DFB6%2117056&cid=93BC28B749A1DFB6). 
-
-## Computer software
-
-[comment]: <> (Bitte die ersten Sätze richtig ergänzen)
-
-After local linear approximation of the demand, supply and cost functions (2), (3) and (7), the objective function (1) is quadratic in D, S, Y and T. The equilibrium in a given year is calculated by solving a quadratic optimization problem with linear constraints. The solution is computed with the ... solver (QUELLE). A current version of the TiMBA software together with calibrated input data set (scenario_input) are available here:  https://github.com/TI-Forest-Sector-Modelling/TiMBA
-
-## Validation
-
-
-### Projection / historic data replication
-
-
-### Inter-model comparison
-
-
-### Economic shocks / economic behaviour 
-
-
-## Annex
-
-
 ### Parameter list
 
+**Table A4:** List of paramter for model input
+
+|Forest        |Supply     	  |Transportation        |Demand |Manufacturing|
+|:-------------|:-------------|:-------------|:-------------|:-------------|
+|gdp_per_capita_base_period|	price|	freight_cost|	price|	net_manufacturing_cost|
+|forest_stock|	quantity|	import_ad_valorem_tax_rate|	quantity|	quantity|
+|growth_rate_forest_stock|	elasticity_price|	export_ad_valorem_tax_rate|	elasticity_price|	elasticity_price|
+|elasticity_growth_rate_forest_stock|	elasticity_gdp|	quantity|	elasticity_gdp|	
+|forest_area|	elasticity_stock|	elasticity_trade_exporter|	elasticity_expectations||	
+|forest_area_growth_rate|	elasticity_area|	elasticity_trade_importer|	lower_bound||	
+|linear_gdp_forest_area_growth_rate|	elasticity_fourth|	trade_inertia_bounds|	upper_bound||	
+|exponential_gdp_forest_area_growth_rate|	elasticity_fifth|	price|||		
+|fraction_fuelwood|	elasticity_sixth|	elasticity_price|||		
+|ratio_inventory_drain|	elasticity_respect_previous_period_supply|			
+|max_ratio_inventory_drain|	lower_bound|			
+|CO2_growing_stock|	upper_bound||||			
+|price_CO2|	last_period_quantity||||			
+|alpha||||||				
+|gamma||||||				
+|periodic_growth_rate_of_forest_area|||||				
+|forest_growth_without_harvest|||||				
+|supply_from_forest|||||				
+
+<br><br>
+
+**Table A5:** List of parameter for dynamic changes over time
+
+|Forest        |Supply     	  |Transportation        |Demand |Manufacturing|
+|:-------------|:-------------|:-------------|:-------------|:-------------|
+|growth_rate_stock|	elasticity_price|	change_freight_cost|	elasticity_price|	growth_rate_net_manufacture_cost|
+|growth_rate_area|	growth_rate_value|	change_import_tax_rate|	growth_rate_value|	change_input_output|
+|growth_rate_gdp|	growth_rate_gdp|	change_export_tax_rate|	growth_rate_gdp||	
+|adjustment_endogenous_growth_rate_stock|	elasticity_gdp|	exogenous_growth_rate_export_trade_shift|	growth_demand_expected|	|
+|elasticity_growth_rate_stock_on_area|	growth_rate_fourth_shift|	elasticity_trade_exporter_shift	|growth_lower_bound	||
+|growth_rate_linear_GDP_forest_area_growth_rate|	growth_rate_fifth_shift|	exogenous_growth_rate_import_trade_shift	|elasticity_gdp|	|
+|growth_rate_squared_GDP_forest_area_growth_rate|	growth_rate_sixth_shift|	elasticity_trade_importer_shift|||		
+|fraction_fuelwood|	growth_rate_upper_bound|	trade_inertia_bounds|||		
+|ratio_inventory_drain||||||				
+|max_ratio_inventory_drain|||||				
+|price_CO2|||||				
+	
