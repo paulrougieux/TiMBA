@@ -409,7 +409,10 @@ Data GDP and population growth are taken from the “Middle of the road” scena
 
 [comment]: <> (Bitte die ersten Sätze richtig ergänzen)
 
-After local linear approximation of the demand, supply and cost functions (2), (3) and (7), the objective function (1) is quadratic in D, S, Y and T. The equilibrium in a given year is calculated by solving a quadratic optimization problem with linear constraints. The solution is computed with the ... solver (QUELLE). A current version of the TiMBA software together with calibrated input data set (scenario_input) are available here:  https://github.com/TI-Forest-Sector-Modelling/TiMBA
+After linear approximation of the demand, supply and cost functions (2), (3) and (7), the objective function (1) is quadratic in D, S, Y and T. The equilibrium in a given year is calculated by solving a quadratic optimization problem with linear constraints. The solution is computed with the ... solver (QUELLE). A current version of the TiMBA software together with calibrated input data set (scenario_input) are available here:  https://github.com/TI-Forest-Sector-Modelling/TiMBA
+
+[comment]: <> (CM: Satz zur Validierung)
+TiMBA was subject of an extensive validation process which was designed to assure the quality and functionality of the model. More information about the valiation steps and results will be published seperatly and following soon.
 
 ## Validation
 
