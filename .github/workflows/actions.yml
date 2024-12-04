@@ -2,9 +2,9 @@ name: Run CI/CD pipeline
 
 on:
   push:
-    branches: [ "main_GitHub_actions" ] # adapt to "main" when pipeline is finalized
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main_GitHub_actions" ] # adapt to "main" when pipeline is finalized
+    branches: [ "main" ]
 
 jobs:
   build:
