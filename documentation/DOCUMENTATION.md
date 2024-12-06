@@ -265,12 +265,30 @@ Kuznets curve ([@Panayotou: 2004]). See the section 'Forest' for a more detailed
 [comment]: <> (JT Forest part under section 'Forest' )
 [comment]: <> (Complete equation numerotation)
 ### Manufacturing:
+Manufacturing of intermediate and end products is determined using country- and product-specific input-output
+coefficients and manufacturing unit costs. The product and country-specific manufacturing costs are calculated
+based on the manufactured quantity according to equation (tbd) where $m_{i,k}$ are the manufacturing cost,
+$m^{*}$ the current manufacturing cost at the last period’s manufactured quantity, and $\zeta$ is the elasticity of
+manufacturing cost with respect to the manufactured quantity.
 
 $$m_{i,k}(Y_{i,k}) = m^{*}_{i,k,t-1}\left(\frac{Y_{i,k}}{Y_{i,j,t-1}}\right)^{\zeta_{i,k}}$$
 
-$$m^{*}_{i,k}=m_{i,k,t-1}\left(1+g_m\right)$$
+The manufacturing costs of each product represent all costs of inputs not explicitly modelled in TiMBA (labour, energy,
+capital, additional materials), excluding costs of raw materials in a given year and country.
+For net exporting countries, raw material costs are computed by multiplying the domestic prices of input products by the
+input-output coefficients. For net importing countries, raw material costs are computed by multiplying the world market
+price of input products by the input-output coefficients.
 
-with $\zeta$ as manufacturing cost elasticity and $g_m$ as growth rate of manufacturing costs.
+The input-output coefficient of each product in a specific year and country states the amount of input necessary to 
+produce one unit of output. The input-output coefficients and manufacturing cost for the base period are obtained by
+a goal programming procedure and depend on production and trade data from FAOSTAT and exogenous bounds on minimum and
+maximum input per output and cost [@Buongiorno:2015].
+
+Manufacturing costs and input-output coefficients can be exogenously shifted over the calculated periods to reflect 
+technological development. While input-output coefficients are updated in TiMBA, manufacturing costs are developed 
+based on an exogenous growth rate $g_m$.   
+
+$$m^{*}_{i,k}=m_{i,k,t-1}\left(1+g_m\right)$$
 
 ### Trade:
 
