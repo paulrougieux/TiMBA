@@ -184,27 +184,46 @@ The bold lines indicate, that the product is not further processed before sold a
 
 ## Model formulation and specifications
 
-TiMBA computes periodical production, import, exports and consumption as well as prices for the forest-based sector considering 
-forest resources endowment as well as cost, technology and trade constraints.  The recursive market model consists of a static 
+TiMBA computes periodic production, import, exports and consumption as well as prices for the forest-based sector considering 
+available forest resource endowment as well as cost, technology and trade constraints. The recursive market model is composed of a static 
 and a dynamic phase. 
 
-In the static phase, TiMBA calculates a global equilibrium across products and countries in a given year. The modelling problem 
-is solved for each year by maximizing the economic welfare, defined as the sum of the producer and consumer economic surplus. 
+In the static phase, TiMBA calculates a global equilibrium across products and countries in a given year. The optimization problem 
+is solved for each year by maximizing the economic welfare, defined as the sum of the producer and consumer economic surplus.
+
+[comment]: <> (Ich würde hier vielleicht noch eine Abbildung hinzufügen, um visuell zu verdeutlich, was die Produzenten- und Konsumentenrente ist)
 
 In the dynamic phase, changes in the equilibrium conditions (shifts in parameters determining the model outcome such as growing GDP, 
 population or cost) are updated from one period to the next.
 
-The model concept bases on the formal description of the Global Forest Products Model (GFPM) [@Buongiorno:2015;@Buongiorno:2003]. 
-The following problem is optimized by using the CVXPY [@Diamond:2016; @Agrawal:2018] package and the OSQP solver [@Stellato:2020]:
+The model concept bases on the formal description of the GFPM [@Buongiorno:2015;@Buongiorno:2003].
+
+[comment]: <> (Der letzte Satz in eine Wiederholung)
+The following optimization problem is maximized using the CVXPY package [@Diamond:2016; @Agrawal:2018] and the OSQP solver [@Stellato:2020]:
 
 $$\max_{Z}=\sum_{i}\sum_{k}\int_{0}^{D_{i,k}}P_{i,k}\left(D_{i,k}\right)dD_{i,k}-\sum_{i}\sum_{k}\int_{0}^{S_{i,k}}P_{i,k}\left(S_{i,k}\right)dS_{i,k}$$
 $$-\sum_{i}\sum_{k}\int_{0}^{Y_{i,k}}m_{i,k}\left(Y_{i,k}\right)dY_{i,k}-\sum_{i}\sum_{j}\sum_{k}c_{i,j,k}T_{i,j,k}$$
 
 with $P$ as price, $D$ as demand, $S$ as supply, $Y$ as manufacturing, $m$ as manufacturing costs, $T$ as trade, $c$ as 
-transportation costs and the indices $i$ for country, $j$ as trade partner country and $k$ as commodity.
+transportation costs and the indices $i$ as the domestic country, $j$ as trade partner country and $k$ as commodity.
 
-Subject to:
+Subject to an optimization constraint balancing all material flows along the represented supply chain for each country
+while accounting for trade:
+
 $$S_{i,k}+Y_{i,k}+\sum_{j}I_{j,k}=D_{i,k}+\sum_{n}a_{i,k,n}Y_{i,n}+\sum_{j}X_{j,k}$$
+
+The equation (tbd) forms for the country (i) and commodity (k) the specific material balance which imposes that the 
+domestic supply of raw materials ($S_{i,k}$) plus the imports ($I_{j,k}$) and the manufactured quantity ($Y_{i,k}$) must
+be equal to the domestic demand ($D_{i,k}$) of final products plus the input to manufacture other products ($Y_{i,n}$)
+plus the exports ($X_{j,k}$). $a_{i,k,n}$ depicts the amount of input of product $k$ to produce one unit of product $n$.
+The dual values of the material balance (shadow prices) are used as product prices in TiMBA.
+The model is delivered with different material balance options, which allows the user to control the mathematical form how the 
+constraint is integrated into the optimization. The chosen form will influence the computation time of the solver and
+might impact the resulting shadow prices.
+
+[comment]: <> (Complete equation numerotation)
+[comment]: <> (Do we want to emphasises on the possibility of multiple MB forms as this might raise some question among
+ the users)
 
 ### Demand:
 
