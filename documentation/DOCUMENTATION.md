@@ -226,16 +226,20 @@ might impact the resulting shadow prices.
  the users)
 
 ### Demand:
+The demand for wood-based products in TiMBA is correlated to the income ($y$) and wood prices.
+The inverted demand function (equation tbd) defines the quantity of demand for end products where $D^{*}$ is the current
+demand of product $k$ in country $i$ at last period’s price, $P_{i,k,t-1}$ is the last period’s price and $\delta$ is 
+the price elasticity of demand. 
 
-The demand for wood-based products is correlated to income ($y$) and wood prices. 
+$$P_{i,k}(D_{i,k}) = P_{i,k,t-1}\left(\frac{D_{i,k}}{D^{*}_{i,k}}\right)^{1/\delta_{i,k}}$$
 
-$$P_{i,k}(D_{i,k}) = P_{i,k,t-1}\left(\frac{D_{i,k}}{D^{*}_{i,j}}\right)^{1/\delta_{i,k}}$$
+The demand can be shifted exogenously over the simulation periods to socioeconomic changes using $g_y$ as the growth 
+rate of income, $g_D$ as the exogenous growth rate of demand, $\alpha$ as exogenous parameters to shift the influence of
+the growth rates and $t$ as the time index.  
 
 $$D_{i,k}^{*}=D_{i,k,t-1}\left(1+\alpha_{y}g_{y}+\alpha_{D,t-1}g_{D,t-1}+\alpha_0\right)$$
 
-with $\delta$ as demand price elasticity, $g_y$ as growth rate of income, $g_D$ as exogenous growth rate of demand, $\alpha$ as 
-exogenous parameters to shift the influence of the growth rates and t as time index.
-
+[comment]: <> (Complete equation numerotation)
 
 ### Supply:
 
