@@ -124,7 +124,7 @@ does not include an elasticity of substitution, demand is merely shifted by chan
 
 [comment]:<> (CM: Someone please add reference for Murray 2004)
 
-TiMBA distinguishes between raw, intermediate and end products. The model structure currently includes three types of 
+TiMBA distinguishes between raw, intermediate and end products (see figure 1). The model structure currently includes three types of 
 roundwood (wood fuel, coniferous and non-coniferous industrial roundwood), two additional raw products for paper production 
 (other fibre pulp and waste paper), two intermediate products (mechanical and chemical pulp) and eight finished products 
 (coniferous and non-coniferous sawnwoods, veneer sheets and plywood, particle board, fibreboard, newsprint, printing and 
@@ -169,7 +169,7 @@ Forest Global Resources Assessment (FAO 2020) and the World Bank Development Ind
 comprises information about production, consumption, trade quantities, and prices as well as forest development and 
 technology.
 
-The model concept bases on the formal description of the Global Forest Products Model (GFPM) [@Buongiorno:2015;@Buongiorno:2003].
+The model concept bases on the formal description of the GFPM [@Buongiorno:2015;@Buongiorno:2003].
 
 ![Caption for example figure.\label{fig:1}](..\images\timba_product_transformation.png)
 
