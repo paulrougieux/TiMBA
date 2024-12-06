@@ -243,20 +243,27 @@ $$D_{i,k}^{*}=D_{i,k,t-1}\left(1+\alpha_{y}g_{y}+\alpha_{D,t-1}g_{D,t-1}+\alpha_
 
 ### Supply:
 
-The supply of roundwood depends on wood prices and forest development which in turn is basically determined by the growth 
-dynamics of forest stock, the change in forest area, and harvest volumes:
+The supply of roundwood depends on wood prices and forest development which in turn is determined by the growth dynamics
+of forest stock, the change in forest area, and harvest volumes. The inverted supply function defines the quantity of supply for
+raw products (equation tbd) where $S^{*}$ is the current supply of product $k$ in country $i$ at the last period's
+price and $\lambda$ is supply price elasticity. Further details on the connection between the supply and the forest
+stock and area dynamics are provided in the chapter on modelling [Forest](#Forest). 
 
 $$P_{i,k}(S_{i,k}) = P_{i,k,t-1}\left(\frac{S_{i,k}}{S^{*}_{i,j}}\right)^{1/\lambda_{i,k}}$$
 
+To reflect socioeconomic and environmental changes, the supply function can be shifted exogenously over the simulation 
+periods according to equation tbd. In the following equation, $g_y$ represents the income growth rate and $g_I$ depicts
+the growth rate of forest inventory. $\beta_{y}$ is the supply elasticity of income and $\beta_{I}$ is supply elasticity
+relative to the inventory. In TiMBA, the supply elasticity of income is product-specific, differentiating between raw
+materials sourced from the forest and raw materials for paper and paper product production.   
+
 $$S_{i,k}^{*}=S_{i,k,t-1}\left(1+\beta_{y}g_{y}+\beta_{I}g_{I}\right)$$
 
-with $\lambda$ as supply price elasticity, $g_y$ as growth rate of income, $g_I$ as growth rate of forest inventory and $\beta$ 
-as exogenous parameters to shift the influence of the growth parameters. Forest area development and thus, timber supply 
-is coupled to GDP per capita developments based on the concept of the environmental 
-Kuznets curve (Panayotou 2004). See the section 'Forest' for a more detailed description.
+Forest area development and thus, timber supply is coupled to GDP per capita developments based on the concept of the environmental 
+Kuznets curve ([@Panayotou: 2004]). See the section 'Forest' for a more detailed description.
 
 [comment]: <> (JT Forest part under section 'Forest' )
-
+[comment]: <> (Complete equation numerotation)
 ### Manufacturing:
 
 $$m_{i,k}(Y_{i,k}) = m^{*}_{i,k,t-1}\left(\frac{Y_{i,k}}{Y_{i,j,t-1}}\right)^{\zeta_{i,k}}$$
