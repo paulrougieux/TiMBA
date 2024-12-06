@@ -33,14 +33,15 @@ Timber market Model for policy-Based Analysis
 
 authored by TI-FSM
 
-TI-FSM is an authors’ collective that jointly developed and program TiMBA. The members of the collective are – in alphabetical order – Christian Morland, Franziska Schier, Julia Tandetzki, and Tomke Honkomp
+TI-FSM is an authors’ collective that jointly developed and program TiMBA. The members of the collective are – in alphabetical order – Tomke Honkomp, Christian Morland, Franziska Schier, and Julia Tandetzki 
 
 ## Preface
 TIMBA is a partial economic equilibrium model for the global forest products market. The model endogenously simulates production, 
 consumption and trade of wood and wood-based products in 180 countries. 
-TIMBA  computes the market equilibrium for each country and product in a given period by maximizing the social surplus in the global forest sector. 
-Intertemporal modeling is conducted through recursive simulations. In the equilibrium processes, commodity production, consumption and prices are balanced 
-for each simulation period. 
+TIMBA computes the market equilibrium for each country and product in a given period by maximizing the social surplus in the global forest sector.
+In the equilibrium processes, commodity production, consumption and prices are recursively balanced for each simulation period.
+TiMBA is a Python-based model with a modular structure build entirely with open-access libraries.
+
 This work is the result of great joint efforts of the forest sector modelling team at the Thünen Institute of Forestry from 2018 to 2024. 
 In recent years, a number of people made important contributions to this work. Without their support, reflection, and constructive criticism, 
 this undertaking would not have been as successful as it turns out to be now. We would like express our gratitude to all of them. 
