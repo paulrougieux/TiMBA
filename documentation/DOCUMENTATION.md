@@ -62,26 +62,28 @@ three types of roundwood (wood fuel, coniferous and non-coniferous industrial ro
 paper production (other fibre pulp and waste paper), two intermediate products (mechanical and chemical pulp) and eight finished 
 products (coniferous and non-coniferous sawnwoods, veneer sheets and plywood, particle board, fibreboard, newsprint, printing 
 and writing paper, and other paper and paperboards). Except for sawnwoods, intermediate and end products are produced from a 
-mix of coniferous and non-coniferous industrial roundwood. Scenario simulations with TiMBA are guided by parameters and 
-assumptions shaping future developments. In the model framework, wood products are implicitly treated as perfect substitutes, 
+mix of coniferous and non-coniferous industrial roundwood. Scenario simulations with TiMBA are guided by parameters and
+assumptions on their developments depicting how the forest sector might unfold in the future. Parameters and assumptions are
+compiled in the model input file.
+In the model framework, wood products are implicitly treated as perfect substitutes, 
 regardless of their origin, as long as they belong to the same commodity group. 
 
 As the optimization of the market equilibrium in a given year does not include an elasticity of substitution, consumption 
-is merely shifted by changes in income and price (Murray et al. 2004). Thus, the GDP development indicating national incomes 
-and is an important driver of change. Since the consumption of wood-based products is positively correlated to income, 
-an increase in income basically leads to an increase in demand. The supply of roundwood depends on wood prices and forest 
-development which in turn is basically determined by the growth dynamics of forest stock, the change in forest area, and 
-harvest volumes. Forest area development and timber supply is coupled to GDP per capita developments based on the concept 
-of the environmental Kuznets curve [@Panayotou:1993]. 
+is merely shifted by changes in income and price (Murray et al. 2004). Thus, changes in gross domestic product (GDP) reflecting
+national income development is an important driver in the model. Since the consumption of wood-based products is positively
+correlated to income via a positiv elasticity, an increase in income leads to an increase in demand. The supply of roundwood
+depends on wood prices and the forest development which in return is determined by the growth dynamics of forest stocks,
+the change in forest area, and harvest volumes. Forest area development and timber supply is coupled to GDP per capita developments
+based on the concept of the environmental Kuznets curve [@Panayotou:1993]. 
 [comment]:<> (CM: Someone please add reference for Murray 2004)
 
-In its basic version, TiMBA uses the assumptions made in the “Middle of the road” scenario described in 
-“The Shared Socioeconomic Pathways” (the so called SSP2 scenario) to model future GDP developments and population growth. 
-This scenario describes a world of modest population growth and where social, economic and technological trends continue 
-similarly to historical patterns [@Riahi:2017]. Price and income elasticities of demand are taken from @Morland.2018.
+For its calculations, TiMBA relies on projections of GDP and population growth from the Shared Socioeconomic Pathways (SSP).
+In its basic version, TiMBA uses the assumptions made in the SSP2 scenario "Middle of the road". This scenario describes 
+a world of modest population growth and where social, economic and technological trends continue similarly to historical
+patterns [@Riahi:2017]. Price and income elasticities of demand are taken from [@Morland:2018].
 Further exogenous specifications on technology developments (input-output coefficients and manufacturing cost) are estimated
 based on historical developments from 1993-2020 while information on trade inertia and cost are based on WTO data as provided
-in the Forest Products Model (GFPM, [@Buongiorno:2015]; GFPM version 1-29-2017-World500). 
+in the Global Forest Products Model (GFPM) ([@Buongiorno:2015]; GFPM version 1-29-2017-World500). 
 The base year for the scenario simulations with the current version of TiMBA is 2020. The input data used for simulation 
 with TiMBA needs to be calibrated and provided in a source file prior to model runs. This file is provided together with 
 the model. The calibration procedure is described in @Buongiorno:2015 and altered according to @Schier:2018. 
@@ -92,20 +94,20 @@ the FAO Forest Global Resources Assessment (FAO 2020) and the World Bank Develop
 The model output comprises information about production, consumption and trade quantities, and prices as well as forest development. 
 The model concept bases on the formal description of GFPM [@Buongiorno:2015;@Buongiorno:2003].
 
-**Table 1:** Modell characteristics
+**Table 1:** Model characteristics overview
 
-|Model type|Dynamic and static equilibrium market model|
-|-----------------------------------| -----------------------------------|
-|Geographical scope|Global (180 countries)|
-|Temporal Dimension|Recursive long term analyses|
-|Products|Raw-, intermediate, end products|
-|Data sources|FAO, FRA, WDI, Comtrade|
-|Software Implementation|Python 3.12|
-|Current code version|TiMBA 1.0.1|
-|Permanent link to code repositiory| https://zenodo.org/records/13842492 |
-|Code License| APGL3|
-|Code versioning system used|GITHUB, Zenodo|
-|Optimizer|OSQP|
+| Model type                         | Dynamic and static equilibrium market model |
+|------------------------------------|---------------------------------------------|
+| Geographical scope                 | Global (180 countries)                      |
+| Temporal Dimension                 | Recursive long term analyses                |
+| Products                           | Raw-, intermediate, end products            |
+| Data sources                       | FAO, FRA, WDI, Comtrade, WTO, IIASA-SSP     |
+| Software Implementation            | Python 3.9, 3.12                            |
+| Current code version               | TiMBA 1.0.1                                 |
+| Permanent link to code repositiory | https://zenodo.org/records/13842492         |
+| Code License                       | APGL3                                       |
+| Code versioning system used        | GitHub, Zenodo                              |
+| Solver environment and Solver      | CVXPY, OSQP                                 |
 
 ## Introduction
 This paper provides an overview over the data and parameters used in the Timber market Model for policy-Based Analsis 
