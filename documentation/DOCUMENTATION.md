@@ -441,52 +441,55 @@ For lack of data, some of the parameters had to be set intuitively, based mostly
 
 **Table 2:** Items simulated with TiMBA. Product definitions according to FAOSTAT and FAO Forest resources assessment (Quellen) 
 
-|Item|Unit|Supply|Production|Demand|Trade|Price|Growth|
-|:------------------|:-------:|:-:|:-:|:-:|:-:|:-:|:-:| 
-|Fuelwood                  | 1000 m³  |x| |x|x|x| |
-|Industrial Roundwood C    | 1000 m³  |x| | |x|x| |   
-|Industrial Roundwood NC   | 1000 m³  |x| | |x|x| | 
-|Oth Industrial Roundwood  | 1000 m³  |x| |x| | | |
-|Coniferous Sawnwood       | 1000 m³  | |x|x|x|x| | 
-|Non-coniferous Sawnwood   | 1000 m³  | |x|x|x|x| |
-|Plywood and Veneer Shets  | 1000 m³  | |x|x|x|x| | 
-|Particle Board (incl. OSB)| 1000 m³  | |x|x|x|x| |
-|Fibre Board               | 1000 m³  | |x|x|x|x| |
-|Mechanical Pulp           | 1000 t   | |x| |x|x| |
-|Semi chem. and Chem. Pulp | 1000 t   | |x| |x|x| |
-|Other Fibre Pulp          | 1000 t   |x|x| |x|x| |
-|Waste Paper               | 1000 t   |x| | |x|x| |
-|Newsprint                 | 1000 t   | |x|x|x|x| |
-|Print. and Writing Paper  | 1000 t   | |x|x|x|x| |
-|Other Paper and Paperb.   | 1000 t   | |x|x|x|x| |
-|Forest Area               | ha       | | | | | |x|
-|Forest Stock              |million m³| | | | | |x|
+[comment]: <> (Bitte die Quellen für FRA und FAOSTAT ergänzen)
+[comment]: <> (Item codes wurden hinzugefügt)
+
+| Item                       | Item Code |    Unit    | Supply | Production | Demand | Trade | Price | Growth |
+|:---------------------------|:---------:|:----------:|:------:|:----------:|:------:|:-----:|:-----:|:------:| 
+| Fuelwood                   |    80     |  1000 m³   |   x    |            |   x    |   x   |   x   |        |
+| Industrial Roundwood C     |    81     |  1000 m³   |   x    |            |        |   x   |   x   |        |   
+| Industrial Roundwood NC    |    78     |  1000 m³   |   x    |            |        |   x   |   x   |        | 
+| Oth Industrial Roundwood   |    82     |  1000 m³   |   x    |            |   x    |       |       |        |
+| Coniferous Sawnwood        |    83     |  1000 m³   |        |     x      |   x    |   x   |   x   |        | 
+| Non-coniferous Sawnwood    |    79     |  1000 m³   |        |     x      |   x    |   x   |   x   |        |
+| Plywood and Veneer Shets   |    84     |  1000 m³   |        |     x      |   x    |   x   |   x   |        | 
+| Particle Board (incl. OSB) |    85     |  1000 m³   |        |     x      |   x    |   x   |   x   |        |
+| Fibre Board                |    86     |  1000 m³   |        |     x      |   x    |   x   |   x   |        |
+| Mechanical Pulp            |    87     |   1000 t   |        |     x      |        |   x   |   x   |        |
+| Semi chem. and Chem. Pulp  |    88     |   1000 t   |        |     x      |        |   x   |   x   |        |
+| Other Fibre Pulp           |    89     |   1000 t   |   x    |     x      |        |   x   |   x   |        |
+| Waste Paper                |    90     |   1000 t   |   x    |            |        |   x   |   x   |        |
+| Newsprint                  |    91     |   1000 t   |        |     x      |   x    |   x   |   x   |        |
+| Print. and Writing Paper   |    92     |   1000 t   |        |     x      |   x    |   x   |   x   |        |
+| Other Paper and Paperb.    |    93     |   1000 t   |        |     x      |   x    |   x   |   x   |        |
+| Forest Area                |    \-     |  1000 ha   |        |            |        |       |       |   x    |
+| Forest Stock               |    \-     | million m³ |        |            |        |       |       |   x    |
 
 <br><br>
 
 ![timba_countries](..\images\timba_country_coverage.png)
-**Figure 2:** Countries which are included in TiMBA
+**Figure 2:** Countries included in TiMBA (continental aggregation according to Table A2)
 
 
 **Table 4:** Demand and supply elasticities
 
-|                         |Demand elasticity   || Supply elsaticity            |||
-|-------------------------|:--------:|:--------:|:--------:|:--------:|:--------:|
-| Commodity               | price    | income   | price    | income   |forest stock|
-| Fiberboard              | -0.4629  | 1.0661   |          |          |         |
-| Fuelwood                | -0.1458  | 0.5680   |          |          |         |
-| Newsprint               | -0.1208  | 0.2371   |          |          |         |
-| Other Paper             | -0.1695  | 0.2283   |          |          |         |
-| P. & W. Paper           | -0.5188  | 0.3626   |          |          |         |
-| Particle Board          | -0.4923  | 0.7502   |          |          |         |
-| Plywood & Veneer        | -0.3534  | 0.596    |          |          |         |
-| Sawnwood C              | -0.3001  | 0.4409   |          |          |         |
-| Sawnwood NC             | -0.1221  | 0.2162   |          |          |         |
-| Fuelwood                |          |          | 1.0311   | \-       | 1.1000  |
-| Industrial Roundwood C  |          |          | 1.0738   | \-       | 1.1000  |
-| Industrial Roundwood NC |          |          | 1.0440   | \-       | 1.1000  |
-| Wastepaper              |          |          | 1.0000   | 0.6700   | \-      |
-| Other Fibre Pulp        |          |          | 1.0000   | 0.1400   | \-      |
+|                          | Demand elasticity |        | Supply elsaticity |        |              |
+|--------------------------|:-----------------:|:------:|:-----------------:|:------:|:------------:|
+| Commodity                |       price       | income |       price       | income | forest stock |
+| Fiberboard               |      -0.4629      | 1.0661 |                   |        |              |
+| Fuelwood                 |      -0.1458      | 0.5680 |                   |        |              |
+| Newsprint                |      -0.1208      | 0.2371 |                   |        |              |
+| Other Paper              |      -0.1695      | 0.2283 |                   |        |              |
+| P. & W. Paper            |      -0.5188      | 0.3626 |                   |        |              |
+| Particle Board           |      -0.4923      | 0.7502 |                   |        |              |
+| Plywood & Veneer         |      -0.3534      | 0.596  |                   |        |              |
+| Sawnwood C               |      -0.3001      | 0.4409 |                   |        |              |
+| Sawnwood NC              |      -0.1221      | 0.2162 |                   |        |              |
+| Fuelwood                 |                   |        |      1.0311       |   \-   |    1.1000    |
+| Industrial Roundwood C   |                   |        |      1.0738       |   \-   |    1.1000    |
+| Industrial Roundwood NC  |                   |        |      1.0440       |   \-   |    1.1000    |
+| Wastepaper               |                   |        |      1.0000       | 0.6700 |      \-      |
+| Other Fibre Pulp         |                   |        |      1.0000       | 0.1400 |      \-      |
 
 Note: This is a summarizing table; Elasticities are shown for the best model, which is chosen on the basis of Breusch-Pagan, Maddala-Wu and Hausman tests based on @Morland:2018 taken from GFPM [@Buongiorno:2003], GFPM-base2021 (https://onedrive.live.com/?authkey=%21AEF7RY7oAPlrDPk&id=93BC28B749A1DFB6%2117056&cid=93BC28B749A1DFB6) 
 
@@ -519,183 +522,190 @@ TiMBA was subject of an extensive validation process which was designed to assur
 
 ## Annex
 
-**Table A1:** Freight cost of shipping one unit of commodity from origin to destination
+**Table A1:** Freight cost of shipping one unit of commodity from origin country to destination country
 
-|Commodity|Freight Cost|
-|:--------|:----------:|
-|IndRoundNC|	32|
-|SawnwoodNC|	50|
-|Fuelwood|	14|
-|IndRound|	17|
-|OthIndRound||	
-|Sawnwood|	23|
-|Plywood|	22|
-|ParticleB|	10|
-|FiberB|	15|
-|MechPlp|	37|
-|ChemPlp|	44|
-|OthFbrPlp|	109|
-|WastePaper|	33|
-|Newsprint|	28|
-|PWPaper|	52|
-|OthPaper|	55|
-|  ||
-|IndRoundNC|	37|
-|IndRound	|20|
-|Newsprint|	22|
+[comment]: <> (Es wäre gut wenn die Produktname einheitlich über das gesamte Dokument gehalten wären)
+[comment]: <> (Worauf beziehen sich die Daten, die zusätzlich am Ende dieser Tabelle gegeben werden?)
 
-**Table A2:** List of 180 countries included into forest sector modelling
-
-|Africa|	Asia|	Europe|	North America|	Oceania|	South America|
-|:---:|:---:|:---:|:---:|:---:|:---:|
-|AGO|	AFG|	ALB|	ANT|	AUS	|ARG|
-|BDI|	ARE|	AUT|	BHS|	COK|	BOL|
-|BEN|	BGD|	BEL|	BLZ|	FJI|	BRA|
-|BFA|	BHR|	BGR|	BRB|	NCL|	CHL|
-|BWA|	BRN|	BIH|	CAN|	NZL|	COL|
-|CAF|	BTN|	CHE|	CRI|	PNG|	ECU|
-|CIV|	CHN|	CZE|	CUB|	PYF|	GUF|
-|CMR|	CYP|	DEU|	DMA|	SLB|	GUY|
-|COD|	IDN|	DNK|	DOM|	TON|	PER|
-|COG|	IND|	ESP|	GTM|	VUT|	PRY|
-|CPV|	IRN|	FIN|	HND|	WSM|	SUR|
-|DJI|	IRQ|	FRA|	HTI|		URY|
-|DZA|	ISR|	GBR|	JAM|		VEN|
-|EGY|	JOR|	GRC|	LCA||		
-|ETH|	JPN|	HRV|	MEX||		
-|GAB|	KHM|	HUN|	MTQ||		
-|GHA|	KOR|	IRL|	NIC||		
-|GIN|	KWT|	ITA|	PAN||		
-|GMB|	LAO|	LUX|	SLV||		
-|GNB|	LBN|	MKD|	TTO	||	
-|GNQ|	LKA|	MNE|	USA||		
-|KEN|	MDV|	NLD|	VCT||		
-|LBR|	MMR|	NOR|||			
-|LBY|	MNG|	POL|||			
-|LSO|	MYS|	PRT|||			
-|MAR|	NPL|	ROU|||			
-|MDG|	OMN|	SRB|||			
-|MLI|	PAK|	SVK|||			
-|MOZ|	PHL|	SVN|||			
-|MRT|	PRK|	SWE|||			
-|MUS|	QAT||||				
-|MWI|	SAU||||				
-|NER|	SGP||||				
-|NGA|	SYR||||				
-|REU|	THA||||
-|RWA|	TLS||||				
-|SDN|	TUR||||				
-|SEN|	VNM||||				
-|SLE|	YEM||||			
-|SOM|||||					
-|STP|||||					
-|SWZ|||||					
-|TCD|||||					
-|TGO|||||					
-|TUN|||||				
-|TZA|||||					
-|UGA|||||				
-|ZAF|||||					
-|ZMB|||||			
-|ZWE|||||					
-
+| Commodity   | Freight Cost |
+|:------------|:------------:|
+| IndRoundNC  |      32      |
+| SawnwoodNC  |      50      |
+| Fuelwood    |      14      |
+| IndRound    |      17      |
+| OthIndRound |      \-      |	
+| Sawnwood    |      23      |
+| Plywood     |      22      |
+| ParticleB   |      10      |
+| FiberB      |      15      |
+| MechPlp     |      37      |
+| ChemPlp     |      44      |
+| OthFbrPlp   |     109      |
+| WastePaper  |      33      |
+| Newsprint   |      28      |
+| PWPaper     |      52      |
+| OthPaper    |      55      |
+|             |              |
+| IndRoundNC  |      37      |
+| IndRound	   |      20      |
+| Newsprint   |      22      |
 <br><br>
 
-**Table A2:** List of 180 countries included into forest sector modelling
-|                       |                       |                       |                       |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-|Algeria                |El Salvador            |  Maldives             |St.Vincent/Grenadines  |
-|Afghanistan            |Equatorial Guinea      |  Mali                 |        Sudan          |
-  |Albania            |Estonia          |Martinique        |Suriname               |
-  |Angola             |Ethiopia         |Mauritania        |Swaziland              |
- |Argentina          |Fiji Islands     |Mauritius          |Sweden                 |
-  |Armenia            |Finland          |Mexico            | Switzerland           |
-  |Australia          |France           |Moldova, Republic |Syrian Arab Republic   |    
-  |Austria            |French Guiana    |Mongolia          |Tajikistan             |
-  |Azerbaijan,Republic|French Polynesia |Montenegro        |Tanzania, United Rep of|                                         
-  |Bahamas           |Gabon            |Morocco            |Thailand               |
-  |Bahrain            |Gambia           |Mozambique        |Timor-Leste            |
-  |Bangladesh         |Georgia          |Myanmar           |Togo                   |
-  |Barbados           |Germany          |Nepal             |Tonga                  |
-  |Belarus            |Ghana            |Netherlands       |Trinidad and Tobago    |
-  |Belgium            |Greece           |Netherlands Antilles|Tunisiav              |
-  |Belize             |Guatemala        |New Caledonia     |Turkey                 |
-  |Benin              |Guinea           |New Zealand       |Turkmenistan           |
-  |Bhutan             |Guinea-Bissau    |Nicaragua         |Uganda                 |
-  |Bolivia            |Guyana           |Niger             |Ukraine                |
-  |Bosnia and Herzegovina|Haiti            |Nigeria           |United Arab Emirates   |                    
-  |Botswana           |Honduras         |Norway            |United Kingdom         |
-  |Brazil             |Hungary          |Oman              |Uruguay                |
-  |Brunei Darussalam  |India            |Pakistan          |USA                    |
-  |Bulgaria           |Indonesia        |Panama            |Uzbekistan             |
-  |Burkina Faso       |Iran, Islamic Rep of|Papua New Guinea  |Vanuatu                |                       
-  |Burundi            |Iraq             |Paraguay          |Venezuela, Boliv Rep of|
-  |Cambodia           |Ireland          |Peru              |Viet Nam             |
-  |Cameroon           |Israel           |Philippines       |Yemen                |
-  |Canada             |Italy            |Poland            |Zambia               |
-  |Cape Verde         |Jamaica          |Portugal          |Zimbabwe             |
-  |Central African Republic|Japan            |Qatar             |                     |                                
-  |Chad               |Jordan           |Réunion           |                     |
-  |Chile              |Kazakhstan       |Romania           |                     |
-  |China              |Kenya            |Russian Federation|                     |
-  |Colombia           |Korea, Dem People\'s Rep|Rwanda            |                     |         
-  |Congo, Dem Republic of|Korea, Republic of|Saint Lucia       |                     |                     
-  |Congo, Republic of |Kuwait           |Samoa             |                     |
-  |Cook Islands       |Kyrgyzstan       |Sao Tome and Principe|                     |
-  |Costa Rica         |Laos             |Saudi Arabia      |                     |
-  |Côte d\'Ivoire     |Latvia           |Senegal           |                     |
-  |Croatia            |Lebanon          |Serbia            |                     |
-  |Cuba               |Lesotho          |Sierra Leone      |                     |
-  |Cyprus             |Liberia          |Singapore         |                     |
-  |Czech Republic     |Libya            |Slovakia          |                     |
-  |Denmark            |Lithuania        |Slovenia          |                     |
-  |Djibouti           |Luxembourg       |Solomon Islands   |                     |
-  |Dominica           |Macedonia        |Somalia           |                     |
-  |Dominican Republic |Madagascar       |South Africa      |                     |
-  |Ecuador            |Malawi           |Spain             |                     |
-  |Egypt              |Malaysia         |Sri Lanka         |                     |
+**Table A2:** ISO3-Codes of the 180 countries included into TiMBA grouped in continental aggregates
 
+[comment]: <> (Ich finde diese Übersicht super. Es ist nur ein wenig verwirrend, hier die ISO3-Codes zu verwenden wobei im Modell noch die Abkürzungen von Buongiorno verwendet werden.)
+
+| Africa | Asia | Europe | North and<br/> Central America | Oceania | 	South America |
+|:------:|:----:|:------:|:------------------------------:|:-------:|:--------------:|
+|  AGO   | AFG  |  ALB   |              ANT               |   AUS   |      ARG       |
+|  BDI   | ARE  |  AUT   |              BHS               |   COK   |      BOL       |
+|  BEN   | BGD  |  BEL   |              BLZ               |   FJI   |      BRA       |
+|  BFA   | BHR  |  BGR   |              BRB               |   NCL   |      CHL       |
+|  BWA   | BRN  |  BIH   |              CAN               |   NZL   |      COL       |
+|  CAF   | BTN  |  CHE   |              CRI               |   PNG   |      ECU       |
+|  CIV   | CHN  |  CZE   |              CUB               |   PYF   |      GUF       |
+|  CMR   | CYP  |  DEU   |              DMA               |   SLB   |      GUY       |
+|  COD   | IDN  |  DNK   |              DOM               |   TON   |      PER       |
+|  COG   | IND  |  ESP   |              GTM               |   VUT   |      PRY       |
+|  CPV   | IRN  |  FIN   |              HND               |   WSM   |      SUR       |
+|  DJI   | IRQ  |  FRA   |              HTI               |   URY   |                |
+|  DZA   | ISR  |  GBR   |              JAM               |   VEN   |                |
+|  EGY   | JOR  |  GRC   |              LCA               |         |                |		
+|  ETH   | JPN  |  HRV   |              MEX               |         |                |
+|  GAB   | KHM  |  HUN   |              MTQ               |         |                |		
+|  GHA   | KOR  |  IRL   |              NIC               |         |                |		
+|  GIN   | KWT  |  ITA   |              PAN               |         |                |		
+|  GMB   | LAO  |  LUX   |              SLV               |         |                |		
+|  GNB   | LBN  |  MKD   |              TTO	              |         |                |	
+|  GNQ   | LKA  |  MNE   |              USA               |         |                |		
+|  KEN   | MDV  |  NLD   |              VCT               |         |                |		
+|  LBR   | MMR  |  NOR   |                                |         |                | 			
+|  LBY   | MNG  |  POL   |                                |         |                |			
+|  LSO   | MYS  |  PRT   |                                |         |                |			
+|  MAR   | NPL  |  ROU   |                                |         |                |			
+|  MDG   | OMN  |  SRB   |                                |         |                |			
+|  MLI   | PAK  |  SVK   |                                |         |                |			
+|  MOZ   | PHL  |  SVN   |                                |         |                |			
+|  MRT   | PRK  |  SWE   |                                |         |                |			
+|  MUS   | QAT  |        |                                |         |                |				
+|  MWI   | SAU  |        |                                |         |                |				
+|  NER   | SGP  |        |                                |         |                |				
+|  NGA   | SYR  |        |                                |         |                |				
+|  REU   | THA  |        |                                |         |                |
+|  RWA   | TLS  |        |                                |         |                |				
+|  SDN   | TUR  |        |                                |         |                |				
+|  SEN   | VNM  |        |                                |         |                |				
+|  SLE   | YEM  |        |                                |         |                |			
+|  SOM   |      |        |                                |         |                |					
+|  STP   |      |        |                                |         |                |					
+|  SWZ   |      |        |                                |         |                |					
+|  TCD   |      |        |                                |         |                |					
+|  TGO   |      |        |                                |         |                |					
+|  TUN   |      |        |                                |         |                |				
+|  TZA   |      |        |                                |         |                |					
+|  UGA   |      |        |                                |         |                |				
+|  ZAF   |      |        |                                |         |                |					
+|  ZMB   |      |        |                                |         |                |			
+|  ZWE   |      |        |                                |         |                |
+<br><br>
+
+**Table A3:** List of 180 countries included into TiMBA with their respective country codes in the model
+
+[comment]: <> (Country codes aus TiMBA hinzufügen)
+
+|                          |                          |                       |                         |
+|:------------------------:|:------------------------:|:---------------------:|:-----------------------:|
+|         Algeria          |       El Salvador        |       Maldives        |  St.Vincent/Grenadines  |
+|       Afghanistan        |    Equatorial Guinea     |         Mali          |          Sudan          |
+|         Albania          |         Estonia          |      Martinique       |        Suriname         |
+|          Angola          |         Ethiopia         |      Mauritania       |        Swaziland        |
+|        Argentina         |       Fiji Islands       |       Mauritius       |         Sweden          |
+|         Armenia          |         Finland          |        Mexico         |       Switzerland       |
+|        Australia         |          France          |   Moldova, Republic   |  Syrian Arab Republic   |    
+|         Austria          |      French Guiana       |       Mongolia        |       Tajikistan        |
+|   Azerbaijan,Republic    |     French Polynesia     |      Montenegro       | Tanzania, United Rep of |                                         
+|         Bahamas          |          Gabon           |        Morocco        |        Thailand         |
+|         Bahrain          |          Gambia          |      Mozambique       |       Timor-Leste       |
+|        Bangladesh        |         Georgia          |        Myanmar        |          Togo           |
+|         Barbados         |         Germany          |         Nepal         |          Tonga          |
+|         Belarus          |          Ghana           |      Netherlands      |   Trinidad and Tobago   |
+|         Belgium          |          Greece          | Netherlands Antilles  |        Tunisiav         |
+|          Belize          |        Guatemala         |     New Caledonia     |         Turkey          |
+|          Benin           |          Guinea          |      New Zealand      |      Turkmenistan       |
+|          Bhutan          |      Guinea-Bissau       |       Nicaragua       |         Uganda          |
+|         Bolivia          |          Guyana          |         Niger         |         Ukraine         |
+|  Bosnia and Herzegovina  |          Haiti           |        Nigeria        |  United Arab Emirates   |                    
+|         Botswana         |         Honduras         |        Norway         |     United Kingdom      |
+|          Brazil          |         Hungary          |         Oman          |         Uruguay         |
+|    Brunei Darussalam     |          India           |       Pakistan        |           USA           |
+|         Bulgaria         |        Indonesia         |        Panama         |       Uzbekistan        |
+|       Burkina Faso       |   Iran, Islamic Rep of   |   Papua New Guinea    |         Vanuatu         |                       
+|         Burundi          |           Iraq           |       Paraguay        | Venezuela, Boliv Rep of |
+|         Cambodia         |         Ireland          |         Peru          |        Viet Nam         |
+|         Cameroon         |          Israel          |      Philippines      |          Yemen          |
+|          Canada          |          Italy           |        Poland         |         Zambia          |
+|        Cape Verde        |         Jamaica          |       Portugal        |        Zimbabwe         |
+| Central African Republic |          Japan           |         Qatar         |                         |                                
+|           Chad           |          Jordan          |        Réunion        |                         |
+|          Chile           |        Kazakhstan        |        Romania        |                         |
+|          China           |          Kenya           |  Russian Federation   |                         |
+|         Colombia         | Korea, Dem People\'s Rep |        Rwanda         |                         |         
+|  Congo, Dem Republic of  |    Korea, Republic of    |      Saint Lucia      |                         |                     
+|    Congo, Republic of    |          Kuwait          |         Samoa         |                         |
+|       Cook Islands       |        Kyrgyzstan        | Sao Tome and Principe |                         |
+|        Costa Rica        |           Laos           |     Saudi Arabia      |                         |
+|      Côte d\'Ivoire      |          Latvia          |        Senegal        |                         |
+|         Croatia          |         Lebanon          |        Serbia         |                         |
+|           Cuba           |         Lesotho          |     Sierra Leone      |                         |
+|          Cyprus          |         Liberia          |       Singapore       |                         |
+|      Czech Republic      |          Libya           |       Slovakia        |                         |
+|         Denmark          |        Lithuania         |       Slovenia        |                         |
+|         Djibouti         |        Luxembourg        |    Solomon Islands    |                         |
+|         Dominica         |        Macedonia         |        Somalia        |                         |
+|    Dominican Republic    |        Madagascar        |     South Africa      |                         |
+|         Ecuador          |          Malawi          |         Spain         |                         |
+|          Egypt           |         Malaysia         |       Sri Lanka       |                         |
+<br><br>
 
 ### Parameter list
 
-**Table A3:** List of paramter for model input
+**Table A4:** List of input paramters for TiMBA for each model domain 
 
-|Forest        |Supply     	  |Transportation        |Demand |Manufacturing|
-|:-------------|:-------------|:-------------|:-------------|:-------------|
-|gdp_per_capita_base_period|	price|	freight_cost|	price|	net_manufacturing_cost|
-|forest_stock|	quantity|	import_ad_valorem_tax_rate|	quantity|	quantity|
-|growth_rate_forest_stock|	elasticity_price|	export_ad_valorem_tax_rate|	elasticity_price|	elasticity_price|
-|elasticity_growth_rate_forest_stock|	elasticity_gdp|	quantity|	elasticity_gdp|	
-|forest_area|	elasticity_stock|	elasticity_trade_exporter|	elasticity_expectations||	
-|forest_area_growth_rate|	elasticity_area|	elasticity_trade_importer|	lower_bound||	
-|linear_gdp_forest_area_growth_rate|	elasticity_fourth|	trade_inertia_bounds|	upper_bound||	
-|exponential_gdp_forest_area_growth_rate|	elasticity_fifth|	price|||		
-|fraction_fuelwood|	elasticity_sixth|	elasticity_price|||		
-|ratio_inventory_drain|	elasticity_respect_previous_period_supply|			
-|max_ratio_inventory_drain|	lower_bound|			
-|CO2_growing_stock|	upper_bound||||			
-|price_CO2|	last_period_quantity||||			
-|alpha||||||				
-|gamma||||||				
-|periodic_growth_rate_of_forest_area|||||				
-|forest_growth_without_harvest|||||				
-|supply_from_forest|||||				
-
+| Forest                                  | Supply      	                 | Transportation             | Demand                  | Manufacturing          |
+|:----------------------------------------|:------------------------------|:---------------------------|:------------------------|:-----------------------|
+| gdp_per_capita_base_period              | price                         | freight_cost               | price                   | net_manufacturing_cost |
+| forest_stock                            | quantity                      | import_ad_valorem_tax_rate | quantity                | quantity               |
+| growth_rate_forest_stock                | elasticity_price              | export_ad_valorem_tax_rate | elasticity_price        | elasticity_price       |
+| elasticity_growth_rate_forest_stock     | elasticity_gdp                | quantity                   | elasticity_gdp          |                        |
+| forest_area                             | elasticity_stock              | elasticity_trade_exporter  | elasticity_expectations |                        |	
+| forest_area_growth_rate                 | elasticity_area               | elasticity_trade_importer  | lower_bound             |                        |	
+| linear_gdp_forest_area_growth_rate      | elasticity_fourth             | trade_inertia_bounds       | upper_bound             |                        |	
+| exponential_gdp_forest_area_growth_rate | elasticity_fifth              | price                      |                         |                        |		
+| fraction_fuelwood                       | elasticity_sixth              | elasticity_price           |                         |                        |		
+| ratio_inventory_drain                   | elasticity_respect_previous_p |                            |                         |                        |
+| max_ratio_inventory_drain               | lower_bound                   | 			                        |                         |                        |
+| CO2_growing_stock                       | upper_bound                   |                            |                         |                        |			
+| price_CO2                               | last_period_quantity          |                            |                         |                        |			
+| alpha                                   |                               |                            |                         |                        |		
+| gamma                                   |                               |                            |                         |                        |				
+| periodic_growth_rate_of_forest_area     |                               |                            |                         |                        |				
+| forest_growth_without_harvest           |                               |                            |                         |                        |				
+| supply_from_forest                      |                               |                            |                         |                        |
 <br><br>
 
-**Table A4:** List of parameter for dynamic changes over time
+**Table A5:** List of input parameters exogenously shifted over the simulation horizon to reflect socio-economic, political, and environmental dynamics
 
-|Forest        |Supply     	  |Transportation        |Demand |Manufacturing|
-|:-------------|:-------------|:-------------|:-------------|:-------------|
-|growth_rate_stock|	elasticity_price|	change_freight_cost|	elasticity_price|	growth_rate_net_manufacture_cost|
-|growth_rate_area|	growth_rate_value|	change_import_tax_rate|	growth_rate_value|	change_input_output|
-|growth_rate_gdp|	growth_rate_gdp|	change_export_tax_rate|	growth_rate_gdp||	
-|adjustment_endogenous_growth_rate_stock|	elasticity_gdp|	exogenous_growth_rate_export_trade_shift|	growth_demand_expected|	|
-|elasticity_growth_rate_stock_on_area|	growth_rate_fourth_shift|	elasticity_trade_exporter_shift	|growth_lower_bound	||
-|growth_rate_linear_GDP_forest_area_growth_rate|	growth_rate_fifth_shift|	exogenous_growth_rate_import_trade_shift	|elasticity_gdp|	|
-|growth_rate_squared_GDP_forest_area_growth_rate|	growth_rate_sixth_shift|	elasticity_trade_importer_shift|||		
-|fraction_fuelwood|	growth_rate_upper_bound|	trade_inertia_bounds|||		
-|ratio_inventory_drain||||||				
-|max_ratio_inventory_drain|||||				
-|price_CO2|||||				
+| Forest                                          | Supply    	              | Transportation                           | Demand                 | Manufacturing                    |
+|:------------------------------------------------|:-------------------------|:-----------------------------------------|:-----------------------|:---------------------------------|
+| growth_rate_stock                               | elasticity_price         | change_freight_cost                      | elasticity_price       | growth_rate_net_manufacture_cost |
+| growth_rate_area                                | growth_rate_value        | change_import_tax_rate                   | growth_rate_value      | change_input_output              |
+| growth_rate_gdp                                 | growth_rate_gdp          | change_export_tax_rate                   | growth_rate_gdp        |                                  |	
+| adjustment_endogenous_growth_rate_stock         | elasticity_gdp           | exogenous_growth_rate_export_trade_shift | growth_demand_expected | 	                                |
+| elasticity_growth_rate_stock_on_area            | growth_rate_fourth_shift | elasticity_trade_exporter_shift	         | growth_lower_bound	    |                                  |
+| growth_rate_linear_GDP_forest_area_growth_rate  | growth_rate_fifth_shift  | exogenous_growth_rate_import_trade_shift | elasticity_gdp         | 	                                |
+| growth_rate_squared_GDP_forest_area_growth_rate | growth_rate_sixth_shift  | elasticity_trade_importer_shift          |                        |                                  |		
+| fraction_fuelwood                               | growth_rate_upper_bound  | trade_inertia_bounds                     |                        |                                  |		
+| ratio_inventory_drain                           |                          |                                          |                        |                                  ||				
+| max_ratio_inventory_drain                       |                          |                                          |                        |                                  |				
+| price_CO2                                       |                          |                                          |                        |                                  |				
 	
