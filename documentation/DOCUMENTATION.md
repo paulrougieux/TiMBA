@@ -291,14 +291,53 @@ based on an exogenous growth rate $g_m$.
 $$m^{*}_{i,k}=m_{i,k,t-1}\left(1+g_m\right)$$
 
 ### Trade:
+In TiMBA, all countries import from and export to a virtual buffer region called zy. Since all countries
+trade via the region zy, bilateral trade fluxes are not represented in the basic model version. The trade in TiMBA 
+depends on the transportation costs ($c_{i,j,k}$), the world price, and trade inertia bounds. 
+The equation (tbd) represents the country and product-specific unit cost of transportation ($c_{i,j,k}$) where $c^{*}$ 
+is the current transportation cost at the last period’s traded quantity and $\tau$ the elasticity of transport cost with 
+respect to traded quantity.
 
 $$c_{i,j,k}(T_{i,j,k}) = c^{*}_{i,j,k,t-1}\left(\frac{T_{i,j,k}}{T_{i,j,k,t-1}}\right)^{\tau_{i,j,k}}$$
 
+In the base period, $c_ijk$ is determined by equation tbd where $f_ijk$ represents the freight cost
+per unit of transported product $k$ between country $i$ and $j$. $t_jk^X$ and $t_jk^I$ depict the export and import
+ad-valorem tax rates, respectively. $P_(ik-1)$ is the world price of the previous period. In TiMBA, the transportation
+costs plus the world price are carried by the net importing countries. The price for net exporting countries is the
+world price.
+
+$$c_{i,j,k} = f_{i,j,k} + t_jk^X(P_(ik−1))+ t_jk^I(f_{i,j,k} + P_(ik−1))$$
+
+Further, trade in TiMBA is constrained by trade inertia bounds which depict an exogenous development range based on the
+traded quantity of the previous period (equation tbd) where $T_ijk^L$ and $T_ijk^U$ are the lower and upper bounds,
+respectively. For the first period, trade inertia bounds are close to zero to comply with trade quantities from the
+calibration. To avoid infeasibility, trade inertia bounds are introduced as a flexible constraint in the optimization.
+In this way, TiMBA can trespass the trade inertia bounds when necessary to find an optimal solution. 
+However, trespasses are sanctioned in the objective function by multiplying the difference by the lower or upper bound
+with the world prices (equation tbd and equation tbd).
+
+$$T_(i,j,k)^L ≤T_(i,j,k)≤T_(i,j,k)^U$$
+
+$$∆T_ijk  =(T_ijk^L-x)+(x- T_ijk^U)$$
+
+$$objective function- ∆T_ijk WP_k$$
+
+In TiMBA, the world prices are the dual values (shadow prices) of the material balance for the region zy which equilibrate all
+imports ($T_ijk$) and exports ($T_jik$) globally by supplying the deficits ($S_zyk$) or absorbing the surpluses
+($D_zyk$) in production:
+
+$$sumT_ijk + S_zyk - sumT_jik - D_zyk = 0$$
+
+Freight costs and ad-valorem tax rates for imports and exports can be exogenously changed over the simulation periods to 
+mimic changes in socioeconomic circumstances (e.g., changes in trade agreements) using the following equation:
+
 $$c^{*}_{i,j,k}=c_{i,j,k,t-1}\left(1+g_f+g^i_t+g^x_i\right)$$
 
-with $\tau$ as transportation cost elasticity, $g_f$ as growth rate of freight costs, $g_t^i$ as growth rate of import 
-taxes and $g_t^x$ as growth rate of export taxes.
+where $g_f$ is the growth rate of freight costs, $g_t^i$ is the growth rate of import taxes and $g_t^x$ is the growth
+rate of export taxes.
 
+
+[comment]: <> (Complete equation numerotation)
 ### Forest
 
 The development of forest area is simulated exogenously using the environmental Kuznets curve (EKC) approach [@Kuznets:1955;@Grossmann and Krueger:1991]. 
