@@ -306,7 +306,7 @@ ad-valorem tax rates, respectively. $P_(ik-1)$ is the world price of the previou
 costs plus the world price are carried by the net importing countries. The price for net exporting countries is the
 world price.
 
-$$c_{i,j,k} = f_{i,j,k} + t_jk^X(P_(ik−1))+ t_jk^I(f_{i,j,k} + P_(ik−1))$$
+$$c_{i,j,k} = f_{i,j,k} + t_jk^X P_{ik-1}+ t_jk^If_{i,j,k} + P_{ik-1}$$
 
 Further, trade in TiMBA is constrained by trade inertia bounds which depict an exogenous development range based on the
 traded quantity of the previous period (equation tbd) where $T_ijk^L$ and $T_ijk^U$ are the lower and upper bounds,
@@ -316,9 +316,9 @@ In this way, TiMBA can trespass the trade inertia bounds when necessary to find 
 However, trespasses are sanctioned in the objective function by multiplying the difference by the lower or upper bound
 with the world prices (equation tbd and equation tbd).
 
-$$T_(i,j,k)^L ≤T_(i,j,k)≤T_(i,j,k)^U$$
+$$T_{i,j,k}^L ≤T_{i,j,k}≤T_{i,j,k}^U$$
 
-$$∆T_ijk  =(T_ijk^L-x)+(x- T_ijk^U)$$
+$$∆T_ijk  =(T_{ijk}^L-x)+(x- T_{ijk}^U)$$
 
 $$objective function- ∆T_ijk WP_k$$
 
@@ -326,7 +326,7 @@ In TiMBA, the world prices are the dual values (shadow prices) of the material b
 imports ($T_ijk$) and exports ($T_jik$) globally by supplying the deficits ($S_zyk$) or absorbing the surpluses
 ($D_zyk$) in production:
 
-$$sumT_ijk + S_zyk - sumT_jik - D_zyk = 0$$
+$$sumT_{ijk} + S_{zyk} - sumT_{jik} - D_{zyk} = 0$$
 
 Freight costs and ad-valorem tax rates for imports and exports can be exogenously changed over the simulation periods to 
 mimic changes in socioeconomic circumstances (e.g., changes in trade agreements) using the following equation:
