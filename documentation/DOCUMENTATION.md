@@ -36,7 +36,7 @@ authored by TI-FSM
 TI-FSM is an authors’ collective that jointly developed and program TiMBA. The members of the collective are – in alphabetical order – Tomke Honkomp, Christian Morland, Franziska Schier, and Julia Tandetzki 
 
 ## Preface
-TIMBA is a partial economic equilibrium model for the global forest products market. The model endogenously simulates production, 
+TIMBA is a partial economic equilibrium (PE) model for the global forest products market. The model endogenously simulates production, 
 consumption and trade of wood and wood-based products in 180 countries. 
 TIMBA computes the market equilibrium for each country and product in a given period by maximizing the social surplus in the global forest sector.
 In the equilibrium processes, commodity production, consumption and prices are recursively balanced for each simulation period.
@@ -501,14 +501,369 @@ Data GDP and population growth are taken from the “Middle of the road” scena
 
 ## Computer software
 
+### General description and software installation
+TiMBA is an open-source, ready-to-use model for the global forest sector written in Python, complying with modern programming
+standards (PEP8). The model is hosted and distributed using [GitHub](#https://github.com/TI-Forest-Sector-Modelling/TiMBA).
+The versioning is managed using [Zenodo](#https://zenodo.org/records/13842492). TiMBA relies exclusively on open-access and
+free-of-charge packages, which allow users to conduct analyses without higher software costs. In that way, TiMBA tries to
+encourage transparent and community-based forest sector analyses. 
+
+The model has a modular structure that allows the adaptation of the model to the targeted research question by turning 
+off or on independent functionalities. Further, this structure enables users to extend the model framework with new features 
+by adding new modules while limiting possible damage to other model components.   
+
+In TiMBA, demand, supply, import, export, and manufacture are handled as domains with separate specificities.
+As a recursive PE model, TiMBA has a static and a dynamic phase for each period. In the static phase, functions for each
+domain described above are linearized based on input data for the base period and on optimization results and parameter
+shifts for all other periods. In the dynamic phase, key parameters of the model are shifted to reflect scenario
+assumptions on socioeconomic, environmental, and technological changes. Details on parameter shifts in each domain are 
+provided in the [model formulation](#model-formulation-and-specifications).
+The linearized domain functions are vectorized and bundled in the quadratic objective function. The economic equilibrium 
+in a given period is calculated by using a quadratic solver OSQP [@Stellato:2020] embedded in the environment [CVXPY](https://www.cvxpy.org/version/1.1/index.html) 
+[@Diamond:2016; @Agrawal:2018]. The CVXPY environment offers a large range of settings and other quadratic solvers. 
+However, only the model results calculated with default solver settings delivered with TiMBA were exhaustively tested. 
+All changes in the solver environment or the solver settings might impact the results.    
+
+
+#### Installing TiMBA
+To download and install TiMBA on your local device, following steps are required:
+
+1. Clone the repository: <br>
+Begin by cloning the repository to your local machine using the following command: 
+    >git clone https://github.com/TI-Forest-Sector-Modelling/TiMBA.git
+    > 
+2. Switch to the TiMBA directory:  
+Navigate into the TiMBA project folder on your local machine.
+   >cd TiMBA
+   >
+3. Create a virtual environment:  
+It is recommended to set up a virtual environment for TiMBA to manage dependencies. The package is tested using 
+   Python >3.9 (3.9 and 3.12). We can not guarantee the full functionality of the package with another Python version.
+   Select the correct Python interpreter.   
+   Show installed versions: 
+   >py -0  
+   >
+   - If you have installed multiple versions of Python, activate the correct version using the py-Launcher.
+   >py -3.8 -m venv venv 
+   > 
+   - If you are using only a single version of Python on your computer:
+   >python -m venv venv
+   >
+4. Activate the virtual environment  
+Enable the virtual environment to isolate TiMBA dependencies. 
+   >venv\Scripts\activate
+   >
+5. Install TiMBA in the editable mode  
+   >pip install -e .
+
+If the following error occurs: "ERROR: File "setup.py" or "setup.cfg" not found."
+you might need to update the pip version you use with: 
+>python.exe -m pip install --upgrade pip
+
+#### Check installation
+
+To check if the installation was successful, the following command can be run from the terminal:  
+   >run_timba --help
+
+The help provides you with information about the basic model settings, which can be changed to adapt model runs to your
+needs(see section [Model settings](#model-settings) for further details).
+
+Test if TiMBA is running by executing the model only for the first period:
+
+  >run_timba -MP=1
+
+
+The TiMBA model comes with a test suite to ensure its functionality while allowing for continuous integration and development of new features. 
+Run the test suite to check the functionality of the package and validate the produced results with those provided by the
+TI-FSM using the coverage report:
+
+  > coverage run
+
+
+To reduce the test suite running time, only the first period will be computed and compared. The test suite results will not be saved.
+The computed results and provided validation results are compared with a relative tolerance of 5%.  
+
+The coverage report of the TiMBA model can be accessed using:
+ > coverage report
+
+
+### Model settings
+Users can interact with TiMBA in multiple ways. When running TiMBA from a terminal (e.g., CMD), the integrated [CLI](#settings-as-parameters) 
+allows users to change basic model parameters and turn on or off specific modules. More [advanced settings](#advanced-settings) can be 
+accessed in `default_parameter.py`. Changes in settings made via the CLI will overwrite parameters in `default_parameters.py`
+
+Multiple settings are integrated in TiMBA to allow users to interact with the model and adapt the modelling parameters to their research interests.
+The following chapter provides a brief overview of the model settings.  
+
+Basic model settings include:
+
+- The flag `default_year` controls the base year of simulation [`default: 2020`]: The integer defines the year in which the simulation starts. If the user-defined base
+year does not correspond to the base year in the entries in `scenario_input.xlsx`, TiMBA corrects automatically user-defined settings.
+
+
+- The flag `default_max_period` controls the maximum number of periods for the simulation [`default: 10`]: The maximum number of periods determines how many periods
+TiMBA will calculate. Depending on the structure of `scenario_input.xlsx`, the end year might vary. TiMBA calculates until 2050 with the default settings and input data. 
+
+
+- The flag `default_calc_product_price` controls how product prices in TiMBA are obtained [`default: shadow_PP`]: The model comes with two options. While
+prices obtained using both ways can be identical, differences for specific countries and products are common.
+  - If `shadow_PP` is selected, shadow prices (dual values) directly obtained from the optimization are used as product prices. This is the default option in the model.
+  - If `calculated_PP` is selected, product prices are calculated based on optimized quantities using price elasticities.
+
+
+- The flag `default_calc_world_price` controls how world market prices in TiMBA are obtained [`default: shadow_WP`]: 
+The model comes with three options, which can lead to significant differences in the projections. Only the option
+`shadow_WP` has been validated extensively.
+  - If `shadow_WP` is selected, world market prices are directly obtained from the optimization (dual values). This is the default option in the model.
+  - If `constant_WP` is selected, world market prices are held constant on the level of the base year.
+  - If `average_WP` is selected, world market prices are calculated as the weighted average of product prices in all countries
+
+
+- The flag `default_MB` controls the form of the material balance, which is handed over to the solver [`default: C_specific_MB`]: 
+The model comes with three options, which impact the total number of optimization constraints and, thereby, the model's runtime.
+The optimization results can vary depending on the selected material balance option. Only the default option has been validated extensively.
+  - If `C_specific_MB` is selected, the material balance is formulated as a commodity-specific optimization constraint,
+  which is applied for all countries. In this case, the number of optimization constraints related to the material balance
+  equals the number of modelled commodities.
+  - If `RC_specific_MB` is selected, the material balance is formulated as a commodity-specific and country-specific 
+  optimization constraint. In this case, the number of optimization constraints related to the material balance
+  equals the number of modelled commodities times the number of countries.
+  - If `RCG_specific_MB` is selected, the material balance is formulated as a country-specific optimization constraint 
+  for different commodity groups (raw, intermediate, and final products, as well as fuelwood and other industrial roundwood).
+  In this case, the number of optimization constraints related to the material balance equals the number of commodity groups
+  times the number of countries.
+
+
+- The flag `global_material_balance` activates the global material balance, balancing all wood flows globally using the
+buffer region zy [`default: False`].
+
+
+- The flag `serialization_flag` controls if serialized input pkl files are used instead of provided input xlsx files
+[`default: False`]. This flag allows to accelerate the data processing steps which process and save the input xlsx files
+into the data containers. If new input xlsx files are used, we recommend deactivating the flag to pass over changed
+inputs to TiMBA. New input xlsx files will automatically be serialized after the processing. After the update of serialized 
+files, the activation of the serialization flag is recommended when to speed up sensitivity analyses with unchanged input files.    
+
+
+- The flag `dynamization_activated` controls if key parameters of TiMBA are dynamized according to defined shifts in the
+sheet ExogChange in `scenario_input.xlsx` to reflect socioeconomic, environmental, and technological changes (see
+[exogenous parameter development](#exogenous-parameter-development) for details) [`default: True`]   
+
+
+- The flag `constants` controls if the slope and intercept of linearized domain functions and product prices are constant
+over the simulation timeframe. The list of boolean allows controlling the variability of all three components separately
+where the following position corresponds to the following element: [constant prices, constant slopes, constant interceps].
+We recommend using the `default: [False, False, False]` which has been validated exhaustively. Changed combinations can
+have a significant impact on the model results or even lead to optimization unfeasibility.
+
+
+- The flag `capped_prices` controls if product prices obtained from the optimization or calculated are capped to avoid
+price outliers [`default: False`].
+
+
+- The flag `cleaned_opt_quantity` controls if optimized quantities are cleaned using upper and lower bounds aligned with 
+exogenous entries to avoid quantity outliners [`default: False`].
+
+
+- The flag `verbose_optimization_logger` controls if information outputs related to the optimization steps are printed 
+in the console and logged [`default: True`].
+
+
+- The flag `verbose_calculation_logger` controls if information outputs related to all modelling steps apart from the 
+optimization are printed in the console and logged [`default: False`]. 
+
+
+- The flag `read_additional_information_file` controls if the additional input files from the folder 
+02_Additional_Information are processed. The additional information holds important data for additional modules 
+[`default: True`] 
+
+
+- The flag `test_timba_results` controls if produced model results are tested against a set of validation results (ground
+truth results) [`default: True`]. This flag is relevant for the test suite of TiMBA which allows us to exhaustively check
+the functionality of the model after code changes. The test suite is triggered when a working branch is pulled into the
+main branch.    
+
+
+- The flag `default_transportation_impexp_factor` controls a factor for Transportation Import/Export [`default: 1`].
+
+[comment]: <> (Weiß jemand noch weiß was diese Flag nochmal bewirkt? Ich habe ein bisschen gesucht aber konnte die Stelle der Verwendung nicht ad-hoc finden)
+
+As described, TiMBA is delivered with a set of default settings, which were tested and validated. For standard usage, we 
+recommend to use default parameters. For more advanced usage and model development, changes in default parameters might
+be necessary.
+
+  
+#### Settings as parameters
+The CLI provides to access basic model settings, and their default values (see [basic model settings](#model-settings)). 
+Check if the CLI command is registered and available on your computer by executing either:
+
+- >run_timba --help
+
+Default settings can be changed in the following way:
+- > run_timba -MP=5 -PP="calculated_PP" -WP="shadow_WP"
+
+For this example, TiMBA will simulate 5 periods using calculated prices as product prices and shadow prices as world market prices.
+
+#### Advanced settings
+In addition to the settings accessible via the CLI or `default_parameters.py`, users can control advanced settings through
+changes in `Defines.py`. Advance settings include:
+
+- Solver settings (detailed descriptions can be accessed in the [CVXPY documentation](https://www.cvxpy.org/version/1.1/index.html))
+  - The variable `MAX_ITERATION` defines the maximal amount of iteration for the solver to solve the optimization problem [`default: 500000`].
+  - The variable `REL_ACCURACY` defines the relative accuracy of the solver when solving the optimization problem while
+  accounting for the optimization constraints [`default: 0.00025`].
+  - The variable `ABS_ACCURACY` defines the absolute accuracy of the solver when solving the optimization problem while
+  accounting for the optimization constraints [`default: 0.00001`].
+
+By modifying the solver settings, the user can change the optimization's runtime giving more or less flexibility to the solver.
+Modifications in the solver settings are likely to impact the model results and should therefore be followed by a result
+validation.  
+
+- Optimization settings:
+  - The variable `TRADE_INERTIA_DEVIATION` defines relative deviations allowed from set trade inertia bounds for all
+  countries, which gives additional flexibility to trade [`default: 0.005`]. 
+  - The variable `TRADE_INERTIA_DEVIATION_ZY` defines relative deviations allowed from set trade inertia bounds for the
+  buffer region zy, which gives additional flexibility to absorb global export surpluses and compensate for global import 
+  deficits [`default: 0.001`].
+  - The variable `TRADE_BOUND_DEVIATION_PENALTY` defines the penalty applied in the optimization for deviations from 
+  trade inertia bounds, which gives additional flexibility to the solver [`default: 99999999`]. 
+  - The variable `TRADE_PREV_DEVIATION_PENALTY` defines the penalty applied in the optimization for deviations from traded
+  quantities in the previous period, which gives additional flexibility to the solver [`default: 0`]
+  - The variable `PRICE_DEVIATION_THRESHOLD` defines the relative threshold for allowed price changes compared to prices 
+  from the previous period [`default: 0.5`]. The threshold is activated when the flag `capped_prices` is turned on. 
+
+All optimization settings related to trade allows to provide additional flexibility to the solver regarding the trade.
+The settings can be changed to 0 to deactivate the flexibility mechanism. Default settings are calibrated to the most accurate 
+trade and world market prices.
+
+
+**Disclaimer**:
+The model was validated for a selection of settings. Some setting combinations might not be coherent and can lead to
+unfeasibility problems, simulation errors or unreliable results. Without any further specification, TiMBA
+will use default settings.
+Users can adapt the input file (scenario_input.xlsx) to conduct more complex scenario-based analyses.
+Changes in the sheet "ExogChange" allow the user to shift exogenously model parameters to reflect
+socioeconomic, environmental and technological changes. Some parameter developments might be not coherent or compatible
+with the model's theoretical framework resulting in unfeasibility problems or unreliable results. In case of problems,
+users should double-check the consistency of changes made in the input files.
+
+### Data handeling and processing
+All input data required to run TiMBA in its basic version are provided in the project (`scenario_input.xlsx`). All input
+data are processed and stored in multiple data containers, which are serialized and saved in the folder 03_Serialization.
+By activating the flag `serialization_flag`, processing steps will be skipped and a serialized data container will be used 
+instead.
+TiMBA allows users to provide multiple input files to the model by adding them to the corresponding folder. TiMBA will 
+automatically loop over all provided files.
+
+```bash
+.
+`- data
+  `-- input
+    `-- 01_Input_Files
+      |-- scenario_input.xlsx # contains all input data for the model. 
+    `-- 02_Additional_Informations
+      |-- additional_information.xlsx 
+      |-- worldprice.xlsx
+    `-- 03_Serialization
+      |-- AddInfoContent.pkl # contains serialized information about the last input data which is processed by the model
+      |-- WorldDataContent.pkl # contains serialized information about the last input data which is processed by the model
+      |-- WorldPriceContent.pkl # contains serialized information about the last input data which is processed by the model
+```
+
+The package will generate a result directory called `output` which is located inside the data folder. The final directory
+after one run will look something like this:
+
+```bash
+.
+`- data
+  `-- output
+      |-- ....log # contains the logged process of the simulation
+      |-- DataContainer_....pkl # contains all output information as pkl file
+      |-- results....csv # contains main results as csv file
+      |-- worldprices....csv # contains world price results as csv file
+      |-- forest....csv # contains forest area and stock results as csv file
+      |-- manufacture....csv # contains results for manufacturing as csv 
+      |-- results_aggregated....csv # contains aggregated results on continent level as csv file
+
+```
+**Important output information**  
+No output file will ever be overwritten by the application itself. New results files will be generated in the format
+`results_D<yyyymmdd>T<hh-mm-ss>.csv` and will be saved to the output folder as well. The log file itself won't be overwritten
+as well but also no new file created on additional runs. Log information gets appended to the existing log file.
+Removing the log file ahead of executing the model won't result in errors.
+
+To handle and process data TiMBA relies on packages such as pandas and numpy. While running TiMBA stores all data into
+the data container for each domain separately (see exemplary structure overview). There, data is saved in pandas data frames.
+This allows to access all data at any point of processing. Original data from the input files are stored as `data`.
+The data of all domains are harmonized to a uniform length to facilitate the handling in the optimization 
+(called `data_aligned`). `data_aligned` always only holds the data of the current period.
+
+In preparation for the optimization, data of all relevant domains are vectorized in one separate data container 
+`OptimizationHelpers`. The optimization results are stored in the respective domains and merged in `OptimizationResults`,
+which holds all additional information used by the solver. 
+
+```bash
+.
+`- self
+  `-- Data # Overarching data container 
+      |-- Demand # contains data related to demand
+          |-- data  # contains original data from scenario_input.xlsx
+          |-- data_aligned # contains harmonized data of the current period
+          |-- data_periods # contains harmonized data with optimization results of all calculated periods so far
+          |-- domain  # domain name
+          |-- file path # path of the input file
+      |-- ExogChangeDemand # contains data related to exogenous shifts for demand
+          |-- data  # contains original data from the input files
+          |-- data_aligned # contains harmonized data
+      ...
+      |-- Other domains 
+      ...
+      |-- OptimizationHelpers  # contains vectorized data 
+          |--data # contains vectorized data of the current period
+          |--data_periods # contains all vectorized data of all calculated periods so far
+
+```
+
+### TiMBA workflow and development roadmap
+
+TiMBA is embedded in a larger workflow, which allows for conducting global scenario-based analyses in a semi-automated way. 
+Besides the main application TiMBA, this workflow is composed of supportive packages to calibrate data from multiple sources and automatically
+generate input files tailored to specific research questions. Users can dynamically explore and analyze the optimization
+results. The supportive packages are planned to be published in future extensions of TiMBA.
+
+Further, diverse plugin extensions of TiMBA are currently under preparation at the Thünen Institute of Forestry, which
+will expand the model's capacities or refine aspects of the basic model version. All extensions are planned to be
+integrated into TiMBA's basic version.
+Collaborative efforts with external experts to advance TiMBA's basic version or develop new plugin extensions will be 
+fostered.
+
+A continuous upgrade of TiMBA to newer Python and package versions is planned but will depend on available time
+capacities within the TiMBA team.
+
+
+[comment]: <> (Lehnen wir hier mit der Beschreibung zu weit aus dem Fenster? Sollten wir das erstmal für uns behalten?)
+
+![TiMBA_software_workflow](..\images\TiMBA_planned_workflow.png)
+**Figure 3:** Software workflow of TiMBA, including supportive packages and extensions
+
+### Software requirements
+TiMBA was developed and tested using a Windows operating system (Windows 10 Enterprise) with 32 GB RAM and Python 3.9.  
+The compatibility with other operating systems (Ubuntu and MacOS) is continuously tested via GitHub Actions. Operating
+systems with lower computational capacities might encounter problems when running TiMBA.
+
+All necessary packages to run TiMBA are automatically installed when downloading the project from GitHub and activating
+the virtual environment. Step-by-step instructions about the installation procedure are provided in the README.md. All
+packages integrated into TiMBA, including the solver, are open-access and free of charge. 
+
+[comment]: <> (Ich habe diesen Teil mit den Information von meinem Computer geschrieben. Vielleicht könntet ihr mal
+ schauen, ob das auch mit euren Betriebssystemseigenschaften übereinstimmt)
 [comment]: <> (Bitte die ersten Sätze richtig ergänzen)
 
-After linear approximation of the demand, supply and cost functions (2), (3) and (7), the objective function (1) is quadratic in D, S, Y and T. The equilibrium in a given year is calculated by solving a quadratic optimization problem with linear constraints. The solution is computed with the ... solver (QUELLE). A current version of the TiMBA software together with calibrated input data set (scenario_input) are available here:  https://github.com/TI-Forest-Sector-Modelling/TiMBA
 
-[comment]: <> (CM: Satz zur Validierung)
-TiMBA was subject of an extensive validation process which was designed to assure the quality and functionality of the model. More information about the valiation process and results will be published seperatly and following soon.
 
 ## Validation
+[comment]: <> (CM: Satz zur Validierung)
+TiMBA was subject of an extensive validation process which was designed to assure the quality and functionality of the model. More information about the valiation process and results will be published seperatly and following soon.
 
 
 ### Projection / historic data replication
