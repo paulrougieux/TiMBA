@@ -33,14 +33,15 @@ Timber market Model for policy-Based Analysis
 
 authored by TI-FSM
 
-TI-FSM is an authors’ collective that jointly developed and program TiMBA. The members of the collective are – in alphabetical order – Christian Morland, Franziska Schier, Julia Tandetzki, and Tomke Honkomp
+TI-FSM is an authors’ collective that jointly developed and program TiMBA. The members of the collective are – in alphabetical order – Tomke Honkomp, Christian Morland, Franziska Schier, and Julia Tandetzki 
 
 ## Preface
 TIMBA is a partial economic equilibrium model for the global forest products market. The model endogenously simulates production, 
 consumption and trade of wood and wood-based products in 180 countries. 
-TIMBA  computes the market equilibrium for each country and product in a given period by maximizing the social surplus in the global forest sector. 
-Intertemporal modeling is conducted through recursive simulations. In the equilibrium processes, commodity production, consumption and prices are balanced 
-for each simulation period. 
+TIMBA computes the market equilibrium for each country and product in a given period by maximizing the social surplus in the global forest sector.
+In the equilibrium processes, commodity production, consumption and prices are recursively balanced for each simulation period.
+TiMBA is a Python-based model with a modular structure build entirely with open-access libraries.
+
 This work is the result of great joint efforts of the forest sector modelling team at the Thünen Institute of Forestry from 2018 to 2024. 
 In recent years, a number of people made important contributions to this work. Without their support, reflection, and constructive criticism, 
 this undertaking would not have been as successful as it turns out to be now. We would like express our gratitude to all of them. 
@@ -61,26 +62,28 @@ three types of roundwood (wood fuel, coniferous and non-coniferous industrial ro
 paper production (other fibre pulp and waste paper), two intermediate products (mechanical and chemical pulp) and eight finished 
 products (coniferous and non-coniferous sawnwoods, veneer sheets and plywood, particle board, fibreboard, newsprint, printing 
 and writing paper, and other paper and paperboards). Except for sawnwoods, intermediate and end products are produced from a 
-mix of coniferous and non-coniferous industrial roundwood. Scenario simulations with TiMBA are guided by parameters and 
-assumptions shaping future developments. In the model framework, wood products are implicitly treated as perfect substitutes, 
+mix of coniferous and non-coniferous industrial roundwood. Scenario simulations with TiMBA are guided by parameters and
+assumptions on their developments depicting how the forest sector might unfold in the future. Parameters and assumptions are
+compiled in the model input file.
+In the model framework, wood products are implicitly treated as perfect substitutes, 
 regardless of their origin, as long as they belong to the same commodity group. 
 
 As the optimization of the market equilibrium in a given year does not include an elasticity of substitution, consumption 
-is merely shifted by changes in income and price (Murray et al. 2004). Thus, the GDP development indicating national incomes 
-and is an important driver of change. Since the consumption of wood-based products is positively correlated to income, 
-an increase in income basically leads to an increase in demand. The supply of roundwood depends on wood prices and forest 
-development which in turn is basically determined by the growth dynamics of forest stock, the change in forest area, and 
-harvest volumes. Forest area development and timber supply is coupled to GDP per capita developments based on the concept 
-of the environmental Kuznets curve [@Panayotou:1993]. 
+is merely shifted by changes in income and price (Murray et al. 2004). Thus, changes in gross domestic product (GDP) reflecting
+national income development is an important driver in the model. Since the consumption of wood-based products is positively
+correlated to income via a positiv elasticity, an increase in income leads to an increase in demand. The supply of roundwood
+depends on wood prices and the forest development which in return is determined by the growth dynamics of forest stocks,
+the change in forest area, and harvest volumes. Forest area development and timber supply is coupled to GDP per capita developments
+based on the concept of the environmental Kuznets curve [@Panayotou:1993]. 
 [comment]:<> (CM: Someone please add reference for Murray 2004)
 
-In its basic version, TiMBA uses the assumptions made in the “Middle of the road” scenario described in 
-“The Shared Socioeconomic Pathways” (the so called SSP2 scenario) to model future GDP developments and population growth. 
-This scenario describes a world of modest population growth and where social, economic and technological trends continue 
-similarly to historical patterns [@Riahi:2017]. Price and income elasticities of demand are taken from @Morland.2018.
+For its calculations, TiMBA relies on projections of GDP and population growth from the Shared Socioeconomic Pathways (SSP).
+In its basic version, TiMBA uses the assumptions made in the SSP2 scenario "Middle of the road". This scenario describes 
+a world of modest population growth and where social, economic and technological trends continue similarly to historical
+patterns [@Riahi:2017]. Price and income elasticities of demand are taken from [@Morland:2018].
 Further exogenous specifications on technology developments (input-output coefficients and manufacturing cost) are estimated
 based on historical developments from 1993-2020 while information on trade inertia and cost are based on WTO data as provided
-in the Forest Products Model (GFPM, [@Buongiorno:2015]; GFPM version 1-29-2017-World500). 
+in the Global Forest Products Model (GFPM) ([@Buongiorno:2015]; GFPM version 1-29-2017-World500). 
 The base year for the scenario simulations with the current version of TiMBA is 2020. The input data used for simulation 
 with TiMBA needs to be calibrated and provided in a source file prior to model runs. This file is provided together with 
 the model. The calibration procedure is described in @Buongiorno:2015 and altered according to @Schier:2018. 
@@ -91,20 +94,20 @@ the FAO Forest Global Resources Assessment (FAO 2020) and the World Bank Develop
 The model output comprises information about production, consumption and trade quantities, and prices as well as forest development. 
 The model concept bases on the formal description of GFPM [@Buongiorno:2015;@Buongiorno:2003].
 
-**Table 1:** Modell characteristics
+**Table 1:** Model characteristics overview
 
-|Model type|Dynamic and static equilibrium market model|
-|-----------------------------------| -----------------------------------|
-|Geographical scope|Global (180 countries)|
-|Temporal Dimension|Recursive long term analyses|
-|Products|Raw-, intermediate, end products|
-|Data sources|FAO, FRA, WDI, Comtrade|
-|Software Implementation|Python 3.12|
-|Current code version|TiMBA 1.0.1|
-|Permanent link to code repositiory| https://zenodo.org/records/13842492 |
-|Code License| APGL3|
-|Code versioning system used|GITHUB, Zenodo|
-|Optimizer|OSQP|
+| Model type                         | Dynamic and static equilibrium market model |
+|------------------------------------|---------------------------------------------|
+| Geographical scope                 | Global (180 countries)                      |
+| Temporal Dimension                 | Recursive long term analyses                |
+| Products                           | Raw-, intermediate, end products            |
+| Data sources                       | FAO, FRA, WDI, Comtrade, WTO, IIASA-SSP     |
+| Software Implementation            | Python 3.9, 3.12                            |
+| Current code version               | TiMBA 1.0.1                                 |
+| Permanent link to code repositiory | https://zenodo.org/records/13842492         |
+| Code License                       | APGL3                                       |
+| Code versioning system used        | GitHub, Zenodo                              |
+| Solver environment and Solver      | CVXPY, OSQP                                 |
 
 ## Introduction
 This paper provides an overview over the data and parameters used in the Timber market Model for policy-Based Analsis 
@@ -121,7 +124,7 @@ does not include an elasticity of substitution, demand is merely shifted by chan
 
 [comment]:<> (CM: Someone please add reference for Murray 2004)
 
-TiMBA distinguishes between raw, intermediate and end products. The model structure currently includes three types of 
+TiMBA distinguishes between raw, intermediate and end products (see figure 1). The model structure currently includes three types of 
 roundwood (wood fuel, coniferous and non-coniferous industrial roundwood), two additional raw products for paper production 
 (other fibre pulp and waste paper), two intermediate products (mechanical and chemical pulp) and eight finished products 
 (coniferous and non-coniferous sawnwoods, veneer sheets and plywood, particle board, fibreboard, newsprint, printing and 
@@ -166,7 +169,7 @@ Forest Global Resources Assessment (FAO 2020) and the World Bank Development Ind
 comprises information about production, consumption, trade quantities, and prices as well as forest development and 
 technology.
 
-The model concept bases on the formal description of the Global Forest Products Model (GFPM) [@Buongiorno:2015;@Buongiorno:2003].
+The model concept bases on the formal description of the GFPM [@Buongiorno:2015;@Buongiorno:2003].
 
 ![Caption for example figure.\label{fig:1}](..\images\timba_product_transformation.png)
 
@@ -181,73 +184,160 @@ The bold lines indicate, that the product is not further processed before sold a
 
 ## Model formulation and specifications
 
-TiMBA computes periodical production, import, exports and consumption as well as prices for the forest-based sector considering 
-forest resources endowment as well as cost, technology and trade constraints.  The recursive market model consists of a static 
+TiMBA computes periodic production, import, exports and consumption as well as prices for the forest-based sector considering 
+available forest resource endowment as well as cost, technology and trade constraints. The recursive market model is composed of a static 
 and a dynamic phase. 
 
-In the static phase, TiMBA calculates a global equilibrium across products and countries in a given year. The modelling problem 
-is solved for each year by maximizing the economic welfare, defined as the sum of the producer and consumer economic surplus. 
+In the static phase, TiMBA calculates a global equilibrium across products and countries in a given year. The optimization problem 
+is solved for each year by maximizing the economic welfare, defined as the sum of the producer and consumer economic surplus.
+
+[comment]: <> (Ich würde hier vielleicht noch eine Abbildung hinzufügen, um visuell zu verdeutlich, was die Produzenten- und Konsumentenrente ist)
 
 In the dynamic phase, changes in the equilibrium conditions (shifts in parameters determining the model outcome such as growing GDP, 
 population or cost) are updated from one period to the next.
 
-The model concept bases on the formal description of the Global Forest Products Model (GFPM) [@Buongiorno:2015;@Buongiorno:2003]. 
-The following problem is optimized by using the CVXPY [@Diamond:2016; @Agrawal:2018] package and the OSQP solver [@Stellato:2020]:
+The model concept bases on the formal description of the GFPM [@Buongiorno:2015;@Buongiorno:2003].
+
+[comment]: <> (Der letzte Satz in eine Wiederholung)
+The following optimization problem is maximized using the CVXPY package [@Diamond:2016; @Agrawal:2018] and the OSQP solver [@Stellato:2020]:
 
 $$\max_{Z}=\sum_{i}\sum_{k}\int_{0}^{D_{i,k}}P_{i,k}\left(D_{i,k}\right)dD_{i,k}-\sum_{i}\sum_{k}\int_{0}^{S_{i,k}}P_{i,k}\left(S_{i,k}\right)dS_{i,k}$$
 $$-\sum_{i}\sum_{k}\int_{0}^{Y_{i,k}}m_{i,k}\left(Y_{i,k}\right)dY_{i,k}-\sum_{i}\sum_{j}\sum_{k}c_{i,j,k}T_{i,j,k}$$
 
 with $P$ as price, $D$ as demand, $S$ as supply, $Y$ as manufacturing, $m$ as manufacturing costs, $T$ as trade, $c$ as 
-transportation costs and the indices $i$ for country, $j$ as trade partner country and $k$ as commodity.
+transportation costs and the indices $i$ as the domestic country, $j$ as trade partner country and $k$ as commodity.
 
-Subject to:
+Subject to an optimization constraint balancing all material flows along the represented supply chain for each country
+while accounting for trade:
+
 $$S_{i,k}+Y_{i,k}+\sum_{j}I_{j,k}=D_{i,k}+\sum_{n}a_{i,k,n}Y_{i,n}+\sum_{j}X_{j,k}$$
 
+The equation (tbd) forms for the country (i) and commodity (k) the specific material balance which imposes that the 
+domestic supply of raw materials ($S_{i,k}$) plus the imports ($I_{j,k}$) and the manufactured quantity ($Y_{i,k}$) must
+be equal to the domestic demand ($D_{i,k}$) of final products plus the input to manufacture other products ($Y_{i,n}$)
+plus the exports ($X_{j,k}$). $a_{i,k,n}$ depicts the amount of input of product $k$ to produce one unit of product $n$.
+The dual values of the material balance (shadow prices) are used as product prices in TiMBA.
+The model is delivered with different material balance options, which allows the user to control the mathematical form how the 
+constraint is integrated into the optimization. The chosen form will influence the computation time of the solver and
+might impact the resulting shadow prices.
+
+[comment]: <> (Complete equation numerotation)
+[comment]: <> (Do we want to emphasises on the possibility of multiple MB forms as this might raise some question among
+ the users)
+
 ### Demand:
+The demand for wood-based products in TiMBA is correlated to the income ($y$) and wood prices.
+The inverted demand function (equation tbd) defines the quantity of demand for end products where $D^{*}$ is the current
+demand of product $k$ in country $i$ at last period’s price, $P_{i,k,t-1}$ is the last period’s price and $\delta$ is 
+the price elasticity of demand. 
 
-The demand for wood-based products is correlated to income ($y$) and wood prices. 
+$$P_{i,k}(D_{i,k}) = P_{i,k,t-1}\left(\frac{D_{i,k}}{D^{*}_{i,k}}\right)^{1/\delta_{i,k}}$$
 
-$$P_{i,k}(D_{i,k}) = P_{i,k,t-1}\left(\frac{D_{i,k}}{D^{*}_{i,j}}\right)^{1/\delta_{i,k}}$$
+The demand can be shifted exogenously over the simulation periods to socioeconomic changes using $g_y$ as the growth 
+rate of income, $g_D$ as the exogenous growth rate of demand, $\alpha$ as exogenous parameters to shift the influence of
+the growth rates and $t$ as the time index.  
 
 $$D_{i,k}^{*}=D_{i,k,t-1}\left(1+\alpha_{y}g_{y}+\alpha_{D,t-1}g_{D,t-1}+\alpha_0\right)$$
 
-with $\delta$ as demand price elasticity, $g_y$ as growth rate of income, $g_D$ as exogenous growth rate of demand, $\alpha$ as 
-exogenous parameters to shift the influence of the growth rates and t as time index.
-
+[comment]: <> (Complete equation numerotation)
 
 ### Supply:
 
-The supply of roundwood depends on wood prices and forest development which in turn is basically determined by the growth 
-dynamics of forest stock, the change in forest area, and harvest volumes:
+The supply of roundwood depends on wood prices and forest development which in turn is determined by the growth dynamics
+of forest stock, the change in forest area, and harvest volumes. The inverted supply function defines the quantity of supply for
+raw products (equation tbd) where $S^{*}$ is the current supply of product $k$ in country $i$ at the last period's
+price and $\lambda$ is supply price elasticity. Further details on the connection between the supply and the forest
+stock and area dynamics are provided in the chapter on modelling [Forest](#Forest). 
 
 $$P_{i,k}(S_{i,k}) = P_{i,k,t-1}\left(\frac{S_{i,k}}{S^{*}_{i,j}}\right)^{1/\lambda_{i,k}}$$
 
+To reflect socioeconomic and environmental changes, the supply function can be shifted exogenously over the simulation 
+periods according to equation tbd. In the following equation, $g_y$ represents the income growth rate and $g_I$ depicts
+the growth rate of forest inventory. $\beta_{y}$ is the supply elasticity of income and $\beta_{I}$ is supply elasticity
+relative to the inventory. In TiMBA, the supply elasticity of income is product-specific, differentiating between raw
+materials sourced from the forest and raw materials for paper and paper product production.   
+
 $$S_{i,k}^{*}=S_{i,k,t-1}\left(1+\beta_{y}g_{y}+\beta_{I}g_{I}\right)$$
 
-with $\lambda$ as supply price elasticity, $g_y$ as growth rate of income, $g_I$ as growth rate of forest inventory and $\beta$ 
-as exogenous parameters to shift the influence of the growth parameters. Forest area development and thus, timber supply 
-is coupled to GDP per capita developments based on the concept of the environmental 
-Kuznets curve (Panayotou 2004). See the section 'Forest' for a more detailed description.
+Forest area development and thus, timber supply is coupled to GDP per capita developments based on the concept of the environmental 
+Kuznets curve ([@Panayotou: 2004]). See the section 'Forest' for a more detailed description.
 
 [comment]: <> (JT Forest part under section 'Forest' )
-
+[comment]: <> (Complete equation numerotation)
 ### Manufacturing:
+Manufacturing of intermediate and end products is determined using country- and product-specific input-output
+coefficients and manufacturing unit costs. The product and country-specific manufacturing costs are calculated
+based on the manufactured quantity according to equation (tbd) where $m_{i,k}$ are the manufacturing cost,
+$m^{*}$ the current manufacturing cost at the last period’s manufactured quantity, and $\zeta$ is the elasticity of
+manufacturing cost with respect to the manufactured quantity.
 
 $$m_{i,k}(Y_{i,k}) = m^{*}_{i,k,t-1}\left(\frac{Y_{i,k}}{Y_{i,j,t-1}}\right)^{\zeta_{i,k}}$$
 
+The manufacturing costs of each product represent all costs of inputs not explicitly modelled in TiMBA (labour, energy,
+capital, additional materials), excluding costs of raw materials in a given year and country.
+For net exporting countries, raw material costs are computed by multiplying the domestic prices of input products by the
+input-output coefficients. For net importing countries, raw material costs are computed by multiplying the world market
+price of input products by the input-output coefficients.
+
+The input-output coefficient of each product in a specific year and country states the amount of input necessary to 
+produce one unit of output. The input-output coefficients and manufacturing cost for the base period are obtained by
+a goal programming procedure and depend on production and trade data from FAOSTAT and exogenous bounds on minimum and
+maximum input per output and cost [@Buongiorno:2015].
+
+Manufacturing costs and input-output coefficients can be exogenously shifted over the calculated periods to reflect 
+technological development. While input-output coefficients are updated in TiMBA, manufacturing costs are developed 
+based on an exogenous growth rate $g_m$.   
+
 $$m^{*}_{i,k}=m_{i,k,t-1}\left(1+g_m\right)$$
 
-with $\zeta$ as manufacturing cost elasticity and $g_m$ as growth rate of manufacturing costs.
-
 ### Trade:
+In TiMBA, all countries import from and export to a virtual buffer region called zy. Since all countries
+trade via the region zy, bilateral trade fluxes are not represented in the basic model version. The trade in TiMBA 
+depends on the transportation costs ($c_{i,j,k}$), the world price, and trade inertia bounds. 
+The equation (tbd) represents the country and product-specific unit cost of transportation ($c_{i,j,k}$) where $c^{*}$ 
+is the current transportation cost at the last period’s traded quantity and $\tau$ the elasticity of transport cost with 
+respect to traded quantity.
 
 $$c_{i,j,k}(T_{i,j,k}) = c^{*}_{i,j,k,t-1}\left(\frac{T_{i,j,k}}{T_{i,j,k,t-1}}\right)^{\tau_{i,j,k}}$$
 
+In the base period, $c_ijk$ is determined by equation tbd where $f_ijk$ represents the freight cost
+per unit of transported product $k$ between country $i$ and $j$. $t_jk^X$ and $t_jk^I$ depict the export and import
+ad-valorem tax rates, respectively. $P_(ik-1)$ is the world price of the previous period. In TiMBA, the transportation
+costs plus the world price are carried by the net importing countries. The price for net exporting countries is the
+world price.
+
+$$c_{i,j,k} = f_{i,j,k} + t_jk^X P_{ik-1}+ t_jk^If_{i,j,k} + P_{ik-1}$$
+
+Further, trade in TiMBA is constrained by trade inertia bounds which depict an exogenous development range based on the
+traded quantity of the previous period (equation tbd) where $T_ijk^L$ and $T_ijk^U$ are the lower and upper bounds,
+respectively. For the first period, trade inertia bounds are close to zero to comply with trade quantities from the
+calibration. To avoid infeasibility, trade inertia bounds are introduced as a flexible constraint in the optimization.
+In this way, TiMBA can trespass the trade inertia bounds when necessary to find an optimal solution. 
+However, trespasses are sanctioned in the objective function by multiplying the difference by the lower or upper bound
+with the world prices (equation tbd and equation tbd).
+
+$$T_{i,j,k}^L ≤T_{i,j,k}≤T_{i,j,k}^U$$
+
+$$∆T_ijk  =(T_{ijk}^L-x)+(x- T_{ijk}^U)$$
+
+$$objective function- ∆T_ijk WP_k$$
+
+In TiMBA, the world prices are the dual values (shadow prices) of the material balance for the region zy which equilibrate all
+imports ($T_ijk$) and exports ($T_jik$) globally by supplying the deficits ($S_zyk$) or absorbing the surpluses
+($D_zyk$) in production:
+
+$$sumT_{ijk} + S_{zyk} - sumT_{jik} - D_{zyk} = 0$$
+
+Freight costs and ad-valorem tax rates for imports and exports can be exogenously changed over the simulation periods to 
+mimic changes in socioeconomic circumstances (e.g., changes in trade agreements) using the following equation:
+
 $$c^{*}_{i,j,k}=c_{i,j,k,t-1}\left(1+g_f+g^i_t+g^x_i\right)$$
 
-with $\tau$ as transportation cost elasticity, $g_f$ as growth rate of freight costs, $g_t^i$ as growth rate of import 
-taxes and $g_t^x$ as growth rate of export taxes.
+where $g_f$ is the growth rate of freight costs, $g_t^i$ is the growth rate of import taxes and $g_t^x$ is the growth
+rate of export taxes.
 
+
+[comment]: <> (Complete equation numerotation)
 ### Forest
 
 The development of forest area is simulated exogenously using the environmental Kuznets curve (EKC) approach [@Kuznets:1955;@Grossmann and Krueger:1991]. 
@@ -351,52 +441,55 @@ For lack of data, some of the parameters had to be set intuitively, based mostly
 
 **Table 2:** Items simulated with TiMBA. Product definitions according to FAOSTAT and FAO Forest resources assessment (Quellen) 
 
-|Item|Unit|Supply|Production|Demand|Trade|Price|Growth|
-|:------------------|:-------:|:-:|:-:|:-:|:-:|:-:|:-:| 
-|Fuelwood                  | 1000 m³  |x| |x|x|x| |
-|Industrial Roundwood C    | 1000 m³  |x| | |x|x| |   
-|Industrial Roundwood NC   | 1000 m³  |x| | |x|x| | 
-|Oth Industrial Roundwood  | 1000 m³  |x| |x| | | |
-|Coniferous Sawnwood       | 1000 m³  | |x|x|x|x| | 
-|Non-coniferous Sawnwood   | 1000 m³  | |x|x|x|x| |
-|Plywood and Veneer Shets  | 1000 m³  | |x|x|x|x| | 
-|Particle Board (incl. OSB)| 1000 m³  | |x|x|x|x| |
-|Fibre Board               | 1000 m³  | |x|x|x|x| |
-|Mechanical Pulp           | 1000 t   | |x| |x|x| |
-|Semi chem. and Chem. Pulp | 1000 t   | |x| |x|x| |
-|Other Fibre Pulp          | 1000 t   |x|x| |x|x| |
-|Waste Paper               | 1000 t   |x| | |x|x| |
-|Newsprint                 | 1000 t   | |x|x|x|x| |
-|Print. and Writing Paper  | 1000 t   | |x|x|x|x| |
-|Other Paper and Paperb.   | 1000 t   | |x|x|x|x| |
-|Forest Area               | ha       | | | | | |x|
-|Forest Stock              |million m³| | | | | |x|
+[comment]: <> (Bitte die Quellen für FRA und FAOSTAT ergänzen)
+[comment]: <> (Item codes wurden hinzugefügt)
+
+| Item                       | Item Code |    Unit    | Supply | Production | Demand | Trade | Price | Growth |
+|:---------------------------|:---------:|:----------:|:------:|:----------:|:------:|:-----:|:-----:|:------:| 
+| Fuelwood                   |    80     |  1000 m³   |   x    |            |   x    |   x   |   x   |        |
+| Industrial Roundwood C     |    81     |  1000 m³   |   x    |            |        |   x   |   x   |        |   
+| Industrial Roundwood NC    |    78     |  1000 m³   |   x    |            |        |   x   |   x   |        | 
+| Oth Industrial Roundwood   |    82     |  1000 m³   |   x    |            |   x    |       |       |        |
+| Coniferous Sawnwood        |    83     |  1000 m³   |        |     x      |   x    |   x   |   x   |        | 
+| Non-coniferous Sawnwood    |    79     |  1000 m³   |        |     x      |   x    |   x   |   x   |        |
+| Plywood and Veneer Shets   |    84     |  1000 m³   |        |     x      |   x    |   x   |   x   |        | 
+| Particle Board (incl. OSB) |    85     |  1000 m³   |        |     x      |   x    |   x   |   x   |        |
+| Fibre Board                |    86     |  1000 m³   |        |     x      |   x    |   x   |   x   |        |
+| Mechanical Pulp            |    87     |   1000 t   |        |     x      |        |   x   |   x   |        |
+| Semi chem. and Chem. Pulp  |    88     |   1000 t   |        |     x      |        |   x   |   x   |        |
+| Other Fibre Pulp           |    89     |   1000 t   |   x    |     x      |        |   x   |   x   |        |
+| Waste Paper                |    90     |   1000 t   |   x    |            |        |   x   |   x   |        |
+| Newsprint                  |    91     |   1000 t   |        |     x      |   x    |   x   |   x   |        |
+| Print. and Writing Paper   |    92     |   1000 t   |        |     x      |   x    |   x   |   x   |        |
+| Other Paper and Paperb.    |    93     |   1000 t   |        |     x      |   x    |   x   |   x   |        |
+| Forest Area                |    \-     |  1000 ha   |        |            |        |       |       |   x    |
+| Forest Stock               |    \-     | million m³ |        |            |        |       |       |   x    |
 
 <br><br>
 
 ![timba_countries](..\images\timba_country_coverage.png)
-**Figure 2:** Countries which are included in TiMBA
+**Figure 2:** Countries included in TiMBA (continental aggregation according to Table A2)
 
 
 **Table 4:** Demand and supply elasticities
 
-|                         |Demand elasticity   || Supply elsaticity            |||
-|-------------------------|:--------:|:--------:|:--------:|:--------:|:--------:|
-| Commodity               | price    | income   | price    | income   |forest stock|
-| Fiberboard              | -0.4629  | 1.0661   |          |          |         |
-| Fuelwood                | -0.1458  | 0.5680   |          |          |         |
-| Newsprint               | -0.1208  | 0.2371   |          |          |         |
-| Other Paper             | -0.1695  | 0.2283   |          |          |         |
-| P. & W. Paper           | -0.5188  | 0.3626   |          |          |         |
-| Particle Board          | -0.4923  | 0.7502   |          |          |         |
-| Plywood & Veneer        | -0.3534  | 0.596    |          |          |         |
-| Sawnwood C              | -0.3001  | 0.4409   |          |          |         |
-| Sawnwood NC             | -0.1221  | 0.2162   |          |          |         |
-| Fuelwood                |          |          | 1.0311   | \-       | 1.1000  |
-| Industrial Roundwood C  |          |          | 1.0738   | \-       | 1.1000  |
-| Industrial Roundwood NC |          |          | 1.0440   | \-       | 1.1000  |
-| Wastepaper              |          |          | 1.0000   | 0.6700   | \-      |
-| Other Fibre Pulp        |          |          | 1.0000   | 0.1400   | \-      |
+|                          | Demand elasticity |        | Supply elsaticity |        |              |
+|--------------------------|:-----------------:|:------:|:-----------------:|:------:|:------------:|
+| Commodity                |       price       | income |       price       | income | forest stock |
+| Fiberboard               |      -0.4629      | 1.0661 |                   |        |              |
+| Fuelwood                 |      -0.1458      | 0.5680 |                   |        |              |
+| Newsprint                |      -0.1208      | 0.2371 |                   |        |              |
+| Other Paper              |      -0.1695      | 0.2283 |                   |        |              |
+| P. & W. Paper            |      -0.5188      | 0.3626 |                   |        |              |
+| Particle Board           |      -0.4923      | 0.7502 |                   |        |              |
+| Plywood & Veneer         |      -0.3534      | 0.596  |                   |        |              |
+| Sawnwood C               |      -0.3001      | 0.4409 |                   |        |              |
+| Sawnwood NC              |      -0.1221      | 0.2162 |                   |        |              |
+| Fuelwood                 |                   |        |      1.0311       |   \-   |    1.1000    |
+| Industrial Roundwood C   |                   |        |      1.0738       |   \-   |    1.1000    |
+| Industrial Roundwood NC  |                   |        |      1.0440       |   \-   |    1.1000    |
+| Wastepaper               |                   |        |      1.0000       | 0.6700 |      \-      |
+| Other Fibre Pulp         |                   |        |      1.0000       | 0.1400 |      \-      |
 
 Note: This is a summarizing table; Elasticities are shown for the best model, which is chosen on the basis of Breusch-Pagan, Maddala-Wu and Hausman tests based on @Morland:2018 taken from GFPM [@Buongiorno:2003], GFPM-base2021 (https://onedrive.live.com/?authkey=%21AEF7RY7oAPlrDPk&id=93BC28B749A1DFB6%2117056&cid=93BC28B749A1DFB6) 
 
@@ -429,183 +522,190 @@ TiMBA was subject of an extensive validation process which was designed to assur
 
 ## Annex
 
-**Table A1:** Freight cost of shipping one unit of commodity from origin to destination
+**Table A1:** Freight cost of shipping one unit of commodity from origin country to destination country
 
-|Commodity|Freight Cost|
-|:--------|:----------:|
-|IndRoundNC|	32|
-|SawnwoodNC|	50|
-|Fuelwood|	14|
-|IndRound|	17|
-|OthIndRound||	
-|Sawnwood|	23|
-|Plywood|	22|
-|ParticleB|	10|
-|FiberB|	15|
-|MechPlp|	37|
-|ChemPlp|	44|
-|OthFbrPlp|	109|
-|WastePaper|	33|
-|Newsprint|	28|
-|PWPaper|	52|
-|OthPaper|	55|
-|  ||
-|IndRoundNC|	37|
-|IndRound	|20|
-|Newsprint|	22|
+[comment]: <> (Es wäre gut wenn die Produktname einheitlich über das gesamte Dokument gehalten wären)
+[comment]: <> (Worauf beziehen sich die Daten, die zusätzlich am Ende dieser Tabelle gegeben werden?)
 
-**Table A2:** List of 180 countries included into forest sector modelling
-
-|Africa|	Asia|	Europe|	North America|	Oceania|	South America|
-|:---:|:---:|:---:|:---:|:---:|:---:|
-|AGO|	AFG|	ALB|	ANT|	AUS	|ARG|
-|BDI|	ARE|	AUT|	BHS|	COK|	BOL|
-|BEN|	BGD|	BEL|	BLZ|	FJI|	BRA|
-|BFA|	BHR|	BGR|	BRB|	NCL|	CHL|
-|BWA|	BRN|	BIH|	CAN|	NZL|	COL|
-|CAF|	BTN|	CHE|	CRI|	PNG|	ECU|
-|CIV|	CHN|	CZE|	CUB|	PYF|	GUF|
-|CMR|	CYP|	DEU|	DMA|	SLB|	GUY|
-|COD|	IDN|	DNK|	DOM|	TON|	PER|
-|COG|	IND|	ESP|	GTM|	VUT|	PRY|
-|CPV|	IRN|	FIN|	HND|	WSM|	SUR|
-|DJI|	IRQ|	FRA|	HTI|		URY|
-|DZA|	ISR|	GBR|	JAM|		VEN|
-|EGY|	JOR|	GRC|	LCA||		
-|ETH|	JPN|	HRV|	MEX||		
-|GAB|	KHM|	HUN|	MTQ||		
-|GHA|	KOR|	IRL|	NIC||		
-|GIN|	KWT|	ITA|	PAN||		
-|GMB|	LAO|	LUX|	SLV||		
-|GNB|	LBN|	MKD|	TTO	||	
-|GNQ|	LKA|	MNE|	USA||		
-|KEN|	MDV|	NLD|	VCT||		
-|LBR|	MMR|	NOR|||			
-|LBY|	MNG|	POL|||			
-|LSO|	MYS|	PRT|||			
-|MAR|	NPL|	ROU|||			
-|MDG|	OMN|	SRB|||			
-|MLI|	PAK|	SVK|||			
-|MOZ|	PHL|	SVN|||			
-|MRT|	PRK|	SWE|||			
-|MUS|	QAT||||				
-|MWI|	SAU||||				
-|NER|	SGP||||				
-|NGA|	SYR||||				
-|REU|	THA||||
-|RWA|	TLS||||				
-|SDN|	TUR||||				
-|SEN|	VNM||||				
-|SLE|	YEM||||			
-|SOM|||||					
-|STP|||||					
-|SWZ|||||					
-|TCD|||||					
-|TGO|||||					
-|TUN|||||				
-|TZA|||||					
-|UGA|||||				
-|ZAF|||||					
-|ZMB|||||			
-|ZWE|||||					
-
+| Commodity   | Freight Cost |
+|:------------|:------------:|
+| IndRoundNC  |      32      |
+| SawnwoodNC  |      50      |
+| Fuelwood    |      14      |
+| IndRound    |      17      |
+| OthIndRound |      \-      |	
+| Sawnwood    |      23      |
+| Plywood     |      22      |
+| ParticleB   |      10      |
+| FiberB      |      15      |
+| MechPlp     |      37      |
+| ChemPlp     |      44      |
+| OthFbrPlp   |     109      |
+| WastePaper  |      33      |
+| Newsprint   |      28      |
+| PWPaper     |      52      |
+| OthPaper    |      55      |
+|             |              |
+| IndRoundNC  |      37      |
+| IndRound	   |      20      |
+| Newsprint   |      22      |
 <br><br>
 
-**Table A2:** List of 180 countries included into forest sector modelling
-|                       |                       |                       |                       |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-|Algeria                |El Salvador            |  Maldives             |St.Vincent/Grenadines  |
-|Afghanistan            |Equatorial Guinea      |  Mali                 |        Sudan          |
-  |Albania            |Estonia          |Martinique        |Suriname               |
-  |Angola             |Ethiopia         |Mauritania        |Swaziland              |
- |Argentina          |Fiji Islands     |Mauritius          |Sweden                 |
-  |Armenia            |Finland          |Mexico            | Switzerland           |
-  |Australia          |France           |Moldova, Republic |Syrian Arab Republic   |    
-  |Austria            |French Guiana    |Mongolia          |Tajikistan             |
-  |Azerbaijan,Republic|French Polynesia |Montenegro        |Tanzania, United Rep of|                                         
-  |Bahamas           |Gabon            |Morocco            |Thailand               |
-  |Bahrain            |Gambia           |Mozambique        |Timor-Leste            |
-  |Bangladesh         |Georgia          |Myanmar           |Togo                   |
-  |Barbados           |Germany          |Nepal             |Tonga                  |
-  |Belarus            |Ghana            |Netherlands       |Trinidad and Tobago    |
-  |Belgium            |Greece           |Netherlands Antilles|Tunisiav              |
-  |Belize             |Guatemala        |New Caledonia     |Turkey                 |
-  |Benin              |Guinea           |New Zealand       |Turkmenistan           |
-  |Bhutan             |Guinea-Bissau    |Nicaragua         |Uganda                 |
-  |Bolivia            |Guyana           |Niger             |Ukraine                |
-  |Bosnia and Herzegovina|Haiti            |Nigeria           |United Arab Emirates   |                    
-  |Botswana           |Honduras         |Norway            |United Kingdom         |
-  |Brazil             |Hungary          |Oman              |Uruguay                |
-  |Brunei Darussalam  |India            |Pakistan          |USA                    |
-  |Bulgaria           |Indonesia        |Panama            |Uzbekistan             |
-  |Burkina Faso       |Iran, Islamic Rep of|Papua New Guinea  |Vanuatu                |                       
-  |Burundi            |Iraq             |Paraguay          |Venezuela, Boliv Rep of|
-  |Cambodia           |Ireland          |Peru              |Viet Nam             |
-  |Cameroon           |Israel           |Philippines       |Yemen                |
-  |Canada             |Italy            |Poland            |Zambia               |
-  |Cape Verde         |Jamaica          |Portugal          |Zimbabwe             |
-  |Central African Republic|Japan            |Qatar             |                     |                                
-  |Chad               |Jordan           |Réunion           |                     |
-  |Chile              |Kazakhstan       |Romania           |                     |
-  |China              |Kenya            |Russian Federation|                     |
-  |Colombia           |Korea, Dem People\'s Rep|Rwanda            |                     |         
-  |Congo, Dem Republic of|Korea, Republic of|Saint Lucia       |                     |                     
-  |Congo, Republic of |Kuwait           |Samoa             |                     |
-  |Cook Islands       |Kyrgyzstan       |Sao Tome and Principe|                     |
-  |Costa Rica         |Laos             |Saudi Arabia      |                     |
-  |Côte d\'Ivoire     |Latvia           |Senegal           |                     |
-  |Croatia            |Lebanon          |Serbia            |                     |
-  |Cuba               |Lesotho          |Sierra Leone      |                     |
-  |Cyprus             |Liberia          |Singapore         |                     |
-  |Czech Republic     |Libya            |Slovakia          |                     |
-  |Denmark            |Lithuania        |Slovenia          |                     |
-  |Djibouti           |Luxembourg       |Solomon Islands   |                     |
-  |Dominica           |Macedonia        |Somalia           |                     |
-  |Dominican Republic |Madagascar       |South Africa      |                     |
-  |Ecuador            |Malawi           |Spain             |                     |
-  |Egypt              |Malaysia         |Sri Lanka         |                     |
+**Table A2:** ISO3-Codes of the 180 countries included into TiMBA grouped in continental aggregates
 
+[comment]: <> (Ich finde diese Übersicht super. Es ist nur ein wenig verwirrend, hier die ISO3-Codes zu verwenden wobei im Modell noch die Abkürzungen von Buongiorno verwendet werden.)
+
+| Africa | Asia | Europe | North and<br/> Central America | Oceania | 	South America |
+|:------:|:----:|:------:|:------------------------------:|:-------:|:--------------:|
+|  AGO   | AFG  |  ALB   |              ANT               |   AUS   |      ARG       |
+|  BDI   | ARE  |  AUT   |              BHS               |   COK   |      BOL       |
+|  BEN   | BGD  |  BEL   |              BLZ               |   FJI   |      BRA       |
+|  BFA   | BHR  |  BGR   |              BRB               |   NCL   |      CHL       |
+|  BWA   | BRN  |  BIH   |              CAN               |   NZL   |      COL       |
+|  CAF   | BTN  |  CHE   |              CRI               |   PNG   |      ECU       |
+|  CIV   | CHN  |  CZE   |              CUB               |   PYF   |      GUF       |
+|  CMR   | CYP  |  DEU   |              DMA               |   SLB   |      GUY       |
+|  COD   | IDN  |  DNK   |              DOM               |   TON   |      PER       |
+|  COG   | IND  |  ESP   |              GTM               |   VUT   |      PRY       |
+|  CPV   | IRN  |  FIN   |              HND               |   WSM   |      SUR       |
+|  DJI   | IRQ  |  FRA   |              HTI               |   URY   |                |
+|  DZA   | ISR  |  GBR   |              JAM               |   VEN   |                |
+|  EGY   | JOR  |  GRC   |              LCA               |         |                |		
+|  ETH   | JPN  |  HRV   |              MEX               |         |                |
+|  GAB   | KHM  |  HUN   |              MTQ               |         |                |		
+|  GHA   | KOR  |  IRL   |              NIC               |         |                |		
+|  GIN   | KWT  |  ITA   |              PAN               |         |                |		
+|  GMB   | LAO  |  LUX   |              SLV               |         |                |		
+|  GNB   | LBN  |  MKD   |              TTO	              |         |                |	
+|  GNQ   | LKA  |  MNE   |              USA               |         |                |		
+|  KEN   | MDV  |  NLD   |              VCT               |         |                |		
+|  LBR   | MMR  |  NOR   |                                |         |                | 			
+|  LBY   | MNG  |  POL   |                                |         |                |			
+|  LSO   | MYS  |  PRT   |                                |         |                |			
+|  MAR   | NPL  |  ROU   |                                |         |                |			
+|  MDG   | OMN  |  SRB   |                                |         |                |			
+|  MLI   | PAK  |  SVK   |                                |         |                |			
+|  MOZ   | PHL  |  SVN   |                                |         |                |			
+|  MRT   | PRK  |  SWE   |                                |         |                |			
+|  MUS   | QAT  |        |                                |         |                |				
+|  MWI   | SAU  |        |                                |         |                |				
+|  NER   | SGP  |        |                                |         |                |				
+|  NGA   | SYR  |        |                                |         |                |				
+|  REU   | THA  |        |                                |         |                |
+|  RWA   | TLS  |        |                                |         |                |				
+|  SDN   | TUR  |        |                                |         |                |				
+|  SEN   | VNM  |        |                                |         |                |				
+|  SLE   | YEM  |        |                                |         |                |			
+|  SOM   |      |        |                                |         |                |					
+|  STP   |      |        |                                |         |                |					
+|  SWZ   |      |        |                                |         |                |					
+|  TCD   |      |        |                                |         |                |					
+|  TGO   |      |        |                                |         |                |					
+|  TUN   |      |        |                                |         |                |				
+|  TZA   |      |        |                                |         |                |					
+|  UGA   |      |        |                                |         |                |				
+|  ZAF   |      |        |                                |         |                |					
+|  ZMB   |      |        |                                |         |                |			
+|  ZWE   |      |        |                                |         |                |
+<br><br>
+
+**Table A3:** List of 180 countries included into TiMBA with their respective country codes in the model
+
+[comment]: <> (Country codes aus TiMBA hinzufügen)
+
+|                          |                          |                       |                         |
+|:------------------------:|:------------------------:|:---------------------:|:-----------------------:|
+|         Algeria          |       El Salvador        |       Maldives        |  St.Vincent/Grenadines  |
+|       Afghanistan        |    Equatorial Guinea     |         Mali          |          Sudan          |
+|         Albania          |         Estonia          |      Martinique       |        Suriname         |
+|          Angola          |         Ethiopia         |      Mauritania       |        Swaziland        |
+|        Argentina         |       Fiji Islands       |       Mauritius       |         Sweden          |
+|         Armenia          |         Finland          |        Mexico         |       Switzerland       |
+|        Australia         |          France          |   Moldova, Republic   |  Syrian Arab Republic   |    
+|         Austria          |      French Guiana       |       Mongolia        |       Tajikistan        |
+|   Azerbaijan,Republic    |     French Polynesia     |      Montenegro       | Tanzania, United Rep of |                                         
+|         Bahamas          |          Gabon           |        Morocco        |        Thailand         |
+|         Bahrain          |          Gambia          |      Mozambique       |       Timor-Leste       |
+|        Bangladesh        |         Georgia          |        Myanmar        |          Togo           |
+|         Barbados         |         Germany          |         Nepal         |          Tonga          |
+|         Belarus          |          Ghana           |      Netherlands      |   Trinidad and Tobago   |
+|         Belgium          |          Greece          | Netherlands Antilles  |        Tunisiav         |
+|          Belize          |        Guatemala         |     New Caledonia     |         Turkey          |
+|          Benin           |          Guinea          |      New Zealand      |      Turkmenistan       |
+|          Bhutan          |      Guinea-Bissau       |       Nicaragua       |         Uganda          |
+|         Bolivia          |          Guyana          |         Niger         |         Ukraine         |
+|  Bosnia and Herzegovina  |          Haiti           |        Nigeria        |  United Arab Emirates   |                    
+|         Botswana         |         Honduras         |        Norway         |     United Kingdom      |
+|          Brazil          |         Hungary          |         Oman          |         Uruguay         |
+|    Brunei Darussalam     |          India           |       Pakistan        |           USA           |
+|         Bulgaria         |        Indonesia         |        Panama         |       Uzbekistan        |
+|       Burkina Faso       |   Iran, Islamic Rep of   |   Papua New Guinea    |         Vanuatu         |                       
+|         Burundi          |           Iraq           |       Paraguay        | Venezuela, Boliv Rep of |
+|         Cambodia         |         Ireland          |         Peru          |        Viet Nam         |
+|         Cameroon         |          Israel          |      Philippines      |          Yemen          |
+|          Canada          |          Italy           |        Poland         |         Zambia          |
+|        Cape Verde        |         Jamaica          |       Portugal        |        Zimbabwe         |
+| Central African Republic |          Japan           |         Qatar         |                         |                                
+|           Chad           |          Jordan          |        Réunion        |                         |
+|          Chile           |        Kazakhstan        |        Romania        |                         |
+|          China           |          Kenya           |  Russian Federation   |                         |
+|         Colombia         | Korea, Dem People\'s Rep |        Rwanda         |                         |         
+|  Congo, Dem Republic of  |    Korea, Republic of    |      Saint Lucia      |                         |                     
+|    Congo, Republic of    |          Kuwait          |         Samoa         |                         |
+|       Cook Islands       |        Kyrgyzstan        | Sao Tome and Principe |                         |
+|        Costa Rica        |           Laos           |     Saudi Arabia      |                         |
+|      Côte d\'Ivoire      |          Latvia          |        Senegal        |                         |
+|         Croatia          |         Lebanon          |        Serbia         |                         |
+|           Cuba           |         Lesotho          |     Sierra Leone      |                         |
+|          Cyprus          |         Liberia          |       Singapore       |                         |
+|      Czech Republic      |          Libya           |       Slovakia        |                         |
+|         Denmark          |        Lithuania         |       Slovenia        |                         |
+|         Djibouti         |        Luxembourg        |    Solomon Islands    |                         |
+|         Dominica         |        Macedonia         |        Somalia        |                         |
+|    Dominican Republic    |        Madagascar        |     South Africa      |                         |
+|         Ecuador          |          Malawi          |         Spain         |                         |
+|          Egypt           |         Malaysia         |       Sri Lanka       |                         |
+<br><br>
 
 ### Parameter list
 
-**Table A3:** List of paramter for model input
+**Table A4:** List of input paramters for TiMBA for each model domain 
 
-|Forest        |Supply     	  |Transportation        |Demand |Manufacturing|
-|:-------------|:-------------|:-------------|:-------------|:-------------|
-|gdp_per_capita_base_period|	price|	freight_cost|	price|	net_manufacturing_cost|
-|forest_stock|	quantity|	import_ad_valorem_tax_rate|	quantity|	quantity|
-|growth_rate_forest_stock|	elasticity_price|	export_ad_valorem_tax_rate|	elasticity_price|	elasticity_price|
-|elasticity_growth_rate_forest_stock|	elasticity_gdp|	quantity|	elasticity_gdp|	
-|forest_area|	elasticity_stock|	elasticity_trade_exporter|	elasticity_expectations||	
-|forest_area_growth_rate|	elasticity_area|	elasticity_trade_importer|	lower_bound||	
-|linear_gdp_forest_area_growth_rate|	elasticity_fourth|	trade_inertia_bounds|	upper_bound||	
-|exponential_gdp_forest_area_growth_rate|	elasticity_fifth|	price|||		
-|fraction_fuelwood|	elasticity_sixth|	elasticity_price|||		
-|ratio_inventory_drain|	elasticity_respect_previous_period_supply|			
-|max_ratio_inventory_drain|	lower_bound|			
-|CO2_growing_stock|	upper_bound||||			
-|price_CO2|	last_period_quantity||||			
-|alpha||||||				
-|gamma||||||				
-|periodic_growth_rate_of_forest_area|||||				
-|forest_growth_without_harvest|||||				
-|supply_from_forest|||||				
-
+| Forest                                  | Supply      	                 | Transportation             | Demand                  | Manufacturing          |
+|:----------------------------------------|:------------------------------|:---------------------------|:------------------------|:-----------------------|
+| gdp_per_capita_base_period              | price                         | freight_cost               | price                   | net_manufacturing_cost |
+| forest_stock                            | quantity                      | import_ad_valorem_tax_rate | quantity                | quantity               |
+| growth_rate_forest_stock                | elasticity_price              | export_ad_valorem_tax_rate | elasticity_price        | elasticity_price       |
+| elasticity_growth_rate_forest_stock     | elasticity_gdp                | quantity                   | elasticity_gdp          |                        |
+| forest_area                             | elasticity_stock              | elasticity_trade_exporter  | elasticity_expectations |                        |	
+| forest_area_growth_rate                 | elasticity_area               | elasticity_trade_importer  | lower_bound             |                        |	
+| linear_gdp_forest_area_growth_rate      | elasticity_fourth             | trade_inertia_bounds       | upper_bound             |                        |	
+| exponential_gdp_forest_area_growth_rate | elasticity_fifth              | price                      |                         |                        |		
+| fraction_fuelwood                       | elasticity_sixth              | elasticity_price           |                         |                        |		
+| ratio_inventory_drain                   | elasticity_respect_previous_p |                            |                         |                        |
+| max_ratio_inventory_drain               | lower_bound                   | 			                        |                         |                        |
+| CO2_growing_stock                       | upper_bound                   |                            |                         |                        |			
+| price_CO2                               | last_period_quantity          |                            |                         |                        |			
+| alpha                                   |                               |                            |                         |                        |		
+| gamma                                   |                               |                            |                         |                        |				
+| periodic_growth_rate_of_forest_area     |                               |                            |                         |                        |				
+| forest_growth_without_harvest           |                               |                            |                         |                        |				
+| supply_from_forest                      |                               |                            |                         |                        |
 <br><br>
 
-**Table A4:** List of parameter for dynamic changes over time
+**Table A5:** List of input parameters exogenously shifted over the simulation horizon to reflect socio-economic, political, and environmental dynamics
 
-|Forest        |Supply     	  |Transportation        |Demand |Manufacturing|
-|:-------------|:-------------|:-------------|:-------------|:-------------|
-|growth_rate_stock|	elasticity_price|	change_freight_cost|	elasticity_price|	growth_rate_net_manufacture_cost|
-|growth_rate_area|	growth_rate_value|	change_import_tax_rate|	growth_rate_value|	change_input_output|
-|growth_rate_gdp|	growth_rate_gdp|	change_export_tax_rate|	growth_rate_gdp||	
-|adjustment_endogenous_growth_rate_stock|	elasticity_gdp|	exogenous_growth_rate_export_trade_shift|	growth_demand_expected|	|
-|elasticity_growth_rate_stock_on_area|	growth_rate_fourth_shift|	elasticity_trade_exporter_shift	|growth_lower_bound	||
-|growth_rate_linear_GDP_forest_area_growth_rate|	growth_rate_fifth_shift|	exogenous_growth_rate_import_trade_shift	|elasticity_gdp|	|
-|growth_rate_squared_GDP_forest_area_growth_rate|	growth_rate_sixth_shift|	elasticity_trade_importer_shift|||		
-|fraction_fuelwood|	growth_rate_upper_bound|	trade_inertia_bounds|||		
-|ratio_inventory_drain||||||				
-|max_ratio_inventory_drain|||||				
-|price_CO2|||||				
+| Forest                                          | Supply    	              | Transportation                           | Demand                 | Manufacturing                    |
+|:------------------------------------------------|:-------------------------|:-----------------------------------------|:-----------------------|:---------------------------------|
+| growth_rate_stock                               | elasticity_price         | change_freight_cost                      | elasticity_price       | growth_rate_net_manufacture_cost |
+| growth_rate_area                                | growth_rate_value        | change_import_tax_rate                   | growth_rate_value      | change_input_output              |
+| growth_rate_gdp                                 | growth_rate_gdp          | change_export_tax_rate                   | growth_rate_gdp        |                                  |	
+| adjustment_endogenous_growth_rate_stock         | elasticity_gdp           | exogenous_growth_rate_export_trade_shift | growth_demand_expected | 	                                |
+| elasticity_growth_rate_stock_on_area            | growth_rate_fourth_shift | elasticity_trade_exporter_shift	         | growth_lower_bound	    |                                  |
+| growth_rate_linear_GDP_forest_area_growth_rate  | growth_rate_fifth_shift  | exogenous_growth_rate_import_trade_shift | elasticity_gdp         | 	                                |
+| growth_rate_squared_GDP_forest_area_growth_rate | growth_rate_sixth_shift  | elasticity_trade_importer_shift          |                        |                                  |		
+| fraction_fuelwood                               | growth_rate_upper_bound  | trade_inertia_bounds                     |                        |                                  |		
+| ratio_inventory_drain                           |                          |                                          |                        |                                  ||				
+| max_ratio_inventory_drain                       |                          |                                          |                        |                                  |				
+| price_CO2                                       |                          |                                          |                        |                                  |				
 	
