@@ -2,9 +2,9 @@ name: Run CI/CD pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "24-extend-github-actions-for-python-312" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "24-extend-github-actions-for-python-312" ]
 
 jobs:
   build:
@@ -13,8 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9"]
-        # add "3.12" when available to test functionality of TiMBA with newer Python version
+        python-version: ["3.9", "3.12"]
         # add further operting systems to extend CI/CD pipelines
         # replace runs-on: ${{matrix.os}} os: [ubuntu-latest, windows-latest, macOS-latest]
 
