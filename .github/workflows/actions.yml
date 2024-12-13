@@ -2,9 +2,9 @@ name: Run CI/CD pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "19-extend-github-actions-for-code-coverage-with-codecov" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "19-extend-github-actions-for-code-coverage-with-codecov" ]
 
 jobs:
   build:
@@ -44,10 +44,10 @@ jobs:
         name: coverage-report
         path: coverage.xml
     
-      # Upload coverage to Codecov
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
+    # Upload coverage to Code Coverage Summary
+    - name: Code Coverage Summary Report
+      uses: irongut/CodeCoverageSummary@v1.3.0
       with:
-        file: coverage.xml
+        filename: coverage.xml
         fail_ci_if_error: false
         
