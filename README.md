@@ -6,6 +6,7 @@
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/TI-Forest-Sector-Modelling/TiMBA/actions.yml) 
 ![Codecov (with branch)](https://img.shields.io/codecov/c/github/TI-Forest-Sector-Modelling/TiMBA_Workshop/main) 
+![GitHub Release](https://img.shields.io/github/v/release/TI-Forest-Sector-Modelling/TiMBA)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13842492.svg)](https://doi.org/10.5281/zenodo.13842492)
 [![License](https://img.shields.io/github/license/TI-Forest-Sector-Modelling/TiMBA)](https://github.com/TI-Forest-Sector-Modelling/TiMBA/blob/main/COPYING)
 
