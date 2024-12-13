@@ -2,9 +2,9 @@ name: Run CI/CD pipeline
 
 on:
   push:
-    branches: [ "19-extend-github-actions-for-code-coverage-with-codecov" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "19-extend-github-actions-for-code-coverage-with-codecov" ]
+    branches: [ "main" ]
 
 jobs:
   build:
