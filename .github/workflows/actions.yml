@@ -2,21 +2,20 @@ name: Run CI/CD pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "26-extend-github-actions-for-different-os" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "26-extend-github-actions-for-different-os" ]
 
 jobs:
   build:
 
-    runs-on: windows-latest
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
         python-version: ["3.9"]
-        # add "3.12" when available to test functionality of TiMBA with newer Python version
-        # add further operting systems to extend CI/CD pipelines
-        # replace runs-on: ${{matrix.os}} os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    runs-on: ${{matrix.os}}
 
     steps:
     - uses: actions/checkout@v4
