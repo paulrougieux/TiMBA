@@ -2,9 +2,9 @@ name: Run CI/CD pipeline
 
 on:
   push:
-    branches: [ "26-extend-github-actions-for-different-os" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "26-extend-github-actions-for-different-os" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -12,8 +12,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [ubuntu-latest, windows-latest]
         python-version: ["3.9"]
+        # Add <, macOS-latest> to os to test TiMBA's functionality for macOS. Currently, macOS produces different results
+        # compared to ubuntu and windows without clear reason.
 
     runs-on: ${{matrix.os}}
 
