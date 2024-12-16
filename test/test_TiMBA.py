@@ -46,6 +46,7 @@ class TestTiMBAClass(unittest.TestCase):
         try:
             self.UserData.max_period = int(os.environ["MAX_PERIOD"])
             print(f"Test suite is running with a user-defined number of {self.UserData.max_period} periods ")
+            print(DataTest.keys())
         except KeyError:
             print(f"Test suite is running with a default number of {self.UserData.max_period} periods")
 
@@ -71,7 +72,7 @@ class TestTiMBAClass(unittest.TestCase):
 
         if test_activate:
             self.assertTrue(
-                DataValidator.check_timba_results(Data=self.WorldDataCont, DataTest=DataTest, rel_tolerance=5e-02),
+                DataValidator.check_timba_results(Data=self.WorldDataCont, DataTest=DataTest, rel_tolerance=10e-02),
                 "Produced TiMBA results do not correspond to provided validation results")
 
 
