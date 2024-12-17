@@ -2,9 +2,9 @@ name: Run CI/CD pipeline
 
 on:
   push:
-    branches: [ "24-extend-github-actions-for-python-312" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "24-extend-github-actions-for-python-312" ]
+    branches: [ "main" ]
 
 jobs:
   build:
