@@ -44,17 +44,12 @@ jobs:
         name: coverage-report
         path: coverage.xml
 
-    # Execute SonarCloud Scan
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@v2
+      # Upload coverage to Codecov
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
       with:
-        args:
-          -Dsonar.organization=ti-forest-sector-modelling
-          -Dsonar.projectKey=TI-Forest-Sector-Modelling_TiMBA_Workshop
-          -Dsonar.projectName=TiMBA_Workshop
-          -Dsonar.projectVersion=1.0.1
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        file: coverage.xml
+        fail_ci_if_error: false
 
 
         
