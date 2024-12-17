@@ -9,14 +9,15 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-latest, windows-latest]
         python-version: ["3.9"]
-        # add "3.12" when available to test functionality of TiMBA with newer Python version
-        # add further operting systems to extend CI/CD pipelines
-        # replace runs-on: ${{matrix.os}} os: [ubuntu-latest, windows-latest, macOS-latest]
+        # Add <, macOS-latest> to os to test TiMBA's functionality for macOS. Currently, macOS produces different results
+        # compared to ubuntu and windows without clear reason.
+
+    runs-on: ${{matrix.os}}
 
     steps:
     - uses: actions/checkout@v4
