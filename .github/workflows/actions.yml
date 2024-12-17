@@ -16,6 +16,7 @@ jobs:
         python-version: ["3.9", "3.12.6"]
         # add further operting systems to extend CI/CD pipelines
         # replace runs-on: ${{matrix.os}} os: [ubuntu-latest, windows-latest, macOS-latest]
+        # Newest Python version 3.12 cannot be tested as Python >3.12.6 is not compatible with pandas < 2.0
 
     steps:
     - uses: actions/checkout@v4
