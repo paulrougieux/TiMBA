@@ -1,5 +1,17 @@
 ![TiMBA Logo](timba_logo_v3.png)  
-**TiMBA - Timber market Model for policy-Based Analysis**
+
+-----------------
+
+# TiMBA - Timber market Model for policy-Based Analysis
+
+[![CI - Test](https://github.com/TI-Forest-Sector-Modelling/TiMBA_Workshop/actions/workflows/actions.yml/badge.svg)](https://github.com/TI-Forest-Sector-Modelling/TiMBA_Workshop/actions/workflows/actions.yml)
+![Codecov (with branch)](https://img.shields.io/codecov/c/github/TI-Forest-Sector-Modelling/TiMBA_Workshop/main) 
+![GitHub Release](https://img.shields.io/github/v/release/TI-Forest-Sector-Modelling/TiMBA)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13842492.svg)](https://doi.org/10.5281/zenodo.13842492)
+[![License](https://img.shields.io/github/license/TI-Forest-Sector-Modelling/TiMBA)](https://github.com/TI-Forest-Sector-Modelling/TiMBA/blob/main/COPYING)
+
+-----------------
+
 <!-- TOC -->
 
 - [Cite TiMBA](#cite-timba)
@@ -20,9 +32,7 @@
 
 <!-- /TOC -->
 
-**TiMBA - Timber market Model for policy-Based Analysis**
-
-TiMBA is a partial economic equilibrium model for the global forest products market. The model endogenously simulates 
+**TiMBA** is a partial economic equilibrium model for the global forest products market. The model endogenously simulates 
 production, consumption and trade of wood and wood-based products in 180 countries. TiMBA recursively computes the market 
 equilibrium for each country and product in a given period by maximizing the social surplus in the global forest sector. 
 In the equilibrium processes, product supply, demand and price are balanced for each simulation period. 
