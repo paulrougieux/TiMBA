@@ -48,11 +48,11 @@ jobs:
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@v2
       with:
-        sonarcloud: true
-        organization: ti-forest-sector-modelling
-        projectKey: TI-Forest-Sector-Modelling_TiMBA_Workshop
-        projectName: TiMBA_Workshop
-        projectVersion: "1.0.1"
+        args:
+          -Dsonar.organization=ti-forest-sector-modelling
+          -Dsonar.projectKey=TI-Forest-Sector-Modelling_TiMBA_Workshop
+          -Dsonar.projectName=TiMBA_Workshop
+          -Dsonar.projectVersion=1.0.1
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
