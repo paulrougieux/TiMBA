@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9", "3.12"]
+        python-version: ["3.9", "3.12.6"]
         # add further operting systems to extend CI/CD pipelines
         # replace runs-on: ${{matrix.os}} os: [ubuntu-latest, windows-latest, macOS-latest]
 
