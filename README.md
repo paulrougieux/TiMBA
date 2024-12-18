@@ -5,7 +5,7 @@
 # TiMBA - Timber market Model for policy-Based Analysis
 
 [![CI - Test](https://github.com/TI-Forest-Sector-Modelling/TiMBA_Workshop/actions/workflows/actions.yml/badge.svg)](https://github.com/TI-Forest-Sector-Modelling/TiMBA_Workshop/actions/workflows/actions.yml)
-![Codecov (with branch)](https://img.shields.io/codecov/c/github/TI-Forest-Sector-Modelling/TiMBA_Workshop/main) 
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=TI-Forest-Sector-Modelling_TiMBA_Workshop&metric=coverage&token=8a3a3665a6c71149ed9283f963edfef9a788d320)](https://sonarcloud.io/summary/new_code?id=TI-Forest-Sector-Modelling_TiMBA_Workshop)
 ![GitHub Release](https://img.shields.io/github/v/release/TI-Forest-Sector-Modelling/TiMBA)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13842492.svg)](https://doi.org/10.5281/zenodo.13842492)
 [![License](https://img.shields.io/github/license/TI-Forest-Sector-Modelling/TiMBA)](https://github.com/TI-Forest-Sector-Modelling/TiMBA/blob/main/COPYING)
