@@ -121,7 +121,7 @@ TiMBA is provided with an input file (scenario_input.xlsx), including all input 
   `-- input
     `-- 01_Input_Files
       |-- scenario_input.xlsx #contains all input data to the model. 
-    `-- 02_Additional_Informations
+    `-- 02_Additional_Information
       |-- additional_information.xlsx 
       |-- worldprice.xlsx
     `-- 03_Serialization
