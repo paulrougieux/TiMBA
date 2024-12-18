@@ -2,9 +2,9 @@ name: Run CI/CD pipeline
 
 on:
   push:
-    branches: [ "40-extend-github-actions-for-code-coverage-with-sonarqube" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "40-extend-github-actions-for-code-coverage-with-sonarqube" ]
+    branches: [ "main" ]
 
 jobs:
   build:
