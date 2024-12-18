@@ -48,9 +48,9 @@ The authors' collective is named Thünen Institute Forest Sector Modelling (TI-F
 Co-authors in alphabetical order. 
 ## Install TiMBA
 
-The package is developed and tested with Python 3 (python 3.8.9) version on Windows.
+The package is developed and tested with Python 3.9 on Windows. TiMBA is compatible with all Python versions up to 3.12.6.
 Before proceeding, please ensure that Python is installed on your system. It can be downloaded and installed 
-from [Python.org](https://www.python.org/downloads/release/python-389/).
+from [Python.org](https://www.python.org/downloads/release/python-3126/).
 
 1. Clone the repository
 Begin by cloning the repository to your local machine using the following command: 
@@ -61,14 +61,14 @@ Navigate into the TiMBA project folder on your local machine.
    >cd TiMBA
    >
 3. Create a virtual environment  
-It is recommended to set up a virtual environment for TiMBA to manage dependencies. The package is tested using 
-   Python >3.8.9 (3.8.10 and 3.9.7). With a newer Python version, we can not guarantee the full functionality of the package.
+It is recommended to set up a virtual environment for TiMBA to manage dependencies. The package is tested for 
+   Python versions up to 3.12.6. With a newer Python version, we can not guarantee the full functionality of the package.
    Select the correct Python interpreter.   
    Show installed versions: 
    >py -0  
    >
    - If you have installed multiple versions of Python, activate the correct version using the py-Launcher.
-   >py -3.8 -m venv venv 
+   >py -3.12.6 -m venv venv 
    > 
    - If you are using only a single version of Python on your computer:
    >python -m venv venv
