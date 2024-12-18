@@ -46,7 +46,7 @@ jobs:
 
       # Execute project scan and upload the coverage report to SonarCloud
     - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@v2
+      uses: sonarsource/sonarcloud-github-action@v1
       with:
         args: >
           -Dsonar.organization=ti-forest-sector-modelling
