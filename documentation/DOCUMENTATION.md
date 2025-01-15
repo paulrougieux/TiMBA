@@ -102,7 +102,7 @@ The model concept bases on the formal description of GFPM [@Buongiorno:2015;@Buo
 | Temporal Dimension                 | Recursive long term analyses                |
 | Products                           | Raw-, intermediate, end products            |
 | Data sources                       | FAO, FRA, WDI, Comtrade, WTO, IIASA-SSP     |
-| Software Implementation            | Python 3.9, 3.12                            |
+| Software Implementation            | Python 3.9, 3.10, 3.11, 3.12.6              |
 | Current code version               | TiMBA 1.0.1                                 |
 | Permanent link to code repositiory | https://zenodo.org/records/13842492         |
 | Code License                       | APGL3                                       |
@@ -536,15 +536,15 @@ Begin by cloning the repository to your local machine using the following comman
 Navigate into the TiMBA project folder on your local machine.
    >cd TiMBA
    >
-3. Create a virtual environment:  
-It is recommended to set up a virtual environment for TiMBA to manage dependencies. The package is tested using 
-   Python >3.9 (3.9 and 3.12). We can not guarantee the full functionality of the package with another Python version.
-   Select the correct Python interpreter.   
+3. Create a virtual environment (venv):  
+It is recommended to set up a virtual environment for TiMBA to manage dependencies. The package is tested with all
+Python versions up to 3.12.6 for Windows and Ubuntu OS using GitHub Actions. We can not guarantee the full functionality
+of the package with another Python version. Select the correct Python interpreter.   
    Show installed versions: 
    >py -0  
    >
    - If you have installed multiple versions of Python, activate the correct version using the py-Launcher.
-   >py -3.8 -m venv venv 
+   >py -3.12.6 -m venv venv 
    > 
    - If you are using only a single version of Python on your computer:
    >python -m venv venv
@@ -847,9 +847,9 @@ capacities within the TiMBA team.
 **Figure 3:** Software workflow of TiMBA, including supportive packages and extensions
 
 ### Software requirements
-TiMBA was developed and tested using a Windows operating system (Windows 10 Enterprise) with 32 GB RAM and Python 3.9.  
-The compatibility with other operating systems (Ubuntu and MacOS) is continuously tested via GitHub Actions. Operating
-systems with lower computational capacities might encounter problems when running TiMBA.
+TiMBA was developed and tested using a Windows operating system (Windows 10 Enterprise) with 32 GB RAM and all Python 
+versions up to 3.12.6. The compatibility with other operating systems (e.g., Ubuntu) is continuously tested via GitHub
+Actions. Operating systems with lower computational capacities might encounter problems when running TiMBA.
 
 All necessary packages to run TiMBA are automatically installed when downloading the project from GitHub and activating
 the virtual environment. Step-by-step instructions about the installation procedure are provided in the README.md. All
