@@ -470,13 +470,7 @@ def dynamize_forest(Data: pd.DataFrame, DataChange: pd.DataFrame, DataSupply: pd
                                                     DataChange[Domains.ExogChangeForest.max_ratio_inventory_drain],
                                                     Shifter.except_shifter_zero.value,
                                                     period_block=period_info["block"])
-
-    price_CO2 = growth_dynamization(Data[Domains.Forest.price_CO2],
-                                    DataChange[Domains.ExogChangeForest.price_CO2],
-                                    Shifter.except_shifter_zero.value,
-                                    period_block=period_info["block"],
-                                    period_length=period_info["length"])
-
+    
     if not Data[Data[Domains.Forest.forest_stock] < 0].index.any():
         pass
     else:
