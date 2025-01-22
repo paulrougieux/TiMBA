@@ -42,7 +42,7 @@ In the equilibrium processes, product supply, demand and price are balanced for 
 We are happy that you use TiMBA for your research. When publishing your work in articles, working paper, presentations 
 or elsewhere, please cite the model as 
 
-[TI-FSM et al. (2024) TiMBA (Timber market Model for policy-Based Analysis)](Citation.cff)
+[TI-FSM et al. (2024) TiMBA (Timber market Model for policy-Based Analysis)](CITATION.cff)
 
 The authors' collective is named Thünen Institute Forest Sector Modelling (TI-FSM). The individual authors are listed as 
 Co-authors in alphabetical order. 
