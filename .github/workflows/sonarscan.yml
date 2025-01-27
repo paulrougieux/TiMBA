@@ -1,9 +1,9 @@
 name: Python CI with SonarCloud
 on:
   push:
-    branches: [ "61-fix-sonarqube-coverage-report-analysis" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "61-fix-sonarqube-coverage-report-analysis" ]
+    branches: [ "main" ]
 
 jobs:
   sonar:
