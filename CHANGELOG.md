@@ -1,32 +1,37 @@
 # Changelog
 
-## [1.0.2] - 2025-01-28
+## [v1.0.2] - 2025-01-28
 
 ### Added
+- **Python 3.12 compatibility**:
+  - TiMBA is upgraded to run with Python 3.12.6.
+  - Added support for Python 3.9, 3.10, 3.11. 
+- **GitHub Actions**: 
+  - Set up GitHub Actions for TiMBA to integrate automated functionality and quality checks.
+  - Added compatibility checks with multiple Python versions (Python 3.9, 3.10, 3.11, 3.12) and operating systems
+(Windows and Ubuntu).
 - **SonarCloud Integration**: Implemented and optimized code coverage and scans to ensure higher code quality.  
   - Integrated SonarCloud into the GitHub Actions pipeline.  
-  - Added a SonarCloud quality status badge to `README.md`.  
-- **GitHub Actions Updates**:  
-  - Added support for Python 3.12 and compatibility checks with multiple operating systems.  
-  - Implemented code coverage with Codecov and SonarCloud.  
-- **Badges**: Added project badges like release status and coverage.  
+  - Added a SonarCloud quality status badge to `README.md`.   
+- **Badges**: Added project badges like release status, coverage, and Zenodo-DOI.
 <!-- - **Documentation Enhancements**: Expanded and improved the documentation structure.  
   - Added new sections on software validation and usage.  
   - Included tables and additional data.  
 - **New Directory**: Added a `documentation` folder for better organization. -->
 
 ### Changed
-- **Path Updates**: Updated paths for `02_additional_information` to improve clarity.  
-- **Package Upgrades**: Upgraded Pandas to version 2.2.3 for Python 3.12 compatibility.  
-- **GitHub Actions**: Optimized triggers and target branches.  
+- **Package Upgrades**: Upgraded Pandas to version 2.2.3 for Python 3.12 compatibility.
 - **Readme & Compatibility**: Updated compatible Python versions and supported operating systems.
+- **zipped pkl-files**: pkl-files for TiMBA output are zipped now to save storage space.
+- **pkl-files with time stamps**: pkl-files for TiMBA output are now saved with a time stamp to allow unambiguous
+identification.
 
 ### Fixed
 - **GitHub Actions Bugs**:  
-  - Fixed issues in pipelines (e.g., branch resets, unnecessary triggers).  
-  - Resolved an issue with `np.isclose` for compatibility between Python and Pandas.  
-  - Replaced `iteritems` with `items` for compatibility with Python 3.12.  
-- **SonarQube Reports**: Fixed errors in code coverage report analysis.  
+  - Various adaptations to fix bugs in the GitHub Actions 
+- **Fixes to ensure compatibility with Python 3.12**
+  - Resolved an issue with `np.isclose` for compatibility between Python 3.12 and Pandas.  
+  - Replaced `iteritems` with `items` for compatibility with Python 3.12.
 - **Gitignore Improvements**: Extended `.gitignore` to include additional folders like `timba\data\input`.  
 <!-- - **Documentation Bugs**: Corrected typos and formatting issues in documentation. -->
 
