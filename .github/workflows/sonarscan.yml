@@ -43,9 +43,9 @@ jobs:
         with:
           args: >
             -Dsonar.organization=ti-forest-sector-modelling
-            -Dsonar.projectKey=TI-Forest-Sector-Modelling_TiMBA_Workshop
-            -Dsonar.projectName=TiMBA_Workshop
-            -Dsonar.projectVersion=1.0.1
+            -Dsonar.projectKey=TI-Forest-Sector-Modelling_TiMBA
+            -Dsonar.projectName=TiMBA
+            -Dsonar.projectVersion=1.0.2
             -Dsonar.python.coverage.reportPaths=coverage.xml
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
