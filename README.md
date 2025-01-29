@@ -1,5 +1,17 @@
 ![TiMBA Logo](timba_logo_v3.png)  
-**TiMBA - Timber market Model for policy-Based Analysis**
+
+-----------------
+
+# TiMBA - Timber market Model for policy-Based Analysis
+
+[![CI - Test](https://github.com/TI-Forest-Sector-Modelling/TiMBA_Workshop/actions/workflows/actions.yml/badge.svg)](https://github.com/TI-Forest-Sector-Modelling/TiMBA_Workshop/actions/workflows/actions.yml)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=TI-Forest-Sector-Modelling_TiMBA_Workshop&metric=coverage&token=8a3a3665a6c71149ed9283f963edfef9a788d320)](https://sonarcloud.io/summary/new_code?id=TI-Forest-Sector-Modelling_TiMBA_Workshop)
+![GitHub Release](https://img.shields.io/github/v/release/TI-Forest-Sector-Modelling/TiMBA)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13842492.svg)](https://doi.org/10.5281/zenodo.13842492)
+[![License](https://img.shields.io/github/license/TI-Forest-Sector-Modelling/TiMBA)](https://github.com/TI-Forest-Sector-Modelling/TiMBA/blob/main/COPYING)
+
+-----------------
+
 <!-- TOC -->
 
 - [Cite TiMBA](#cite-timba)
@@ -20,9 +32,7 @@
 
 <!-- /TOC -->
 
-**TiMBA - Timber market Model for policy-Based Analysis**
-
-TiMBA is a partial economic equilibrium model for the global forest products market. The model endogenously simulates 
+**TiMBA** is a partial economic equilibrium model for the global forest products market. The model endogenously simulates 
 production, consumption and trade of wood and wood-based products in 180 countries. TiMBA recursively computes the market 
 equilibrium for each country and product in a given period by maximizing the social surplus in the global forest sector. 
 In the equilibrium processes, product supply, demand and price are balanced for each simulation period. 
@@ -32,15 +42,16 @@ In the equilibrium processes, product supply, demand and price are balanced for 
 We are happy that you use TiMBA for your research. When publishing your work in articles, working paper, presentations 
 or elsewhere, please cite the model as 
 
-[TI-FSM et al. (2024) TiMBA (Timber market Model for policy-Based Analysis)](Citation.cff)
+[TI-FSM et al. (2024) TiMBA (Timber market Model for policy-Based Analysis)](CITATION.cff)
 
 The authors' collective is named Thünen Institute Forest Sector Modelling (TI-FSM). The individual authors are listed as 
 Co-authors in alphabetical order. 
 ## Install TiMBA
 
-The package is developed and tested with Python 3 (python 3.8.9) version on Windows.
-Before proceeding, please ensure that Python is installed on your system. It can be downloaded and installed 
-from [Python.org](https://www.python.org/downloads/release/python-389/).
+The package is developed and tested with Python 3.9 on Windows. TiMBA is compatible with all Python versions up to 3.12.6
+with Windows and Ubuntu OS. The functionality with Python versions and different OS is continuously tested using GitHub
+Actions Before proceeding, please ensure that Python is installed on your system. It can be downloaded and installed
+from [Python.org](https://www.python.org/downloads/release/python-3126/).
 
 1. Clone the repository
 Begin by cloning the repository to your local machine using the following command: 
@@ -51,14 +62,14 @@ Navigate into the TiMBA project folder on your local machine.
    >cd TiMBA
    >
 3. Create a virtual environment  
-It is recommended to set up a virtual environment for TiMBA to manage dependencies. The package is tested using 
-   Python >3.8.9 (3.8.10 and 3.9.7). With a newer Python version, we can not guarantee the full functionality of the package.
+It is recommended to set up a virtual environment for TiMBA to manage dependencies. The package is tested for 
+   Python versions up to 3.12.6. With a newer Python version, we can not guarantee the full functionality of the package.
    Select the correct Python interpreter.   
    Show installed versions: 
    >py -0  
    >
    - If you have installed multiple versions of Python, activate the correct version using the py-Launcher.
-   >py -3.8 -m venv venv 
+   >py -3.12.6 -m venv venv 
    > 
    - If you are using only a single version of Python on your computer:
    >python -m venv venv
@@ -111,7 +122,7 @@ TiMBA is provided with an input file (scenario_input.xlsx), including all input 
   `-- input
     `-- 01_Input_Files
       |-- scenario_input.xlsx #contains all input data to the model. 
-    `-- 02_Additional_Informations
+    `-- 02_Additional_Information
       |-- additional_information.xlsx 
       |-- worldprice.xlsx
     `-- 03_Serialization

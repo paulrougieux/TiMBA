@@ -16,8 +16,6 @@ class Forest(DomainNameSpecifier, MainDomainSpecifier, FinalDomainSpecifier):
     fraction_fuelwood = "FuelwoodForest"
     ratio_inventory_drain = "InventoryDrain"
     max_ratio_inventory_drain = "MaxRatioInventoryDrain"
-    CO2_growing_stock = "WoodCO2"
-    price_CO2 = "CO2Price"
     alpha =  "alpha"
     gamma = "gamma"
     periodic_growth_rate_of_forest_area = "ga"
@@ -38,8 +36,6 @@ class Forest(DomainNameSpecifier, MainDomainSpecifier, FinalDomainSpecifier):
             "Unnamed: 9": fraction_fuelwood,
             "Unnamed: 10": ratio_inventory_drain,
             "Unnamed: 11": max_ratio_inventory_drain,
-            "Unnamed: 12": CO2_growing_stock,
-            "Unnamed: 13": price_CO2
     }
 
     # Excel Start Idx
