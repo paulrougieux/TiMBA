@@ -21,6 +21,7 @@ class Forest(DomainNameSpecifier, MainDomainSpecifier, FinalDomainSpecifier):
     periodic_growth_rate_of_forest_area = "ga"
     forest_growth_without_harvest = "gu"
     supply_from_forest = "supply_from_forest"
+    max_forest_density = "max_forest_density"
 
     # Column Mapper
     header_description = {
@@ -36,6 +37,7 @@ class Forest(DomainNameSpecifier, MainDomainSpecifier, FinalDomainSpecifier):
             "Unnamed: 9": fraction_fuelwood,
             "Unnamed: 10": ratio_inventory_drain,
             "Unnamed: 11": max_ratio_inventory_drain,
+            "Unnamed: 14": max_forest_density
     }
 
     # Excel Start Idx
