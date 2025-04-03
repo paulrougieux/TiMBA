@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -40,7 +40,7 @@ jobs:
 
     # Upload the coverage XML report as an artifact
     - name: Upload coverage XML artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: coverage-report
+        name: coverage-report-${{matrix.os}}-${{ matrix.python-version }}
         path: coverage.xml
