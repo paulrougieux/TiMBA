@@ -2,7 +2,7 @@ name: Run CI/CD pipeline
 
 on:
   push:
-    branches: [ "60-resolve-bug-in-github-actions" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
