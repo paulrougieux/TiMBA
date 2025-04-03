@@ -538,9 +538,22 @@ def dynamize_forest(Data: pd.DataFrame, DataChange: pd.DataFrame, DataSupply: pd
     forest_stock_new = forest_stock_prev + stock_growth - (ratio_inventory_drain * roundwood_supply[:len(Data)])
 
     try:
-        forest_stock_max = (Data[Domains.Forest.max_forest_density] * forest_area_new
-                            ) / ConversionParameters.MIO_FACTOR.value
-        forest_stock_new = pd.Series(np.where(forest_stock_new > forest_stock_max, forest_stock_max, forest_stock_new))
+        forest_stock_max_index = Data[
+            Data[Domains.Forest.max_forest_density] != Shifter.except_shifter_minus_one.value].index
+        forest_stock_oth_index = Data[
+            Data[Domains.Forest.max_forest_density] == Shifter.except_shifter_minus_one.value].index
+
+        forest_stock_max = (Data.loc[forest_stock_max_index, Domains.Forest.max_forest_density] *
+                            forest_area_new[forest_stock_max_index]) / ConversionParameters.MIO_FACTOR.value
+        forest_stock_max = pd.DataFrame(np.where(
+            forest_stock_new[forest_stock_max_index] > forest_stock_max[forest_stock_max_index],
+            forest_stock_max[forest_stock_max_index],
+            forest_stock_new[forest_stock_max_index])).set_index(forest_stock_max_index)
+        forest_stock_oth = forest_stock_new[forest_stock_oth_index]
+        forest_stock_new = pd.concat([forest_stock_max, forest_stock_oth], axis=0).sort_index()
+        forest_stock_new = forest_stock_new.reset_index(drop=True)
+        forest_stock_new = pd.Series(forest_stock_new[0])
+
     except KeyError:
         pass
 
