@@ -1,5 +1,26 @@
 # Changelog
 
+## [v1.0.3] - 2025-04-09
+
+### Added
+- **Forest Model:**  
+  - Implementation of an upper bound for forest stand density based on forest resources assessment data.
+  - Added option to handle scenario_input with and without forest stand density restriction.
+- **Documentation**  
+  - Added the TiMBA documentation as a PDF file (DOI: 10.3220/253-2025-16).
+
+### Changed
+- **scenario input:**
+  - Default `scenario_input.xlsx` has been updated with newest data (FAOSTAT, FRA, WTO, and SSP2).   
+- **GitHub Actions:**  
+  - Updated `setup-python` in `sonarscan.yml`.  
+  - Upgraded `upload-artifact` and `setup-python` in `actions.yml`.
+- **Coverage Report:**  
+  - Included OS and Python version name.  
+- **Package upgrades and dependencies**
+  - Upgrade cvxpy solver environment to 1.6.4.
+  - Fix osqp solver to 0.6.7.post3 to ensure package compatibility.
+
 ## [v1.0.2] - 2025-01-29
 
 ### Added
