@@ -14,21 +14,23 @@
 
 <!-- TOC -->
 
-- [Cite TiMBA](#cite-timba)
-- [Install TiMBA](#install-timba)
-  - [Double check installation and test suite](#double-check-installation-and-test-suite)
-- [Use TiMBA](#use-timba)
-  - [Model settings](#model-settings)
-    - [Settings as parameters](#settings-as-parameters)
-    - [Advanced settings](#advanced-settings)
-- [TiMBA extended model description](#timba-extended-model-description)
-- [Roadmap and project status](#roadmap-and-project-status)
-- [Contributing to the project](#contributing-to-the-project)
-- [Authors](#authors)
-- [Contribution statement](#contribution-statement)
-- [License and copyright note](#license-and-copyright-note)
-- [Acknowledgements](#acknowledgements)
-- [References](#references)
+- [TiMBA - Timber market Model for policy-Based Analysis](#timba---timber-market-model-for-policy-based-analysis)
+  - [Cite TiMBA](#cite-timba)
+  - [Install TiMBA](#install-timba)
+    - [Known Issues](#known-issues)
+    - [Double check installation and test suite](#double-check-installation-and-test-suite)
+  - [Use TiMBA](#use-timba)
+    - [Model settings](#model-settings)
+      - [Settings as parameters](#settings-as-parameters)
+      - [Advanced settings](#advanced-settings)
+  - [TiMBA extended model description](#timba-extended-model-description)
+  - [Roadmap and project status](#roadmap-and-project-status)
+  - [Contributing to the project](#contributing-to-the-project)
+  - [Authors](#authors)
+  - [Contribution statement](#contribution-statement)
+  - [License and copyright note](#license-and-copyright-note)
+  - [Acknowledgements](#acknowledgements)
+  - [References](#references)
 
 <!-- /TOC -->
 
@@ -49,19 +51,26 @@ Co-authors in alphabetical order.
 ## Install TiMBA
 
 The package is developed and tested with Python 3.9 on Windows. TiMBA is compatible with all Python versions up to 3.12.6
-with Windows and Ubuntu OS. The functionality with Python versions and different OS is continuously tested using GitHub
-Actions Before proceeding, please ensure that Python is installed on your system. It can be downloaded and installed
-from [Python.org](https://www.python.org/downloads/release/python-3126/).
+with Windows and Ubuntu OS. The functionality with Python versions 3.9, 3.10, 3.11 and 3.12 on the latest Ubuntu and Windows OS 
+versions is continuously tested using GitHub Actions. 
+
+### Known Issues
+TiMBA currently has compatibility issues on macOS and with Python 3.13. Users may experience unexpected behavior during the optimization 
+process on macOS, as well as package installation problems when using Python 3.13.
+We recommend using Python 3.9–3.12 on Ubuntu or Windows for best results, until full support for Python 3.13 and macOS is implemented.
+
+Before proceeding, please ensure that Python is installed on your system. 
+It can be downloaded and installedfrom [Python.org](https://www.python.org/downloads/release/python-3126/).
 
 1. Clone the repository
 Begin by cloning the repository to your local machine using the following command: 
     >git clone https://github.com/TI-Forest-Sector-Modelling/TiMBA.git
    > 
-2. Switch to the TiMBA directory  
+1. Switch to the TiMBA directory  
 Navigate into the TiMBA project folder on your local machine.
    >cd TiMBA
    >
-3. Create a virtual environment  
+1. Create a virtual environment  
 It is recommended to set up a virtual environment for TiMBA to manage dependencies. The package is tested for 
    Python versions up to 3.12.6. With a newer Python version, we can not guarantee the full functionality of the package.
    Select the correct Python interpreter.   
@@ -74,11 +83,11 @@ It is recommended to set up a virtual environment for TiMBA to manage dependenci
    - If you are using only a single version of Python on your computer:
    >python -m venv venv
    >
-4. Activate the virtual environment  
+1. Activate the virtual environment  
 Enable the virtual environment to isolate TiMBA dependencies. 
    >venv\Scripts\activate
    >
-5. Install TiMBA in the editable mode  
+1. Install TiMBA in the editable mode  
    >pip install -e .
 
 If the following error occurs: "ERROR: File "setup.py" or "setup.cfg" not found."
