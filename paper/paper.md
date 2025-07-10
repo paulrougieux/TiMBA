@@ -44,9 +44,6 @@ TiMBA is a partial economic equilibrium model to simulate interdependencies and 
 
 
 # Statement of need
-[comment]: <> (CM: Does the paper have a section titled 'Statement of need' that clearly states what problems the software is designed to solve, who the target audience is, and its relation to other work?)
-[comment]: <> (CM: State of the field: Do the authors describe how this software compares to other commonly-used packages?)
-[comment]: <> (TH: some details on the changes made: In my view, deforestation is a consequence of land-use competition. Listing both here is a bit repetitive. As climate change and demand for ecosystem services are more causes in that perspective, I kept only land-use comptetition. However, deforestation is maybe more understandable for externals to the research field.)
 
 Globally, forests play a critical role by providing a wide range of ecological, economic, and social services, including carbon sequestration, biodiversity conservation, and timber production [@Nabuurs:2023]. However, the increasing pressures of climate change, land-use competition, and demand for different ecosystem services necessitate sound tools for understanding forest dynamics and managing the provision of its diverse resources [@Riviere:2020]. The forest sector is influenced by both market forces (e.g., prices, demand or supply for forest products) and non-market forces (e.g., policies and regulations targeting carbon sequestration and biodiversity conservation). Governmental and international institutions have implemented various and potentially conflicting policies to, e.g., mitigate deforestation [@EuropeanParliamentandCounciloftheEuropeanUnion:2023], promote sustainable management [@MacDicken:2015], and shape trade policies [@Apeti:2023]. The implementation of such policies can have profound effects on the forest sector at the local, regional, and global scale. TiMBA allows for assessing the impacts of forest-related policies and their influence on far-reaching market dynamics.
 
@@ -60,9 +57,6 @@ The sectoral coverage of TiMBA can be flexibly extended to include a lignocellul
 
 Unlike previous forest sector models, TiMBA is written in Python and published open-access. The source code and data are transparently disclosed, enabling researchers to easily modify and extend the model framework to address new research topics. Further, the model relies exclusively on open-access, free-of-charge libraries (including the solver used for the optimization), which allow users to conduct analyses without higher software costs. In that way, TiMBA tries to encourage transparent and community-based forest sector analyses.
 
-[comment]: <> (TH: Quellen habe ich hinzugefügt. Gern überprüfen und ergänzen)
-[comment]: <> (TH: ich finde, dass es sich vielleicht an paar Stellen etwas wiederholt. Ich bin mir auch nicht sicher, ob wir tatsächlich erwähnen sollten, dass das TiMBA in seiner aktuellen Form so geeinget ist, Analysen zum Thema Klimawandel durchzuführen. Der Effekt des Klimawandels auf den Walddynamiken ist bis jetzt nur sehr marginal/bzw. nicht berücksichtigt)
-[comment]: <> (TH: Ich habe den letzten Absatz zum Thema Open-Access, Transparency und free of charges hinzugefügt weil dieser Aspekt mir ziemlich wichtig ist und meiner Meinung nach ein wichtiger selling point von TiMBA ist)
 # Mathematics
 
 The model concept is based on the formal description of the Global Forest Products Model (GFPM)  [@Buongiorno:2015;@Buongiorno:2003]. The model recursively maximizes the total economic welfare of the forest sector of each represented country, which is defined as the sum of producer and consumer surpluses. The following quadratic problem is maximized using the CVXPY package [@Diamond:2016; @Agrawal:2018] and the OSQP solver [@Stellato:2020]:
@@ -98,8 +92,6 @@ Forest area development and thus, timber supply is linked to GDP per capita deve
 $$g_{I}=\left(1+\gamma_0\left(\frac{I_{t-1}}{A_{t-1}}\right)^\sigma+\left(\alpha_0+\alpha_{1}y^{'}\right)e^{\alpha_{2}y^{'}}\right)$$
 
 with $I$ as the forest inventory, $A$ as the forest area, $\sigma$ as the elasticity of inventory per unit area, $y^{'}$  as the income per capita, and $\gamma$ and $\alpha$ as exoenous paramters to shift the growth rates.
-
-[comment]: <> (TH: maybe add some detail on the supply of other fibre pulp and waste paper which are not directly linked to roundwood)
 
 ### Manufacturing:
 The production of intermediate and end products depends on manufacturing costs and input-output coefficients. The calibrated input-output coefficients depict the amount of input of primary or intermediate products to produce one unit of end product. The manufacturing costs represent the marginal costs of input, including implicitly costs for labour, energy, capital, and other materials. Manufacturing costs are expressed and shifted using the following equations: 
