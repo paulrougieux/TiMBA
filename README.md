@@ -62,7 +62,7 @@ We recommend using Python 3.9–3.12 on Ubuntu or Windows for best results, unti
 
 ### Installation Process
 Before proceeding, please ensure that Python is installed on your system. 
-It can be downloaded and installedfrom [Python.org](https://www.python.org/downloads/release/python-3126/).
+It can be downloaded and installed from [Python.org](https://www.python.org/downloads/release/python-3126/).
 
 1. Clone the repository
 Begin by cloning the repository to your local machine using the following command: 
