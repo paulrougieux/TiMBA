@@ -304,4 +304,5 @@ This work is the result of great joint efforts of the forest products market ana
 - Riahi, K.; van Vuuren, D.P.; Kriegler, E.; Edmonds, J.; O’Neill, B.C.; Fujimori, S.; Bauer, N.; Calvin, K.; Dellink, R.; Fricko, O.; et al. The Shared Socioeconomic Pathways and their energy, land use, and greenhouse gas emissions implications: An overview. Glob. Environ. Chang. 2017, 42, 153–168.
 - Samuelson, Paul A. Spatial Price Equilibrium and Linear Programming; The American Economic Review, 1952, 42 (3), 283–303; Available online http://www.jstor.org/stable/1810381.
 - Schier, F.; Morland, C.; Tandetzki, J.; Honkomp, T. (2025). TI-Forest-Sector-Modelling/TiMBA_Additional_Information: Additional Information for TiMBA Setup (v1.0.1). Zenodo. https://doi.org/10.5281/zenodo.14928911.
+- TI-FSM (2025) TiMBA - Timber market Model for policy-Based Analysis: Documentation of model structure, data, and parameters. Braunschweig: Johann Heinrich von Thünen-Institut, 35 p, Thünen Working Paper 263, DOI:10.3220/253-2025-16
 - World Bank. World Development Indicators|DataBank. Available online: https://databank.worldbank.org/source/world-development-indicators
