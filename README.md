@@ -206,8 +206,9 @@ Forest area development and thus, timber supply is coupled to GDP per capita dev
 In its basic version, TiMBA uses the assumptions made in the “Middle of the road” scenario described in “The Shared Socioeconomic Pathways” (the so called SSP2 scenario) to 
 model future GDP developments and population growth. This scenario describes a world of modest population growth and where social, economic and technological trends continue 
 similarly to historical patterns (Riahi et al. 2017). Price and income elasticities of demand are taken from Morland et al. (2018). Further exogenous specifications on technology 
-developments (input-output coefficients and manufacturing cost) are estimated based historical developments from 1993-2020 while information on trade inertia and cost are based on 
-WTO data as provided in the GFPM (Buongiorno et al. 2015; GFPM version 1-29-2017-World500). The base year for the scenario simulations with the current version of TiMBA is 2020.
+developments (input-output coefficients and manufacturing cost) are estimated based historical developments from 1993-2020. Information on trade inertia are based on 
+WTO data as provided in the GFPM (Buongiorno et al. 2015; GFPM version 1-29-2017-World500) while data on WTO Ad-valorem taxes rates are taken from Schier et al. (2025). 
+The base year for the scenario simulations with the current version of TiMBA is 2020.
 The input data used for simulation with TiMBA needs to be calibrated and provided in a source file prior to model runs. This file is provided together with the model. 
 The calibration procedure is described in Buongiorno and Zhu (2015) and altered according to Schier et al. (2018). The input data for calibrating the model are 
 obtained from three global databases: The FAO forestry statistics (FAOSTAT), the FAO Forest Global Resources Assessment (FAO 2020) and the World Bank Development 
