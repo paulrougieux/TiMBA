@@ -299,6 +299,7 @@ This work is the result of great joint efforts of the forest products market ana
 - FAO. Global Forest Resources Assessment. 2022. Available online: https://fra-data.fao.org/
 - FAOSTAT. Forestry Production and Trade: Datenbank. Available online: https://www.fao.org/faostat/en/#data/FO
 - Morland, C.; Schier, F.; Janzen, N.; Weimar, H. Supply and demand functions for global wood markets: Specification and plausibility testing of econometric models within the global forest sector. For. Policy Econ. 2018, 92, 92–105
+- Morland, C.; Tandetzki, J.; & Honkomp, T. (2025). TiMBA Charts (v0.2.0). Zenodo. https://doi.org/10.5281/zenodo.15689299
 - Murray, B.C.; McCarl, B.A.; Lee, H.-C. Estimating Leakage from Forest Carbon Sequestration Programs. Land Econ. 2004, 80, 109–124
 - Panayotou, T. Empirical Tests and Policy Analysis of Environmental Degradation at Different Stages of Economic Development; Working Paper No. 238; International Labour Organization: Geneva, Switzerland, 1993; Available online: http://www.ilo.org/public/libdoc/ilo/1993/93B09_31_engl.pdf 
 - Riahi, K.; van Vuuren, D.P.; Kriegler, E.; Edmonds, J.; O’Neill, B.C.; Fujimori, S.; Bauer, N.; Calvin, K.; Dellink, R.; Fricko, O.; et al. The Shared Socioeconomic Pathways and their energy, land use, and greenhouse gas emissions implications: An overview. Glob. Environ. Chang. 2017, 42, 153–168.
