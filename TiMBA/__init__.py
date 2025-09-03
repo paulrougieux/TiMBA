@@ -10,7 +10,7 @@ from pathlib import Path
 
 # Path do the data, default case
 TIMBA_DATA_DIR = Path.home() / "timba_data"
-# Or defined through an environmental
+# Or defined through an environmental variable
 if os.environ.get("TIMBA_DATA_DIR"):
     TIMBA_DATA_DIR = Path(os.environ["TIMBA_DATA_DIR"])
 
