@@ -9,7 +9,6 @@ WORLDPRICE_PATH = r"data/input/02_Additional_Information/worldprice_world500.xls
 PKL_WORLD_PATH = r"data/input/03_Serialization/WorldDataContent.pkl"
 PKL_ADD_INFO_PATH = r"data/input/03_Serialization/AddInfoContent.pkl"
 PKL_WORLDPRICE_PATH = r"data/input/03_Serialization/WorldPriceContent.pkl"
-PKL_OUTPUT_PATH = "E:\\GFPM\\Toolbox for TiMBA\\Archive\\BEPASO_results_with_TiMBA\\"
 
 # output
 RESULTS_OUTPUT = "data/output/results_D"
@@ -18,6 +17,7 @@ FOREST_OUTPUT = "data/output/forest_D"
 WORLD_PRICE_OUTPUT = "data/output/world_prices_D"
 MANUFACTURE_OUTPUT = "data/output/manufacture_D"
 LOGGING_OUTPUT_FOLDER = r"data/output"
+PKL_OUTPUT_PATH = r"data/output/pkl"
 
 # plot
 OUTPUT_FILE = "\\data\\output\\results_D*.csv"
