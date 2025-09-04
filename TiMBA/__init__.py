@@ -5,7 +5,7 @@ This is where the main page of the auto generated documentation website can be.
 or it can be defined through an environmental variable.
 
 """
-
+import os
 from pathlib import Path
 
 # Path do the data, default case
