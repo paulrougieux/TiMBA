@@ -68,7 +68,7 @@ with $P$ as price, $D$ as demand, $S$ as supply, $Y$ as manufacturing, $m$ as ma
 
 ### Demand:
 
-The demand for wood-based products (end products in [figure 1](timba_product_transformation.png)) is governed by income ($y$) and prices ($P$). 
+The demand for wood-based products (end products in [figure 1](https://github.com/TI-Forest-Sector-Modelling/TiMBA_Additional_Information/raw/main/images/timba_product_transformation.png)) is governed by income ($y$) and prices ($P$). 
 
 $$P_{i,k}(D_{i,k}) = P_{i,k,t-1}\left(\frac{D_{i,k}}{D^{*}_{i,j}}\right)^{1/\delta_{i,k}}$$
 
@@ -79,7 +79,7 @@ with $\delta$ as the demand price elasticity, $g_y$ as the growth rate of income
 
 ### Supply:
 
-The supply of roundwood and related primary products ([figure 1](timba_product_transformation.png)) depends on wood prices ($P$) and forest development ($g_I$) which in turn is determined by the growth dynamics of forest stock, the change in forest area, and supply quantities of the previous period ($S_{i,k,t-1}$):
+The supply of roundwood and related primary products ([figure 1](https://github.com/TI-Forest-Sector-Modelling/TiMBA_Additional_Information/raw/main/images/timba_product_transformation.png)) depends on wood prices ($P$) and forest development ($g_I$) which in turn is determined by the growth dynamics of forest stock, the change in forest area, and supply quantities of the previous period ($S_{i,k,t-1}$):
 
 $$P_{i,k}(S_{i,k}) = P_{i,k,t-1}\left(\frac{S_{i,k}}{S^{*}_{i,j}}\right)^{1/\lambda_{i,k}}$$
 
