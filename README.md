@@ -51,18 +51,18 @@ The authors' collective is named Thünen Institute Forest Sector Modelling (TI-F
 Co-authors in alphabetical order. 
 ## Install TiMBA
 
-The package is developed and tested with Python 3.9 on Windows. TiMBA is compatible with all Python versions up to 3.12.6
-with Windows and Ubuntu OS. The functionality with Python versions 3.9, 3.10, 3.11 and 3.12 on the latest Ubuntu and Windows OS 
-versions is continuously tested using GitHub Actions. 
+The package is developed and tested with Python 3.9 on Windows. TiMBA is compatible with Python versions between 3.9–3.11
+with Windows and Ubuntu OS. The functionality with Python versions and different OS is continuously tested using GitHub
+Actions. 
 
 ### Known Issues
-TiMBA currently has compatibility issues on macOS and with Python 3.13. Users may experience unexpected behavior during the optimization 
-process on macOS, as well as package installation problems when using Python 3.13.
-We recommend using Python 3.9–3.12 on Ubuntu or Windows for best results, until full support for Python 3.13 and macOS is implemented.
+TiMBA currently has compatibility issues on macOS and with Python 3.12 and 3.13. Users may experience unexpected behavior during the optimization 
+process on macOS, as well as package installation problems when using Python 3.12 and 3.13.
+We recommend using Python 3.9–3.11 on Ubuntu or Windows for best results, until full support for Python 3.12 and 3.13 and macOS is implemented.
 
 ### Installation Process
 Before proceeding, please ensure that Python is installed on your system. 
-It can be downloaded and installed from [Python.org](https://www.python.org/downloads/release/python-3126/).
+It can be downloaded and installed from [Python.org](https://www.python.org/downloads/release/python-3119/).
 
 1. Clone the repository
 Begin by cloning the repository to your local machine using the following command: 
@@ -74,13 +74,13 @@ Navigate into the TiMBA project folder on your local machine.
    >
 3. Create a virtual environment  
 It is recommended to set up a virtual environment for TiMBA to manage dependencies. The package is tested for 
-   Python versions up to 3.12.6. With a newer Python version, we can not guarantee the full functionality of the package.
+   Python versions up to 3.11. With a newer Python version, we can not guarantee the full functionality of the package.
    Select the correct Python interpreter.   
    Show installed versions: 
    >py -0  
    >
    - If you have installed multiple versions of Python, activate the correct version using the py-Launcher.
-   >py -3.12.6 -m venv venv 
+   >py -3.11 -m venv venv 
    > 
    - If you are using only a single version of Python on your computer:
    >python -m venv venv
@@ -217,8 +217,9 @@ Forest area development and thus, timber supply is coupled to GDP per capita dev
 In its basic version, TiMBA uses the assumptions made in the “Middle of the road” scenario described in “The Shared Socioeconomic Pathways” (the so called SSP2 scenario) to 
 model future GDP developments and population growth. This scenario describes a world of modest population growth and where social, economic and technological trends continue 
 similarly to historical patterns (Riahi et al. 2017). Price and income elasticities of demand are taken from Morland et al. (2018). Further exogenous specifications on technology 
-developments (input-output coefficients and manufacturing cost) are estimated based historical developments from 1993-2020 while information on trade inertia and cost are based on 
-WTO data as provided in the GFPM (Buongiorno et al. 2015; GFPM version 1-29-2017-World500). The base year for the scenario simulations with the current version of TiMBA is 2020.
+developments (input-output coefficients and manufacturing cost) are estimated based historical developments from 1993-2020. Information on trade inertia are based on 
+WTO data as provided in the GFPM (Buongiorno et al. 2015; GFPM version 1-29-2017-World500) while data on WTO Ad-valorem taxes rates are taken from Schier et al. (2025). 
+The base year for the scenario simulations with the current version of TiMBA is 2020.
 The input data used for simulation with TiMBA needs to be calibrated and provided in a source file prior to model runs. This file is provided together with the model. 
 The calibration procedure is described in Buongiorno and Zhu (2015) and altered according to Schier et al. (2018). The input data for calibrating the model are 
 obtained from three global databases: The FAO forestry statistics (FAOSTAT), the FAO Forest Global Resources Assessment (FAO 2020) and the World Bank Development 
@@ -230,12 +231,14 @@ model concept bases on the formal description of the Global Forest Products Mode
 
 The development of TiMBA is ongoing and we are already working on future releases.
 
+- To provide an easy way to visualize and analyse the output of TiMBA we published the interactive analysis toolbox TiMBA:_charts (Morland et al. 2025) that is also available in our [TiMBA repository](https://github.com/TI-Forest-Sector-Modelling/TiMBA). 
+
 Several projects are currently extending different components of TiMBA:
 - In the project [iNFORSu](https://www.thuenen.de/en/institutes/forestry/projects-1/modelling-of-the-global-roundwood-supply), we are working on the revision of the module computing forest area and stock development. Forest area development should not longer be only depend on the of GDPpc. Instead, further drivers significantly shaping forest area shall be included into the simulation. This should bring forest development and thus, wood supply closer to reality. 
 - In the project [BioSDG](https://www.thuenen.de/en/institutes/forestry/projects-1/the-bioeconomy-and-the-sustainable-development-goals-of-the-united-nations-biosdg) and [CarbonLeak](https://www.thuenen.de/en/cross-institutional-projects/carbon-leak), we extended the model to track and quantify carbon fluxes and stocks related to the forest sectors. Based on IPCC-based methods, carbon stocks in forest biomass and harvested wood products as well as substitution effects are quantified for each simulation period. This extension enables in-depth impact assessments of forest-based climate mitigation policies (e.g., carbon pricing policies and mitigation target-setting policies for the Land Use, Land Use Change and Forestry sector). The high flexibility of TiMBA allows it to cover a large panel of policy designs and conduct sensitivity analyses.   
 - In another project, we are implementing bilateral trade flows into the model framework. This step is important to enhance policy impact assessments on e.g., leakage effects.
 - Given the fast processing time, we are extending TiMBA to conduct exhaustive uncertainty analysis using Monte Carlo simulations. While these Monte Carlo simulations are currently used in the quantification of carbon stocks, their applications can be deployed to any input data of the model.
-- To visualize the model output of TiMBA we are developing an interactive analysis toolbox.
+
 
 Frequently check [TiMBA repository](https://github.com/TI-Forest-Sector-Modelling/TiMBA) for new releases.
 
@@ -309,8 +312,11 @@ This work is the result of great joint efforts of the forest products market ana
 - FAO. Global Forest Resources Assessment. 2022. Available online: https://fra-data.fao.org/
 - FAOSTAT. Forestry Production and Trade: Datenbank. Available online: https://www.fao.org/faostat/en/#data/FO
 - Morland, C.; Schier, F.; Janzen, N.; Weimar, H. Supply and demand functions for global wood markets: Specification and plausibility testing of econometric models within the global forest sector. For. Policy Econ. 2018, 92, 92–105
+- Morland, C.; Tandetzki, J.; & Honkomp, T. (2025). TiMBA Charts (v0.2.0). Zenodo. https://doi.org/10.5281/zenodo.15689299
 - Murray, B.C.; McCarl, B.A.; Lee, H.-C. Estimating Leakage from Forest Carbon Sequestration Programs. Land Econ. 2004, 80, 109–124
 - Panayotou, T. Empirical Tests and Policy Analysis of Environmental Degradation at Different Stages of Economic Development; Working Paper No. 238; International Labour Organization: Geneva, Switzerland, 1993; Available online: http://www.ilo.org/public/libdoc/ilo/1993/93B09_31_engl.pdf 
 - Riahi, K.; van Vuuren, D.P.; Kriegler, E.; Edmonds, J.; O’Neill, B.C.; Fujimori, S.; Bauer, N.; Calvin, K.; Dellink, R.; Fricko, O.; et al. The Shared Socioeconomic Pathways and their energy, land use, and greenhouse gas emissions implications: An overview. Glob. Environ. Chang. 2017, 42, 153–168.
 - Samuelson, Paul A. Spatial Price Equilibrium and Linear Programming; The American Economic Review, 1952, 42 (3), 283–303; Available online http://www.jstor.org/stable/1810381.
+- Schier, F.; Morland, C.; Tandetzki, J.; Honkomp, T. (2025). TI-Forest-Sector-Modelling/TiMBA_Additional_Information: Additional Information for TiMBA Setup (v1.0.1). Zenodo. https://doi.org/10.5281/zenodo.14928911.
+- TI-FSM (2025) TiMBA - Timber market Model for policy-Based Analysis: Documentation of model structure, data, and parameters. Braunschweig: Johann Heinrich von Thünen-Institut, 35 p, Thünen Working Paper 263, DOI:10.3220/253-2025-16
 - World Bank. World Development Indicators|DataBank. Available online: https://databank.worldbank.org/source/world-development-indicators
