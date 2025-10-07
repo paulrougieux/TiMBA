@@ -24,11 +24,11 @@ from pathlib import Path
 
 
 INIT_FILE = sys.modules[__name__].__file__
-MODULE_DIR = Path(INIT_FILE).parent
+PACKAGE_DIR = Path(INIT_FILE).parent
 
 # Default path to the data
 # See caveats of storing the data inside the package in issue ...
-TIMBA_DATA_DIR = MODULE_DIR / "data"
+TIMBA_DATA_DIR = PACKAGE_DIR / "data"
 
 # Path to the data defined through an environmental variable
 if os.environ.get("TIMBA_DATA_DIR"):
