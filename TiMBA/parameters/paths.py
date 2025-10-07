@@ -18,7 +18,16 @@ FOREST_OUTPUT = TIMBA_DATA_DIR / "output/forest_D"
 WORLD_PRICE_OUTPUT = TIMBA_DATA_DIR / "output/world_prices_D"
 MANUFACTURE_OUTPUT = TIMBA_DATA_DIR / "output/manufacture_D"
 LOGGING_OUTPUT_FOLDER = TIMBA_DATA_DIR / "output"
-PKL_OUTPUT_PATH = TIMBA_DATA_DIR / "output/pkl"
+
+# PKL_OUTPUT_PATH = TIMBA_DATA_DIR / "output/pkl"
+# TODO: fix PKL_OUTPUT_PATH creation in :
+#   File "TiMBA/TiMBA/parameters/__init__.py", line 122, in get_output_paths
+#     PKL_OUTPUT_PATH = PKL_OUTPUT_PATH + file_name + f"_{time_stamp}" + ".pkl"
+#                       ~~~~~~~~~~~~~~~~^~~~~~~~~~~
+# TypeError: unsupported operand type(s) for +: 'PosixPath' and 'str'
+
+# Temporary replace by a string so the string concatenation with + works
+PKL_OUTPUT_PATH = str(TIMBA_DATA_DIR / "output/pkl")
 
 # plot
 OUTPUT_FILE = "\\data\\output\\results_D*.csv"
