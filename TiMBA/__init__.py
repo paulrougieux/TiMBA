@@ -27,7 +27,8 @@ INIT_FILE = sys.modules[__name__].__file__
 PACKAGE_DIR = Path(INIT_FILE).parent
 
 # Default path to the data
-# See caveats of storing the data inside the package in issue ...
+# See caveats of storing the data inside the package in issue 72
+# https://github.com/TI-Forest-Sector-Modelling/TiMBA/issues/72
 TIMBA_DATA_DIR = PACKAGE_DIR / "data"
 
 # Path to the data defined through an environmental variable
